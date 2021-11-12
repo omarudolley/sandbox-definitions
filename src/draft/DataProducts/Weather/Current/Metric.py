@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from src.converter import DataProductStandard
+from src.converter import DataProductDefinition
 
 
 class CurrentWeatherMetricRequest(BaseModel):
@@ -41,7 +41,7 @@ class CurrentWeatherMetricResponse(BaseModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     description="Data Product for current weather with metric units",
     request=CurrentWeatherMetricRequest,
     response=CurrentWeatherMetricResponse,

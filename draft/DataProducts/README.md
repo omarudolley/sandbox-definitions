@@ -1,15 +1,15 @@
-Standards for
-[Data Products](https://github.com/digitalliving/standards/tree/master/draft/DataProducts)
+Definitions for
+[Data Products](https://github.com/digitalliving/sandbox-definitions/tree/master/draft/DataProducts)
 must conform to the following set of rules:
 
-## Standard specification format
+## Definition specification format
 
-Each standard must be described in corresponding JSON file, which is an OpenAPI 3.0
+Each definition must be described in corresponding JSON file, which is an OpenAPI 3.0
 spec. Name of this file must be in UpperCamelCase.
 
-## OpenAPI scheme
+## OpenAPI schema
 
-_Rules below are applied for each standard._
+_Rules below are applied for each definition._
 
 ### Spec file must define only one POST endpoint
 

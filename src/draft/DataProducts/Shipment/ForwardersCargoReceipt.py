@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class ForwardersCargoReceiptResponse(CamelCasedModel):
@@ -35,7 +35,7 @@ class ForwardersCargoReceiptRequest(CamelCasedModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     generic_description="Cargo Receipt",
     request=ForwardersCargoReceiptRequest,
     response=ForwardersCargoReceiptResponse,

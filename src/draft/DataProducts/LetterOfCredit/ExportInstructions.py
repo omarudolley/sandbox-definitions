@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class ExportInstructionsResponse(CamelCasedModel):
@@ -37,7 +37,7 @@ class ExportInstructionsRequest(CamelCasedModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     generic_description="Export Instructions",
     request=ExportInstructionsRequest,
     response=ExportInstructionsResponse,

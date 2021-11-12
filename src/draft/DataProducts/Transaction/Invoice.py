@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class InvoiceResponse(CamelCasedModel):
@@ -42,7 +42,7 @@ class InvoiceRequest(CamelCasedModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     generic_description="Invoice",
     request=InvoiceRequest,
     response=InvoiceResponse,

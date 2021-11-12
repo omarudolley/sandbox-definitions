@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-from src.converter import DataProductStandard
+from src.converter import DataProductDefinition
 
 
 class ShareSeries(BaseModel):
@@ -63,7 +63,7 @@ class ShareholdersInfoResponse(BaseModel):
     owners: List[Owners] = Field(..., title="Owners", description="List of owners")
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     description="Data Product for Shareholders info",
     request=ShareholdersInfoRequest,
     response=ShareholdersInfoResponse,

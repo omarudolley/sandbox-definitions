@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-from src.converter import DataProductStandard
+from src.converter import DataProductDefinition
 
 
 class HealthDiagnosesRequest(BaseModel):
@@ -15,7 +15,7 @@ class HealthDiagnosesResponse(BaseModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     description="Data Product for user's diagnoses with ICD10 codes",
     request=HealthDiagnosesRequest,
     response=HealthDiagnosesResponse,

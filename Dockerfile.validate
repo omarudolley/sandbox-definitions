@@ -1,5 +1,5 @@
 # Latest stable Python 3 on Debian Slim image
-FROM python:3.9-slim-buster AS standards-validation
+FROM python:3.9-slim-buster AS definitions-validation
 
 ENV NVM_DIR="/usr/local/nvm" \
     PATH=$PATH:/root/.nvm \

@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "standards"
+name = "sandbox-definitions"
 version = "0.1.0"
-description = "Digital Living Standards"
+description = "Digital Living Sandbox definitions"
 authors = ["Digital Living International Ltd"]
 
 [tool.poetry.dependencies]

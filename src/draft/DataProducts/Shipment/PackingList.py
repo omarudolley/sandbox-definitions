@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class ProductItem(CamelCasedModel):
@@ -33,7 +33,7 @@ class PackingListRequest(CamelCasedModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     generic_description="Packing List",
     request=PackingListRequest,
     response=PackingListResponse,

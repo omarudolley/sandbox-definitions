@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-from src.converter import DataProductStandard
+from src.converter import DataProductDefinition
 
 
 class RecommendationRequest(BaseModel):
@@ -35,7 +35,7 @@ class RecommendationResponse(BaseModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     request=RecommendationRequest,
     response=RecommendationResponse,
     route_description="Data Product for company recommendations score",

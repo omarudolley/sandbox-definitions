@@ -24,10 +24,10 @@ repos:
       - id: shellcheck
   - repo: local
     hooks:
-      # Generate OpenAPI specs for standards - BEFORE PRETTIER FORMATS THEM
-      - id: convert-standards
-        name: Convert standards
-        entry: poetry run invoke convert-standards
+      # Generate OpenAPI specs for definitions - BEFORE PRETTIER FORMATS THEM
+      - id: convert-definitions
+        name: Convert definitions
+        entry: poetry run invoke convert-definitions
         language: system
         # TODO: convert only the file that was changed
         pass_filenames: false

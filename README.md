@@ -1,19 +1,19 @@
-# Digital Living Standards repository
+# Digital Living Sandbox definitions repository
 
-This repository contains Base Data Standards by Digital Living.
+This repository contains Data Product definitions for the Digital Living Sandbox nexus.
 
-Specification for describing data product standards can be found in
+Specification for describing data product definitions can be found in
 [draft/DataProducts/README.md](draft/DataProducts/README.md).
 
-_Please note that this repository is under active development, and all the standards are
-subjects to change at any time._
+_Please note that this repository is under active development, and all the definitions
+are subjects to change at any time._
 
 ## Contribution guidelines
 
 We accept contributions to this repository via
-[Pull Requests](https://github.com/digitalliving/standards/pulls). You can fork the
-repository, make your suggested changes in there, and then submit a Pull Request via
-GitHub.
+[Pull Requests](https://github.com/digitalliving/sandbox-definitions/pulls). You can
+fork the repository, make your suggested changes in there, and then submit a Pull
+Request via GitHub.
 
 Before you submit a PR, please check that you follow these guidelines though to avoid
 unnecessary work for everyone:
@@ -27,16 +27,17 @@ unnecessary work for everyone:
      any changes, or later run `pre-commit run --all-files`.
 2. Ensure your committed code follows the style guide configured in the repository
    (handled automatically by `pre-commit`)
-3. Check that your naming follows existing standards. E.g. for JSON keys in Data Product
-   we use `camelCase` always, do not try to submit new standards using `snake_case`.
+3. Check that your naming follows existing definitions. E.g. for JSON keys in Data
+   Product we use `camelCase` always, do not try to submit new definitions using
+   `snake_case`.
 4. Ensure you're submitting new things, i.e. check if there is an existing Data Product
    that already fits the use-case.
 5. Breaking changes should be introduced via `draft`. If you want to add anything new,
-   or propose a change to an existing standard that could break backwards compatibility,
-   you should submit the changes in the `draft` version. Afterwards we can figure out
-   which release version they can go in.
+   or propose a change to an existing definition that could break backwards
+   compatibility, you should submit the changes in the `draft` version. Afterwards we
+   can figure out which release version they can go in.
 
-### Adding new Data Product Standards
+### Adding new Data Product Definitions
 
 There are two ways of contribution:
 
@@ -45,27 +46,27 @@ There are two ways of contribution:
    For example, to add a definition for `Foo/Bar`:
 
    - create `draft/DataProducts/Foo/Bar.json`
-   - make sure you follow the data product standard
+   - make sure you follow the data product definition
      [guidelines](draft/DataProducts/README.md)
 
-2. **Submit standard as python file**
+2. **Submit definition as python file**
 
    If you're familiar with python and
    [pydantic](https://github.com/samuelcolvin/pydantic) library, you may find it easier
-   to create the standard as a set of pydantic models.
+   to create the definition as a set of pydantic models.
 
    For example, to add a definition for `Foo/Bar`:
 
    - create `src/draft/DataProducts/Foo/Bar.py`
    - run `pre-commit` to automatically convert it to OpenAPI spec and validate it
 
-#### Data Product Standards as python files
+#### Data Product Definitions as python files
 
-Each data product standard represented as python file must define a `STANDARD` variable
-which is an instance of `DataProductStandard` class. Please check existing examples in
-[src/draft/DataProducts](src/draft/DataProducts).
+Each data product definition represented as python file must define a `DEFINITION`
+variable which is an instance of `DataProductDefinition` class. Please check existing
+examples in [src/draft/DataProducts](src/draft/DataProducts).
 
-DataProductStandard is a structure consisting of:
+DataProductDefinition is a structure consisting of:
 
 - `summary`
 
@@ -98,7 +99,7 @@ DataProductStandard is a structure consisting of:
   based on it. Use something brief and meaningful, like "Company Recommendations" or
   "Cargo receipt".
 
-### Data Product Standards validation
+### Data Product Definitions validation
 
 You can run the automatic validations also via Docker locally using the
 `Dockerfile.validate` -configuration:

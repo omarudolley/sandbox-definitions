@@ -1,6 +1,6 @@
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class DimensionsAndWeightsResponse(CamelCasedModel):
@@ -18,7 +18,7 @@ class DimensionsAndWeightsRequest(CamelCasedModel):
     product_code: str = Field(..., title="Product code")
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     generic_description="Dimensions And Weights",
     request=DimensionsAndWeightsRequest,
     response=DimensionsAndWeightsResponse,

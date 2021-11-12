@@ -1,6 +1,6 @@
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class InsuranceCertificateResponse(CamelCasedModel):
@@ -22,7 +22,7 @@ class InsuranceCertificateRequest(CamelCasedModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     generic_description="Insurance Certificate",
     request=InsuranceCertificateRequest,
     response=InsuranceCertificateResponse,

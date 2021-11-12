@@ -1,4 +1,4 @@
-name: Validate Data Product Standards
+name: Validate Data Product Definitions
 
 on:
   pull_request:

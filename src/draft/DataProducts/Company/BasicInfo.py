@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-from src.converter import DataProductStandard
+from src.converter import DataProductDefinition
 
 
 class BasicCompanyInfoRequest(BaseModel):
@@ -25,7 +25,7 @@ class BasicCompanyInfoResponse(BaseModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     description="Data Product for basic company info",
     request=BasicCompanyInfoRequest,
     response=BasicCompanyInfoResponse,

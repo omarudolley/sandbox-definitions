@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-from src.converter import CamelCasedModel, DataProductStandard
+from src.converter import CamelCasedModel, DataProductDefinition
 
 
 class Beacon(CamelCasedModel):
@@ -36,7 +36,7 @@ class BLEBeaconsResponse(CamelCasedModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     description="Data Product for indoor location based on BLE beacons",
     request=BLEBeaconsRequest,
     response=BLEBeaconsResponse,

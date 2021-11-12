@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-from src.converter import DataProductStandard
+from src.converter import DataProductDefinition
 
 
 class CurrentAirQualityRequest(BaseModel):
@@ -54,7 +54,7 @@ class CurrentAirQualityResponse(BaseModel):
     )
 
 
-STANDARD = DataProductStandard(
+DEFINITION = DataProductDefinition(
     description="Data Product for current air quality index",
     request=CurrentAirQualityRequest,
     response=CurrentAirQualityResponse,
