@@ -1,9 +1,9 @@
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class DimensionsAndWeightsResponse(CamelCasedModel):
+class DimensionsAndWeightsResponse(CamelCaseModel):
     gross_weight: str = Field(..., title="Gross weight")
     height: float = Field(..., title="Height")
     length: float = Field(..., title="Length")
@@ -14,7 +14,7 @@ class DimensionsAndWeightsResponse(CamelCasedModel):
     width: float = Field(..., title="Width")
 
 
-class DimensionsAndWeightsRequest(CamelCasedModel):
+class DimensionsAndWeightsRequest(CamelCaseModel):
     product_code: str = Field(..., title="Product code")
 
 

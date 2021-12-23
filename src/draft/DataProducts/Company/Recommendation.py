@@ -1,11 +1,11 @@
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-from src.converter import DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class RecommendationRequest(BaseModel):
+class RecommendationRequest(CamelCaseModel):
     keywords: str = Field(
         ...,
         title="Keywords",
@@ -14,14 +14,14 @@ class RecommendationRequest(BaseModel):
     )
 
 
-class Recommendation(BaseModel):
+class Recommendation(CamelCaseModel):
     score: int = Field(
         ..., description="Recommendation score of the company", example=231
     )
-    companyId: str = Field(
+    company_id: str = Field(
         ..., title="Company ID", description="Company ID", example="2464491-9"
     )
-    companyName: str = Field(
+    company_name: str = Field(
         ...,
         title="Company name",
         description="Company name",
@@ -29,7 +29,7 @@ class Recommendation(BaseModel):
     )
 
 
-class RecommendationResponse(BaseModel):
+class RecommendationResponse(CamelCaseModel):
     results: List[Recommendation] = Field(
         ..., title="Recommendation results", description="List of recommendations"
     )

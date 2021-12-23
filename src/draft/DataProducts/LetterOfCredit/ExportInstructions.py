@@ -2,10 +2,10 @@ from datetime import datetime
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class ExportInstructionsResponse(CamelCasedModel):
+class ExportInstructionsResponse(CamelCaseModel):
     advising_bank_bic: str = Field(..., title="Advising bank BIC")
     advising_bank_name: str = Field(..., title="Advising bank name")
     advising_bank_reference: str = Field(..., title="Advising bank reference")
@@ -28,7 +28,7 @@ class ExportInstructionsResponse(CamelCasedModel):
     letter_of_credit_value: int = Field(..., title="Letter of credit value")
 
 
-class ExportInstructionsRequest(CamelCasedModel):
+class ExportInstructionsRequest(CamelCaseModel):
     letter_of_credit_number: str = Field(
         ...,
         alias="letterOfCreditNumber",

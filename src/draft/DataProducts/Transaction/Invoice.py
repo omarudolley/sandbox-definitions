@@ -2,10 +2,10 @@ from datetime import datetime
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class InvoiceResponse(CamelCasedModel):
+class InvoiceResponse(CamelCaseModel):
     amount_to_be_paid: float = Field(..., title="Amount to be paid")
     bank_contact_bic: str = Field(..., title="Bank contact BIC")
     bank_contact_iban: str = Field(..., title="Bank contact IBAN")
@@ -38,7 +38,7 @@ class InvoiceResponse(CamelCasedModel):
     value_of_shipment: float = Field(..., title="Value of shipment")
 
 
-class InvoiceRequest(CamelCasedModel):
+class InvoiceRequest(CamelCaseModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 

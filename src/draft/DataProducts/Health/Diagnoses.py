@@ -1,15 +1,15 @@
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-from src.converter import DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class HealthDiagnosesRequest(BaseModel):
+class HealthDiagnosesRequest(CamelCaseModel):
     pass
 
 
-class HealthDiagnosesResponse(BaseModel):
+class HealthDiagnosesResponse(CamelCaseModel):
     diagnoses: List[str] = Field(
         ..., description="List of users diagnoses in ICD10 code", example=["icd10:J45"]
     )

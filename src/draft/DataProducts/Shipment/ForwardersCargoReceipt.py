@@ -2,10 +2,10 @@ from datetime import datetime
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class ForwardersCargoReceiptResponse(CamelCasedModel):
+class ForwardersCargoReceiptResponse(CamelCaseModel):
     carrier_name: str = Field(..., title="Carrier name")
     exporter_name: str = Field(..., title="Exporter name")
     final_destination: str = Field(..., title="Final destination")
@@ -31,7 +31,7 @@ class ForwardersCargoReceiptResponse(CamelCasedModel):
     total_volume: float = Field(..., title="Total volume")
 
 
-class ForwardersCargoReceiptRequest(CamelCasedModel):
+class ForwardersCargoReceiptRequest(CamelCaseModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 

@@ -9,9 +9,10 @@ from pydantic import BaseModel
 from stringcase import camelcase
 
 
-class CamelCasedModel(BaseModel):
+class CamelCaseModel(BaseModel):
     class Config:
         alias_generator = camelcase
+        allow_population_by_field_name = True
 
 
 class DataProductDefinition(BaseModel):

@@ -1,11 +1,11 @@
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-from src.converter import DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class CurrentAirQualityRequest(BaseModel):
+class CurrentAirQualityRequest(CamelCaseModel):
     lat: float = Field(
         ...,
         title="Latitude",
@@ -24,8 +24,8 @@ class CurrentAirQualityRequest(BaseModel):
     )
 
 
-class CurrentAirQualityResponse(BaseModel):
-    airQualityIndex: int = Field(
+class CurrentAirQualityResponse(CamelCaseModel):
+    air_quality_index: int = Field(
         ...,
         title="Air Quality Index",
         description=(

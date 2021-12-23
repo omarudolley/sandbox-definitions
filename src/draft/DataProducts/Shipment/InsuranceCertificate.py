@@ -1,9 +1,9 @@
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class InsuranceCertificateResponse(CamelCasedModel):
+class InsuranceCertificateResponse(CamelCaseModel):
     currency_code: str = Field(..., title="Currency code")
     description_of_goods: str = Field(..., title="Description of goods")
     final_destination: str = Field(..., title="Final destination")
@@ -18,7 +18,7 @@ class InsuranceCertificateResponse(CamelCasedModel):
     total_gross_weight: float = Field(..., title="Total gross weight")
 
 
-class InsuranceCertificateRequest(CamelCasedModel):
+class InsuranceCertificateRequest(CamelCaseModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 

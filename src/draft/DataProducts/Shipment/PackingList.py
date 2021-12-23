@@ -2,15 +2,15 @@ from typing import List
 
 from pydantic import Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class ProductItem(CamelCasedModel):
+class ProductItem(CamelCaseModel):
     product_code: str = Field(..., title="Product code")
     product_count: int = Field(..., title="Product count")
 
 
-class PackingListResponse(CamelCasedModel):
+class PackingListResponse(CamelCaseModel):
     contract_reference: str = Field(..., title="Contract reference")
     description_of_goods: str = Field(..., title="Description of goods")
     final_destination: str = Field(..., title="Final destination")
@@ -29,7 +29,7 @@ class PackingListResponse(CamelCasedModel):
     total_volume: float = Field(..., title="Total volume")
 
 
-class PackingListRequest(CamelCasedModel):
+class PackingListRequest(CamelCaseModel):
     shipment_id: str = Field(..., title="Shipment ID")
 
 

@@ -2,10 +2,10 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
-from src.converter import CamelCasedModel, DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class Beacon(CamelCasedModel):
+class Beacon(CamelCaseModel):
     beacon_id: str = Field(
         ...,
         title="Beacon ID",
@@ -24,7 +24,7 @@ class BLEBeaconsRequest(BaseModel):
     beacons: List[Beacon]
 
 
-class BLEBeaconsResponse(CamelCasedModel):
+class BLEBeaconsResponse(CamelCaseModel):
     location_id: str = Field(
         ...,
         title="Location ID",

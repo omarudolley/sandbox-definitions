@@ -1,21 +1,21 @@
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-from src.converter import DataProductDefinition
+from src.converter import CamelCaseModel, DataProductDefinition
 
 
-class ShareSeries(BaseModel):
-    seriesName: str = Field(
+class ShareSeries(CamelCaseModel):
+    series_name: str = Field(
         ..., title="Series Name", description="Classification of the share", example="A"
     )
-    votesPerShare: int = Field(
+    votes_per_share: int = Field(
         ...,
         title="Votes per share",
         description="Number of votes per share in the share series",
         example=1,
     )
-    totalShares: int = Field(
+    total_shares: int = Field(
         ...,
         title="Total Shares",
         description="Total number of shares in the share series",
@@ -23,8 +23,8 @@ class ShareSeries(BaseModel):
     )
 
 
-class Ownerships(BaseModel):
-    seriesName: str = Field(
+class Ownerships(CamelCaseModel):
+    series_name: str = Field(
         ..., title="Series Name", description="Name of the share series", example="A"
     )
     quantity: int = Field(
@@ -35,7 +35,7 @@ class Ownerships(BaseModel):
     )
 
 
-class Owners(BaseModel):
+class Owners(CamelCaseModel):
     name: str = Field(
         ...,
         title="Name of the Shareholder",
@@ -47,8 +47,8 @@ class Owners(BaseModel):
     )
 
 
-class ShareholdersInfoRequest(BaseModel):
-    companyId: str = Field(
+class ShareholdersInfoRequest(CamelCaseModel):
+    company_id: str = Field(
         ...,
         title="Company ID",
         description="The ID of the company, only supports Finnish business ID's",
@@ -56,8 +56,8 @@ class ShareholdersInfoRequest(BaseModel):
     )
 
 
-class ShareholdersInfoResponse(BaseModel):
-    shareSeries: List[ShareSeries] = Field(
+class ShareholdersInfoResponse(CamelCaseModel):
+    share_series: List[ShareSeries] = Field(
         ..., title="Share series", description="List of share series"
     )
     owners: List[Owners] = Field(..., title="Owners", description="List of owners")
