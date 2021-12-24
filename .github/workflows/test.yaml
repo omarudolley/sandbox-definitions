@@ -17,7 +17,7 @@ jobs:
           python-version: 3.9
 
       - name: Install python dependencies
-        run: pip install data-product-definition-tooling
+        run: pip install pre-commit data-product-definition-tooling
 
       - name: Generate definitions
         run: converter src DataProducts
