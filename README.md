@@ -1,7 +1,12 @@
-# Data Product Definitions template
+# IOXIO Nexus Sandbox Definitions
 
-This repository contains a minimal set of resources that are necessary to get started with
-defining your own Data Product Definitions.
+This repository contains Data Product definitions for the IOXIO Sandbox nexus.
+
+Specification for describing data product definitions can be found in
+[draft/DataProducts/README.md](draft/DataProducts/README.md).
+
+_Please note that this repository is under active development, and all the definitions
+are subjects to change at any time._
 
 # Repo structure
 
