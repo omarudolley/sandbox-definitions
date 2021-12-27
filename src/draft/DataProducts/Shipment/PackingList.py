@@ -1,8 +1,7 @@
 from typing import List
 
+from converter import CamelCaseModel, DataProductDefinition
 from pydantic import Field
-
-from src.converter import CamelCaseModel, DataProductDefinition
 
 
 class ProductItem(CamelCaseModel):

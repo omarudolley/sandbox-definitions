@@ -1,4 +1,4 @@
-# IOXIO Nexus Sandbox Definitions
+# IOXIO Sandbox Nexus Definitions
 
 This repository contains Data Product definitions for the IOXIO Sandbox nexus.
 
@@ -12,21 +12,23 @@ are subjects to change at any time._
 
 - [./src](./src) - Definition sources in python format
 - [./DataProducts](./DataProducts) - Final Definitions as OpenAPI 3.0 specs
-- [.github/workflows](.github/workflows) - Pre-configured CI workflows for validating and
-  converting definitions from sources
+- [.github/workflows](.github/workflows) - Pre-configured CI workflows for validating
+  and converting definitions from sources
 
 # Getting started
 
 Press `Use template` to create a new repo from this template.
 
 Define your own data products as python files under `src/`. Technically, you can go
-   ahead and create final specs under the `DataProducts` folder if it's easier for you.
-   However, the recommended approach is using python sources and the automatic converter
+ahead and create final specs under the `DataProducts` folder if it's easier for you.
+However, the recommended approach is using python sources and the automatic converter
 
 You have 2 options to use the converter:
-1) By running `pre-commit install` after cloning the repo. Then definitions will be converted automatically before each commit
-2) By creating a PR to the `master` branch. CI workflow will run the automation and push updated/generated files if needed.
 
+1. By running `pre-commit install` after cloning the repo. Then definitions will be
+   converted automatically before each commit
+2. By creating a PR to the `master` branch. CI workflow will run the automation and push
+   updated/generated files if needed.
 
 ## Python sources
 
@@ -34,7 +36,9 @@ Each python file located in the `src` folder is treated as a Data Product defini
 
 For example, `src/AirQuality/Current.py` defines `AirQuality/Current` data product.
 
-These files are then converted to OpenAPI 3.0 specs, which are final forms of definitions. To make the converter work correctly, each file must follow the same structure:
+These files are then converted to OpenAPI 3.0 specs, which are final forms of
+definitions. To make the converter work correctly, each file must follow the same
+structure:
 
 ```python
 from pydantic import Field
@@ -60,9 +64,13 @@ DEFINITION = DataProductDefinition(
 
 ```
 
-Considering `CamelCaseModel` is a subclass of `pydantic`'s `BaseModel`, it's better to understand how to use this library. Please read [pydantic](https://pydantic-docs.helpmanual.io/)'s documentation if you're not familiar with it yet.
+Considering `CamelCaseModel` is a subclass of `pydantic`'s `BaseModel`, it's better to
+understand how to use this library. Please read
+[pydantic](https://pydantic-docs.helpmanual.io/)'s documentation if you're not familiar
+with it yet.
 
-### Example 
+### Example
+
 There's an example of Data Product Definition for current weather:
 
 ```python
