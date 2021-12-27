@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Company Recommendations Scores",
-    "description": "Data Product for company recommendations score",
+    "title": "Insurance Certificate",
+    "description": "Data Product for Insurance Certificate",
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Company/Recommendation": {
+    "/draft/Shipment/InsuranceCertificate": {
       "post": {
-        "summary": "draft/DataProducts/Company/Recommendation",
-        "description": "Data Product for company recommendations score",
-        "operationId": "request_draft_DataProducts_Company_Recommendation",
+        "summary": "draft/Shipment/InsuranceCertificate",
+        "description": "Insurance Certificate",
+        "operationId": "request_draft_Shipment_InsuranceCertificate",
         "parameters": [
           {
             "description": "Optional consent token",
@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RecommendationRequest"
+                "$ref": "#/components/schemas/InsuranceCertificateRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RecommendationResponse"
+                  "$ref": "#/components/schemas/InsuranceCertificateResponse"
                 }
               }
             }
@@ -96,56 +96,82 @@
           }
         }
       },
-      "Recommendation": {
-        "title": "Recommendation",
-        "required": ["score", "companyId", "companyName"],
+      "InsuranceCertificateRequest": {
+        "title": "InsuranceCertificateRequest",
+        "required": ["shipmentId"],
         "type": "object",
         "properties": {
-          "score": {
-            "title": "Score",
-            "type": "integer",
-            "description": "Recommendation score of the company",
-            "example": 231
-          },
-          "companyId": {
-            "title": "Company ID",
-            "type": "string",
-            "description": "Company ID",
-            "example": "2464491-9"
-          },
-          "companyName": {
-            "title": "Company name",
-            "type": "string",
-            "description": "Company name",
-            "example": "Digital Living Oy"
+          "shipmentId": {
+            "title": "Shipment ID",
+            "type": "string"
           }
         }
       },
-      "RecommendationRequest": {
-        "title": "RecommendationRequest",
-        "required": ["keywords"],
+      "InsuranceCertificateResponse": {
+        "title": "InsuranceCertificateResponse",
+        "required": [
+          "currencyCode",
+          "descriptionOfGoods",
+          "finalDestination",
+          "handlingUnits",
+          "instituteClauses",
+          "insuranceValue",
+          "insuranceValuePercentage",
+          "insurerAddress",
+          "insurerName",
+          "modeOfDelivery",
+          "placeOfReceipt",
+          "totalGrossWeight"
+        ],
         "type": "object",
         "properties": {
-          "keywords": {
-            "title": "Keywords",
-            "type": "string",
-            "description": "Keyword data to base recommendations on",
-            "example": "Looking for data product companies to invest on"
-          }
-        }
-      },
-      "RecommendationResponse": {
-        "title": "RecommendationResponse",
-        "required": ["results"],
-        "type": "object",
-        "properties": {
-          "results": {
-            "title": "Recommendation results",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Recommendation"
-            },
-            "description": "List of recommendations"
+          "currencyCode": {
+            "title": "Currency code",
+            "type": "string"
+          },
+          "descriptionOfGoods": {
+            "title": "Description of goods",
+            "type": "string"
+          },
+          "finalDestination": {
+            "title": "Final destination",
+            "type": "string"
+          },
+          "handlingUnits": {
+            "title": "Handling units",
+            "type": "integer"
+          },
+          "instituteClauses": {
+            "title": "Institute clauses",
+            "type": "string"
+          },
+          "insuranceValue": {
+            "title": "Insurance value",
+            "type": "integer"
+          },
+          "insuranceValuePercentage": {
+            "title": "Insurance value percentage",
+            "type": "number"
+          },
+          "insurerAddress": {
+            "title": "Insurer address",
+            "type": "string"
+          },
+          "insurerName": {
+            "title": "Insurer name",
+            "type": "string"
+          },
+          "modeOfDelivery": {
+            "title": "Mode of delivery",
+            "type": "string"
+          },
+          "placeOfReceipt": {
+            "title": "Place of receipt",
+            "type": "string"
+          },
+          "totalGrossWeight": {
+            "title": "Total gross weight",
+            "type": "number"
           }
         }
       },

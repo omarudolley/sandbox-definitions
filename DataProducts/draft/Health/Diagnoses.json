@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Dimensions And Weights",
-    "description": "Data Product for Dimensions And Weights",
+    "title": "Persons Diagnoses",
+    "description": "Data Product for user's diagnoses with ICD10 codes",
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Product/DimensionsAndWeights": {
+    "/draft/Health/Diagnoses": {
       "post": {
-        "summary": "draft/DataProducts/Product/DimensionsAndWeights",
-        "description": "Dimensions And Weights",
-        "operationId": "request_draft_DataProducts_Product_DimensionsAndWeights",
+        "summary": "draft/Health/Diagnoses",
+        "description": "Health diagnoses in ICD codes",
+        "operationId": "request_draft_Health_Diagnoses",
         "parameters": [
           {
             "description": "Optional consent token",
@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DimensionsAndWeightsRequest"
+                "$ref": "#/components/schemas/HealthDiagnosesRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DimensionsAndWeightsResponse"
+                  "$ref": "#/components/schemas/HealthDiagnosesResponse"
                 }
               }
             }
@@ -83,65 +83,6 @@
   },
   "components": {
     "schemas": {
-      "DimensionsAndWeightsRequest": {
-        "title": "DimensionsAndWeightsRequest",
-        "required": ["productCode"],
-        "type": "object",
-        "properties": {
-          "productCode": {
-            "title": "Product code",
-            "type": "string"
-          }
-        }
-      },
-      "DimensionsAndWeightsResponse": {
-        "title": "DimensionsAndWeightsResponse",
-        "required": [
-          "grossWeight",
-          "height",
-          "length",
-          "netWeight",
-          "productDescription",
-          "productName",
-          "volume",
-          "width"
-        ],
-        "type": "object",
-        "properties": {
-          "grossWeight": {
-            "title": "Gross weight",
-            "type": "string"
-          },
-          "height": {
-            "title": "Height",
-            "type": "number"
-          },
-          "length": {
-            "title": "Length",
-            "type": "number"
-          },
-          "netWeight": {
-            "title": "Net weight",
-            "type": "number"
-          },
-          "productDescription": {
-            "title": "Product description",
-            "type": "string"
-          },
-          "productName": {
-            "title": "Product name",
-            "type": "string"
-          },
-          "volume": {
-            "title": "Volume",
-            "type": "number"
-          },
-          "width": {
-            "title": "Width",
-            "type": "number"
-          }
-        }
-      },
       "HTTPValidationError": {
         "title": "HTTPValidationError",
         "type": "object",
@@ -152,6 +93,27 @@
             "items": {
               "$ref": "#/components/schemas/ValidationError"
             }
+          }
+        }
+      },
+      "HealthDiagnosesRequest": {
+        "title": "HealthDiagnosesRequest",
+        "type": "object",
+        "properties": {}
+      },
+      "HealthDiagnosesResponse": {
+        "title": "HealthDiagnosesResponse",
+        "required": ["diagnoses"],
+        "type": "object",
+        "properties": {
+          "diagnoses": {
+            "title": "Diagnoses",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of users diagnoses in ICD10 code",
+            "example": ["icd10:J45"]
           }
         }
       },

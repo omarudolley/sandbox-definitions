@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Packing List",
-    "description": "Data Product for Packing List",
+    "title": "Company Recommendations Scores",
+    "description": "Data Product for company recommendations score",
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Shipment/PackingList": {
+    "/draft/Company/Recommendation": {
       "post": {
-        "summary": "draft/DataProducts/Shipment/PackingList",
-        "description": "Packing List",
-        "operationId": "request_draft_DataProducts_Shipment_PackingList",
+        "summary": "draft/Company/Recommendation",
+        "description": "Data Product for company recommendations score",
+        "operationId": "request_draft_Company_Recommendation",
         "parameters": [
           {
             "description": "Optional consent token",
@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PackingListRequest"
+                "$ref": "#/components/schemas/RecommendationRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PackingListResponse"
+                  "$ref": "#/components/schemas/RecommendationResponse"
                 }
               }
             }
@@ -96,111 +96,56 @@
           }
         }
       },
-      "PackingListRequest": {
-        "title": "PackingListRequest",
-        "required": ["shipmentId"],
+      "Recommendation": {
+        "title": "Recommendation",
+        "required": ["score", "companyId", "companyName"],
         "type": "object",
         "properties": {
-          "shipmentId": {
-            "title": "Shipment ID",
-            "type": "string"
+          "score": {
+            "title": "Score",
+            "type": "integer",
+            "description": "Recommendation score of the company",
+            "example": 231
+          },
+          "companyId": {
+            "title": "Company ID",
+            "type": "string",
+            "description": "Company ID",
+            "example": "2464491-9"
+          },
+          "companyName": {
+            "title": "Company name",
+            "type": "string",
+            "description": "Company name",
+            "example": "Digital Living Oy"
           }
         }
       },
-      "PackingListResponse": {
-        "title": "PackingListResponse",
-        "required": [
-          "contractReference",
-          "descriptionOfGoods",
-          "finalDestination",
-          "handlingUnits",
-          "incoterm",
-          "incotermPlace",
-          "lcNumber",
-          "packingDescription",
-          "packingReference",
-          "placeOfReceipt",
-          "productItems",
-          "totalGrossWeight",
-          "totalNetWeight",
-          "totalVolume"
-        ],
+      "RecommendationRequest": {
+        "title": "RecommendationRequest",
+        "required": ["keywords"],
         "type": "object",
         "properties": {
-          "contractReference": {
-            "title": "Contract reference",
-            "type": "string"
-          },
-          "descriptionOfGoods": {
-            "title": "Description of goods",
-            "type": "string"
-          },
-          "finalDestination": {
-            "title": "Final destination",
-            "type": "string"
-          },
-          "handlingUnits": {
-            "title": "Handling units",
-            "type": "integer"
-          },
-          "incoterm": {
-            "title": "Incoterm",
-            "type": "string"
-          },
-          "incotermPlace": {
-            "title": "Incoterm place",
-            "type": "string"
-          },
-          "lcNumber": {
-            "title": "LC number",
-            "type": "string"
-          },
-          "packingDescription": {
-            "title": "Packing description",
-            "type": "string"
-          },
-          "packingReference": {
-            "title": "Packing reference",
-            "type": "string"
-          },
-          "placeOfReceipt": {
-            "title": "Place of receipt",
-            "type": "string"
-          },
-          "productItems": {
-            "title": "Product items",
+          "keywords": {
+            "title": "Keywords",
+            "type": "string",
+            "description": "Keyword data to base recommendations on",
+            "example": "Looking for data product companies to invest on"
+          }
+        }
+      },
+      "RecommendationResponse": {
+        "title": "RecommendationResponse",
+        "required": ["results"],
+        "type": "object",
+        "properties": {
+          "results": {
+            "title": "Recommendation results",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ProductItem"
+              "$ref": "#/components/schemas/Recommendation"
             },
-            "description": "List of product items"
-          },
-          "totalGrossWeight": {
-            "title": "Total gross weight",
-            "type": "number"
-          },
-          "totalNetWeight": {
-            "title": "Total net weight",
-            "type": "number"
-          },
-          "totalVolume": {
-            "title": "Total volume",
-            "type": "number"
-          }
-        }
-      },
-      "ProductItem": {
-        "title": "ProductItem",
-        "required": ["productCode", "productCount"],
-        "type": "object",
-        "properties": {
-          "productCode": {
-            "title": "Product code",
-            "type": "string"
-          },
-          "productCount": {
-            "title": "Product count",
-            "type": "integer"
+            "description": "List of recommendations"
           }
         }
       },

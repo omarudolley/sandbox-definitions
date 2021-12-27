@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Cargo Receipt",
-    "description": "Data Product for Cargo Receipt",
+    "title": "Export Instructions",
+    "description": "Data Product for Export Instructions",
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Shipment/ForwardersCargoReceipt": {
+    "/draft/LetterOfCredit/ExportInstructions": {
       "post": {
-        "summary": "draft/DataProducts/Shipment/ForwardersCargoReceipt",
-        "description": "Cargo Receipt",
-        "operationId": "request_draft_DataProducts_Shipment_ForwardersCargoReceipt",
+        "summary": "draft/LetterOfCredit/ExportInstructions",
+        "description": "Export Instructions",
+        "operationId": "request_draft_LetterOfCredit_ExportInstructions",
         "parameters": [
           {
             "description": "Optional consent token",
@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ForwardersCargoReceiptRequest"
+                "$ref": "#/components/schemas/ExportInstructionsRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ForwardersCargoReceiptResponse"
+                  "$ref": "#/components/schemas/ExportInstructionsResponse"
                 }
               }
             }
@@ -83,76 +83,103 @@
   },
   "components": {
     "schemas": {
-      "ForwardersCargoReceiptRequest": {
-        "title": "ForwardersCargoReceiptRequest",
-        "required": ["shipmentId"],
+      "ExportInstructionsRequest": {
+        "title": "ExportInstructionsRequest",
+        "required": ["letterOfCreditNumber"],
         "type": "object",
         "properties": {
-          "shipmentId": {
-            "title": "Shipment ID",
-            "type": "string"
+          "letterOfCreditNumber": {
+            "title": "Letter of credit number",
+            "type": "string",
+            "example": "123"
           }
         }
       },
-      "ForwardersCargoReceiptResponse": {
-        "title": "ForwardersCargoReceiptResponse",
+      "ExportInstructionsResponse": {
+        "title": "ExportInstructionsResponse",
         "required": [
-          "carrierName",
-          "exporterName",
-          "finalDestination",
-          "finalDestinationAddress",
-          "forwarderContactPersonName",
-          "forwarderContactPersonPhone",
-          "forwarderName",
-          "handlingUnits",
-          "importerName",
+          "advisingBankBic",
+          "advisingBankName",
+          "advisingBankReference",
+          "applicantAddress",
+          "applicantName",
+          "beneficiaryAddress",
+          "beneficiaryName",
+          "confirmationInstructions",
+          "contractReference",
+          "creditAvailability",
+          "currencyCode",
+          "dateOfExpiry",
+          "descriptionOfGoods",
+          "incoterm",
+          "incotermPlace",
           "issueDate",
-          "lcNumber",
-          "modeOfDelivery",
-          "placeOfDischarge",
-          "placeOfLoading",
-          "placeOfReceipt",
-          "statement",
-          "totalGrossWeight",
-          "totalNetWeight",
-          "totalVolume"
+          "issuingBankBic",
+          "issuingBankName",
+          "latestDateOfShipment",
+          "letterOfCreditValue"
         ],
         "type": "object",
         "properties": {
-          "carrierName": {
-            "title": "Carrier name",
+          "advisingBankBic": {
+            "title": "Advising bank BIC",
             "type": "string"
           },
-          "exporterName": {
-            "title": "Exporter name",
+          "advisingBankName": {
+            "title": "Advising bank name",
             "type": "string"
           },
-          "finalDestination": {
-            "title": "Final destination",
+          "advisingBankReference": {
+            "title": "Advising bank reference",
             "type": "string"
           },
-          "finalDestinationAddress": {
-            "title": "Final destination address",
+          "applicantAddress": {
+            "title": "Applicant address",
             "type": "string"
           },
-          "forwarderContactPersonName": {
-            "title": "Forwarder contact person name",
+          "applicantName": {
+            "title": "Applicant name",
             "type": "string"
           },
-          "forwarderContactPersonPhone": {
-            "title": "Forwarder contact person phone",
+          "beneficiaryAddress": {
+            "title": "Beneficiary address",
             "type": "string"
           },
-          "forwarderName": {
-            "title": "Forwarder name",
+          "beneficiaryName": {
+            "title": "Beneficiary name",
             "type": "string"
           },
-          "handlingUnits": {
-            "title": "Handling units",
-            "type": "integer"
+          "confirmationInstructions": {
+            "title": "Confirmation instructions",
+            "type": "string"
           },
-          "importerName": {
-            "title": "Importer name",
+          "contractReference": {
+            "title": "Contract reference",
+            "type": "string"
+          },
+          "creditAvailability": {
+            "title": "Credit availability",
+            "type": "string"
+          },
+          "currencyCode": {
+            "title": "Currency code",
+            "type": "string"
+          },
+          "dateOfExpiry": {
+            "title": "Date of expiry",
+            "type": "string",
+            "format": "date-time"
+          },
+          "descriptionOfGoods": {
+            "title": "Description of goods",
+            "type": "string"
+          },
+          "incoterm": {
+            "title": "Incoterm",
+            "type": "string"
+          },
+          "incotermPlace": {
+            "title": "Incoterm place",
             "type": "string"
           },
           "issueDate": {
@@ -160,41 +187,22 @@
             "type": "string",
             "format": "date-time"
           },
-          "lcNumber": {
-            "title": "LC number",
+          "issuingBankBic": {
+            "title": "Issuing bank BIC",
             "type": "string"
           },
-          "modeOfDelivery": {
-            "title": "Mode of delivery",
+          "issuingBankName": {
+            "title": "Issuing bank name",
             "type": "string"
           },
-          "placeOfDischarge": {
-            "title": "Place of discharge",
-            "type": "string"
+          "latestDateOfShipment": {
+            "title": "Latest date of shipment",
+            "type": "string",
+            "format": "date-time"
           },
-          "placeOfLoading": {
-            "title": "Place of loading",
-            "type": "string"
-          },
-          "placeOfReceipt": {
-            "title": "Place of receipt",
-            "type": "string"
-          },
-          "statement": {
-            "title": "Statement",
-            "type": "string"
-          },
-          "totalGrossWeight": {
-            "title": "Total gross weight",
-            "type": "number"
-          },
-          "totalNetWeight": {
-            "title": "Total net weight",
-            "type": "number"
-          },
-          "totalVolume": {
-            "title": "Total volume",
-            "type": "number"
+          "letterOfCreditValue": {
+            "title": "Letter of credit value",
+            "type": "integer"
           }
         }
       },

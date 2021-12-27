@@ -6,11 +6,11 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Weather/Current/Metric": {
+    "/draft/Weather/Current/Metric": {
       "post": {
-        "summary": "draft/DataProducts/Weather/Current/Metric",
+        "summary": "draft/Weather/Current/Metric",
         "description": "Current weather in metric units",
-        "operationId": "request_draft_DataProducts_Weather_Current_Metric",
+        "operationId": "request_draft_Weather_Current_Metric",
         "parameters": [
           {
             "description": "Optional consent token",

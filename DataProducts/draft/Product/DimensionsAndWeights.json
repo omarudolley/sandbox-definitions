@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Air Quality Index",
-    "description": "Data Product for current air quality index",
+    "title": "Dimensions And Weights",
+    "description": "Data Product for Dimensions And Weights",
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/AirQuality/Current": {
+    "/draft/Product/DimensionsAndWeights": {
       "post": {
-        "summary": "draft/DataProducts/AirQuality/Current",
-        "description": "Current air quality",
-        "operationId": "request_draft_DataProducts_AirQuality_Current",
+        "summary": "draft/Product/DimensionsAndWeights",
+        "description": "Dimensions And Weights",
+        "operationId": "request_draft_Product_DimensionsAndWeights",
         "parameters": [
           {
             "description": "Optional consent token",
@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CurrentAirQualityRequest"
+                "$ref": "#/components/schemas/DimensionsAndWeightsRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentAirQualityResponse"
+                  "$ref": "#/components/schemas/DimensionsAndWeightsResponse"
                 }
               }
             }
@@ -83,58 +83,62 @@
   },
   "components": {
     "schemas": {
-      "CurrentAirQualityRequest": {
-        "title": "CurrentAirQualityRequest",
-        "required": ["lat", "lon"],
+      "DimensionsAndWeightsRequest": {
+        "title": "DimensionsAndWeightsRequest",
+        "required": ["productCode"],
         "type": "object",
         "properties": {
-          "lat": {
-            "title": "Latitude",
-            "maximum": 90.0,
-            "minimum": -90.0,
-            "type": "number",
-            "description": "The latitude coordinate of the desired location",
-            "example": 60.192059
-          },
-          "lon": {
-            "title": "Longitude",
-            "maximum": 180.0,
-            "minimum": -180.0,
-            "type": "number",
-            "description": "The longitude coordinate of the desired location",
-            "example": 24.945831
+          "productCode": {
+            "title": "Product code",
+            "type": "string"
           }
         }
       },
-      "CurrentAirQualityResponse": {
-        "title": "CurrentAirQualityResponse",
-        "required": ["airQualityIndex", "timestamp", "attribution"],
+      "DimensionsAndWeightsResponse": {
+        "title": "DimensionsAndWeightsResponse",
+        "required": [
+          "grossWeight",
+          "height",
+          "length",
+          "netWeight",
+          "productDescription",
+          "productName",
+          "volume",
+          "width"
+        ],
         "type": "object",
         "properties": {
-          "airQualityIndex": {
-            "title": "Air Quality Index",
-            "minimum": 0.0,
-            "type": "integer",
-            "description": "Current air quality index.\nRanges:\n0-50 Good;\n51-100 Moderate;\n101-150 Unhealthy For Sensitive Groups;\n151-200 Unhealthy;\n201-300 Very Unhealthy;\n301+ Hazardous",
-            "example": 30
+          "grossWeight": {
+            "title": "Gross weight",
+            "type": "string"
           },
-          "timestamp": {
-            "title": "Timestamp",
-            "type": "string",
-            "description": "Current timestamp in RFC 3339 format",
-            "example": "2020-04-03T13:00:00Z"
+          "height": {
+            "title": "Height",
+            "type": "number"
           },
-          "attribution": {
-            "title": "Source Attribution",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "List of text to show required credits to data sources",
-            "example": [
-              "Moscow State environmental monitoring (Государственный экологический мониторинг в Москве)",
-              "World Air Quality Index Project"
-            ]
+          "length": {
+            "title": "Length",
+            "type": "number"
+          },
+          "netWeight": {
+            "title": "Net weight",
+            "type": "number"
+          },
+          "productDescription": {
+            "title": "Product description",
+            "type": "string"
+          },
+          "productName": {
+            "title": "Product name",
+            "type": "string"
+          },
+          "volume": {
+            "title": "Volume",
+            "type": "number"
+          },
+          "width": {
+            "title": "Width",
+            "type": "number"
           }
         }
       },

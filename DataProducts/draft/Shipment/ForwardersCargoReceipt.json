@@ -1,16 +1,16 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Insurance Certificate",
-    "description": "Data Product for Insurance Certificate",
+    "title": "Cargo Receipt",
+    "description": "Data Product for Cargo Receipt",
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Shipment/InsuranceCertificate": {
+    "/draft/Shipment/ForwardersCargoReceipt": {
       "post": {
-        "summary": "draft/DataProducts/Shipment/InsuranceCertificate",
-        "description": "Insurance Certificate",
-        "operationId": "request_draft_DataProducts_Shipment_InsuranceCertificate",
+        "summary": "draft/Shipment/ForwardersCargoReceipt",
+        "description": "Cargo Receipt",
+        "operationId": "request_draft_Shipment_ForwardersCargoReceipt",
         "parameters": [
           {
             "description": "Optional consent token",
@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/InsuranceCertificateRequest"
+                "$ref": "#/components/schemas/ForwardersCargoReceiptRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/InsuranceCertificateResponse"
+                  "$ref": "#/components/schemas/ForwardersCargoReceiptResponse"
                 }
               }
             }
@@ -83,6 +83,121 @@
   },
   "components": {
     "schemas": {
+      "ForwardersCargoReceiptRequest": {
+        "title": "ForwardersCargoReceiptRequest",
+        "required": ["shipmentId"],
+        "type": "object",
+        "properties": {
+          "shipmentId": {
+            "title": "Shipment ID",
+            "type": "string"
+          }
+        }
+      },
+      "ForwardersCargoReceiptResponse": {
+        "title": "ForwardersCargoReceiptResponse",
+        "required": [
+          "carrierName",
+          "exporterName",
+          "finalDestination",
+          "finalDestinationAddress",
+          "forwarderContactPersonName",
+          "forwarderContactPersonPhone",
+          "forwarderName",
+          "handlingUnits",
+          "importerName",
+          "issueDate",
+          "lcNumber",
+          "modeOfDelivery",
+          "placeOfDischarge",
+          "placeOfLoading",
+          "placeOfReceipt",
+          "statement",
+          "totalGrossWeight",
+          "totalNetWeight",
+          "totalVolume"
+        ],
+        "type": "object",
+        "properties": {
+          "carrierName": {
+            "title": "Carrier name",
+            "type": "string"
+          },
+          "exporterName": {
+            "title": "Exporter name",
+            "type": "string"
+          },
+          "finalDestination": {
+            "title": "Final destination",
+            "type": "string"
+          },
+          "finalDestinationAddress": {
+            "title": "Final destination address",
+            "type": "string"
+          },
+          "forwarderContactPersonName": {
+            "title": "Forwarder contact person name",
+            "type": "string"
+          },
+          "forwarderContactPersonPhone": {
+            "title": "Forwarder contact person phone",
+            "type": "string"
+          },
+          "forwarderName": {
+            "title": "Forwarder name",
+            "type": "string"
+          },
+          "handlingUnits": {
+            "title": "Handling units",
+            "type": "integer"
+          },
+          "importerName": {
+            "title": "Importer name",
+            "type": "string"
+          },
+          "issueDate": {
+            "title": "Issue date",
+            "type": "string",
+            "format": "date-time"
+          },
+          "lcNumber": {
+            "title": "LC number",
+            "type": "string"
+          },
+          "modeOfDelivery": {
+            "title": "Mode of delivery",
+            "type": "string"
+          },
+          "placeOfDischarge": {
+            "title": "Place of discharge",
+            "type": "string"
+          },
+          "placeOfLoading": {
+            "title": "Place of loading",
+            "type": "string"
+          },
+          "placeOfReceipt": {
+            "title": "Place of receipt",
+            "type": "string"
+          },
+          "statement": {
+            "title": "Statement",
+            "type": "string"
+          },
+          "totalGrossWeight": {
+            "title": "Total gross weight",
+            "type": "number"
+          },
+          "totalNetWeight": {
+            "title": "Total net weight",
+            "type": "number"
+          },
+          "totalVolume": {
+            "title": "Total volume",
+            "type": "number"
+          }
+        }
+      },
       "HTTPValidationError": {
         "title": "HTTPValidationError",
         "type": "object",
@@ -93,85 +208,6 @@
             "items": {
               "$ref": "#/components/schemas/ValidationError"
             }
-          }
-        }
-      },
-      "InsuranceCertificateRequest": {
-        "title": "InsuranceCertificateRequest",
-        "required": ["shipmentId"],
-        "type": "object",
-        "properties": {
-          "shipmentId": {
-            "title": "Shipment ID",
-            "type": "string"
-          }
-        }
-      },
-      "InsuranceCertificateResponse": {
-        "title": "InsuranceCertificateResponse",
-        "required": [
-          "currencyCode",
-          "descriptionOfGoods",
-          "finalDestination",
-          "handlingUnits",
-          "instituteClauses",
-          "insuranceValue",
-          "insuranceValuePercentage",
-          "insurerAddress",
-          "insurerName",
-          "modeOfDelivery",
-          "placeOfReceipt",
-          "totalGrossWeight"
-        ],
-        "type": "object",
-        "properties": {
-          "currencyCode": {
-            "title": "Currency code",
-            "type": "string"
-          },
-          "descriptionOfGoods": {
-            "title": "Description of goods",
-            "type": "string"
-          },
-          "finalDestination": {
-            "title": "Final destination",
-            "type": "string"
-          },
-          "handlingUnits": {
-            "title": "Handling units",
-            "type": "integer"
-          },
-          "instituteClauses": {
-            "title": "Institute clauses",
-            "type": "string"
-          },
-          "insuranceValue": {
-            "title": "Insurance value",
-            "type": "integer"
-          },
-          "insuranceValuePercentage": {
-            "title": "Insurance value percentage",
-            "type": "number"
-          },
-          "insurerAddress": {
-            "title": "Insurer address",
-            "type": "string"
-          },
-          "insurerName": {
-            "title": "Insurer name",
-            "type": "string"
-          },
-          "modeOfDelivery": {
-            "title": "Mode of delivery",
-            "type": "string"
-          },
-          "placeOfReceipt": {
-            "title": "Place of receipt",
-            "type": "string"
-          },
-          "totalGrossWeight": {
-            "title": "Total gross weight",
-            "type": "number"
           }
         }
       },

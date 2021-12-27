@@ -6,11 +6,11 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Transaction/Invoice": {
+    "/draft/Transaction/Invoice": {
       "post": {
-        "summary": "draft/DataProducts/Transaction/Invoice",
+        "summary": "draft/Transaction/Invoice",
         "description": "Invoice",
-        "operationId": "request_draft_DataProducts_Transaction_Invoice",
+        "operationId": "request_draft_Transaction_Invoice",
         "parameters": [
           {
             "description": "Optional consent token",

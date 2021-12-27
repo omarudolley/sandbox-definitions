@@ -6,11 +6,11 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Company/Shareholders": {
+    "/draft/Company/Shareholders": {
       "post": {
-        "summary": "draft/DataProducts/Company/Shareholders",
+        "summary": "draft/Company/Shareholders",
         "description": "Information about the shareholders of the company",
-        "operationId": "request_draft_DataProducts_Company_Shareholders",
+        "operationId": "request_draft_Company_Shareholders",
         "parameters": [
           {
             "description": "Optional consent token",
