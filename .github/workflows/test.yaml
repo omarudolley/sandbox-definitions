@@ -1,4 +1,4 @@
-name: Test definitions
+name: Convert and validate definitions
 
 on:
   pull_request:
@@ -33,6 +33,9 @@ jobs:
             git config --local user.name "${BOT_NAME}"
             git config --local user.email "${BOT_EMAIL}"
 
+            git fetch --depth=1
+            git checkout "${BRANCH}"
+
             git add .
             # format files if necessary
             pre-commit run --all-files || echo
@@ -46,6 +49,10 @@ jobs:
           fi
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{ github.ref }}
+          BRANCH: ${{ github.head_ref }}
           BOT_NAME: github-actions[bot]
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
+      # run validation if previous step was skipped
+      - name: Run validation
+        run: pre-commit run --all-files
