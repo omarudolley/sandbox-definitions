@@ -3,7 +3,7 @@
 This repository contains Data Product definitions for the IOXIO Sandbox nexus.
 
 Specification for describing data product definitions can be found in
-[draft/DataProducts/README.md](draft/DataProducts/README.md).
+[./DataProducts/README.md](./DataProducts/README.md).
 
 _Please note that this repository is under active development, and all the definitions
 are subjects to change at any time._
@@ -16,9 +16,6 @@ are subjects to change at any time._
   and converting definitions from sources
 
 # Getting started
-
-Press `Use template` to create a new repo from this template and define your data
-products there.
 
 ## Adding new Data Product Definition
 
