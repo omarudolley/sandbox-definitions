@@ -17,18 +17,37 @@ are subjects to change at any time._
 
 # Getting started
 
-Press `Use template` to create a new repo from this template.
+Press `Use template` to create a new repo from this template and define your data
+products there.
 
-Define your own data products as python files under `src/`. Technically, you can go
-ahead and create final specs under the `DataProducts` folder if it's easier for you.
-However, the recommended approach is using python sources and the automatic converter
+## Adding new Data Product Definition
 
-You have 2 options to use the converter:
+There are two ways of contribution:
 
-1. By running `pre-commit install` after cloning the repo. Then definitions will be
-   converted automatically before each commit
-2. By creating a PR to the `master` branch. CI workflow will run the automation and push
-   updated/generated files if needed.
+1. **Submit OpenAPI spec directly**
+
+   For example, to add a definition for `Foo/Bar`:
+
+   - create `DataProducts/<version>/Foo/Bar.json`
+   - make sure you follow the data product definition
+     [guidelines](./DataProducts/README.md)
+
+2. **Submit definition as python file**
+
+   If you're familiar with python and
+   [pydantic](https://github.com/samuelcolvin/pydantic) library, you may find it easier
+   to create the definition as a set of pydantic models.
+
+   For example, to add a definition for `Foo/Bar`:
+
+   - create `DataProducts/<version>/Foo/Bar.py`
+
+   You have 2 options to use the converter:
+
+   1. By running `pre-commit install` after cloning the repo. Then definitions will be
+      converted automatically before each commit
+   2. By creating a PR to the `master` branch. CI workflow will run the automation and
+      push updated/generated files if needed.
 
 ## Python sources
 
@@ -68,6 +87,42 @@ Considering `CamelCaseModel` is a subclass of `pydantic`'s `BaseModel`, it's bet
 understand how to use this library. Please read
 [pydantic](https://pydantic-docs.helpmanual.io/)'s documentation if you're not familiar
 with it yet.
+
+Each data product definition represented as python file must define a `DEFINITION`
+variable which is an instance of `DataProductDefinition` class.
+
+DataProductDefinition is a structure consisting of:
+
+- `summary`
+
+  Summary used in top of OpenAPI spec
+
+- `description`
+
+  Data product description, used in top of OpenAPI spec
+
+- `request`
+
+  pydantic model describing body of POST request
+
+- `response`
+
+  pydantic model describing expected response from data source
+
+- `route_summary`
+
+  Summary for the POST route
+
+- `route_description`
+
+  Description for the POST route
+
+- `generic_description`
+
+  You may omit providing `summary`, `description`, `route_summary` and
+  `route_description` if you define this field. Others will be generated automatically
+  based on it. Use something brief and meaningful, like "Company Recommendations" or
+  "Cargo receipt".
 
 ### Example
 
