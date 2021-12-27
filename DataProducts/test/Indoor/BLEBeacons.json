@@ -6,11 +6,11 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/draft/DataProducts/Location/Indoor/BLEBeacons": {
+    "/test/Indoor/BLEBeacons": {
       "post": {
-        "summary": "draft/DataProducts/Location/Indoor/BLEBeacons",
+        "summary": "test/Indoor/BLEBeacons",
         "description": "Indoor location based on BLE beacons",
-        "operationId": "request_draft_DataProducts_Location_Indoor_BLEBeacons",
+        "operationId": "request_test_Indoor_BLEBeacons",
         "parameters": [
           {
             "description": "Optional consent token",
