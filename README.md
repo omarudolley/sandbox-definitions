@@ -46,6 +46,15 @@ There are two ways of contribution:
    2. By creating a PR to the `master` branch. CI workflow will run the automation and
       push updated/generated files if needed.
 
+## Test version of definitions
+
+Everyone can submit to this repo whatever definitions they seem appropriate. It will allow to create data products using these definitions in IOXIO Sandbox Nexus and experiment with the system. In order to do this:
+
+1) Fork this repository
+2) Create your definitions under `src/test/<your_github_username>/` if you're familiar with Python approach, or directly under `DataProducts/test/<your_github_username>` if you know what you're doing
+3) Submit a PR and wait for CI Workflow to run and validate the changes
+4) Once PR is merged, it's possible to use the definitions in IOXIO Sandbox Nexus
+
 ## Python sources
 
 Each python file located in the `src` folder is treated as a Data Product definition.
