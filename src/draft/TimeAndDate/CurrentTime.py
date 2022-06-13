@@ -262,13 +262,15 @@ class CurrentTimeRequest(CamelCaseModel):
 
 
 class CurrentTimeResponse(CamelCaseModel):
-    time: str = Field(title="RFC 3339 datetime for the given country")
+    current_time: str = Field(
+        title="Current time in the desired country in RFC 3339 format"
+    )
 
 
 DEFINITION = DataProductDefinition(
-    description="Get current time in a given country",
+    description="Get the current time in a given country",
     request=CurrentTimeRequest,
     response=CurrentTimeResponse,
-    route_description="Get current time in a given country",
-    summary="Get current time in a given country",
+    route_description="Get the current time in a given country",
+    summary="Get the current time in a given country",
 )
