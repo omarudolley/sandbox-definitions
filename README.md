@@ -11,7 +11,7 @@ are subjects to change at any time._
 To view these definitions in a more human readable format instead of the raw technical
 format in this repository, you can check these resources:
 
-- [Definition viewer](https://definitions.sandbox.ioxio-dataspace.com)
+- [Definitions viewer](https://definitions.sandbox.ioxio-dataspace.com)
 - [API docs](https://docs.sandbox.ioxio-dataspace.com/gateway#tag/Data-Products)
 - [Swagger UI](https://gateway.sandbox.ioxio-dataspace.com/docs)
 
