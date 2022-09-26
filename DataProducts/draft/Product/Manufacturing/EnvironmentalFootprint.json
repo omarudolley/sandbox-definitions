@@ -85,13 +85,13 @@
     "schemas": {
       "EnvironmentalFootprintRequest": {
         "title": "EnvironmentalFootprintRequest",
-        "required": ["productId"],
+        "required": ["serialNumber"],
         "type": "object",
         "properties": {
-          "productId": {
-            "title": "Product ID",
+          "serialNumber": {
+            "title": "Serial Number",
             "type": "string",
-            "description": "The product ID given by the manufacturer",
+            "description": "The serial number given by the manufacturer",
             "example": "MPP48V-296cde7f"
           }
         }
@@ -105,13 +105,13 @@
             "title": "Carbon Equivalent (CO2e) [kg]",
             "type": "number",
             "description": "The amount of emissions from all greenhouse gases converted to CO2 emission equivalents in the product manufacturing phase",
-            "example": 500.0
+            "example": 200.0
           },
           "materialWaste": {
             "title": "Material Waste [kg]",
             "type": "number",
             "description": "The amount of material waste produced in the product manufacturing phase",
-            "example": 20.0
+            "example": 8.0
           }
         }
       },
