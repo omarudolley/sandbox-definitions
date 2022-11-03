@@ -1,4 +1,4 @@
-# Contributing to Data Product Definitions
+# Contributing to IOXIO® Dataspace Sandbox Definitions
 
 A big welcome and thank you for considering contributing to this project!
 
@@ -10,7 +10,7 @@ you finalize your pull requests.
 
 ## Quicklinks
 
-- [Contributing to Data Product Definitions](#contributing-to-data-product-definitions)
+- [Contributing to IOXIO® Dataspace Sandbox Definitions](#contributing-to-ioxio-dataspace-sandbox-definitions)
   - [Quicklinks](#quicklinks)
   - [Getting Started](#getting-started)
   - [Definitions format](#definitions-format)
