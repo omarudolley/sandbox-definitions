@@ -117,10 +117,6 @@ DataProductDefinition is a structure consisting of:
 
   Marks the Authorization header as required
 
-- `requires_authorization`
-
-  Marks the Authorization header as required
-
 - `requires_consent`
 
   Marks the X-Consent-Token header as required
