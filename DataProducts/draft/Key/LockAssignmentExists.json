@@ -8,7 +8,7 @@
   "paths": {
     "/draft/Key/LockAssignmentExists": {
       "post": {
-        "summary": "draft/Key/LockAssignmentExists",
+        "summary": "Check if lock assignment exists",
         "description": "Check if lock assignment exists",
         "operationId": "request_draft_Key_LockAssignmentExists",
         "parameters": [

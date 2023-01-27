@@ -8,7 +8,7 @@
   "paths": {
     "/draft/TimeAndDate/CurrentTime": {
       "post": {
-        "summary": "draft/TimeAndDate/CurrentTime",
+        "summary": "Get the current time in a given country",
         "description": "Get the current time in a given country",
         "operationId": "request_draft_TimeAndDate_CurrentTime",
         "parameters": [

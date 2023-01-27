@@ -8,7 +8,7 @@
   "paths": {
     "/draft/Key/DeleteAssignment": {
       "post": {
-        "summary": "draft/Key/DeleteAssignment",
+        "summary": "Delete key assignment",
         "description": "Delete assignment",
         "operationId": "request_draft_Key_DeleteAssignment",
         "parameters": [

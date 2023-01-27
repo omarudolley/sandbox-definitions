@@ -8,7 +8,7 @@
   "paths": {
     "/draft/Key/CreateAssignment": {
       "post": {
-        "summary": "draft/Key/CreateAssignment",
+        "summary": "Create key assignment",
         "description": "Create assignment",
         "operationId": "request_draft_Key_CreateAssignment",
         "parameters": [
