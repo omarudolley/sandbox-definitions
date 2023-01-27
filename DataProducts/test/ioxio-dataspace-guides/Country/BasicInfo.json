@@ -8,7 +8,7 @@
   "paths": {
     "/test/ioxio-dataspace-guides/Country/BasicInfo": {
       "post": {
-        "summary": "test/ioxio-dataspace-guides/Country/BasicInfo",
+        "summary": "Basic Country Info",
         "description": "Information about the country",
         "operationId": "request_test_ioxio_dataspace_guides_Country_BasicInfo",
         "parameters": [

@@ -8,7 +8,7 @@
   "paths": {
     "/draft/Person/Details": {
       "post": {
-        "summary": "draft/Person/Details",
+        "summary": "Person details",
         "description": "Person details",
         "operationId": "request_draft_Person_Details",
         "parameters": [

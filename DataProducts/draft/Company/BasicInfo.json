@@ -8,7 +8,7 @@
   "paths": {
     "/draft/Company/BasicInfo": {
       "post": {
-        "summary": "draft/Company/BasicInfo",
+        "summary": "Basic Company Info",
         "description": "Information about the company",
         "operationId": "request_draft_Company_BasicInfo",
         "parameters": [
