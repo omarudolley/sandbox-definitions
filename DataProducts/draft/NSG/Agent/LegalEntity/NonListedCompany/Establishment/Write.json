@@ -341,7 +341,7 @@
           "settlementDate": {
             "title": "Settlement date",
             "type": "string",
-            "description": "The date of memorandum of association",
+            "description": "The date on which the share deposit has been settled and available as full",
             "format": "date",
             "example": "2022-02-01"
           },

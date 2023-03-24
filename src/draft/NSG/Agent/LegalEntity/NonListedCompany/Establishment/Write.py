@@ -1339,7 +1339,8 @@ class CompanyDetails(CamelCaseModel):
     settlement_date: Optional[date] = Field(
         None,
         title="Settlement date",
-        description="The date of memorandum of association",
+        description="The date on which the share deposit has been settled and available "
+        "as full",
         example=date(2022, 2, 1),
     )
     country_of_residence: Optional[ISO_3166_1_Alpha_3] = Field(
