@@ -29,8 +29,8 @@ class DeleteAssignmentRequest(DeleteAssignmentResponse):
 
 
 DEFINITION = DataProductDefinition(
+    title="Delete key assignment",
+    description="Remove a key from having access to a specific lock",
     request=DeleteAssignmentRequest,
     response=DeleteAssignmentResponse,
-    route_description="Delete assignment",
-    summary="Delete key assignment",
 )
