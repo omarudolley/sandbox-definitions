@@ -29,8 +29,8 @@ class CreateAssignmentRequest(CreateAssignmentResponse):
 
 
 DEFINITION = DataProductDefinition(
+    title="Create key assignment",
+    description="Assign a key to have access to a specific lock",
     request=CreateAssignmentRequest,
     response=CreateAssignmentResponse,
-    route_description="Create assignment",
-    summary="Create key assignment",
 )
