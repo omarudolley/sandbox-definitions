@@ -22,7 +22,8 @@ data product definitions in this repo.
 
 Each python file located in the `src` folder is treated as a Data Product definition.
 
-For example, `src/AirQuality/Current.py` defines `AirQuality/Current` data product.
+For example, `src/AirQuality/Current_v1.0.py` defines the `AirQuality/Current_v1.0` data
+product.
 
 These files are then converted to OpenAPI 3.0 specs, which are final forms of
 definitions. To make the converter work correctly, each file must follow the same
@@ -48,6 +49,7 @@ class Error418(CamelCaseModel):
 
 
 DEFINITION = DataProductDefinition(
+    version="1.0.0",
     title="...",
     description="...",
     request=Request,
@@ -64,13 +66,26 @@ DEFINITION = DataProductDefinition(
 
 Considering `CamelCaseModel` is a subclass of `pydantic`'s `BaseModel`, it's better to
 understand how to use this library. Please read
-[pydantic](https://pydantic-docs.helpmanual.io/)'s documentation if you're not familiar
-with it yet.
+[pydantic](https://docs.pydantic.dev/1.10/)'s documentation if you're not familiar with
+it yet.
 
 Each data product definition represented as python file must define a `DEFINITION`
 variable which is an instance of `DataProductDefinition` class.
 
 DataProductDefinition is a structure consisting of:
+
+- `version`
+
+  Version is used in the info block of the OpenAPI spec. The data product definitions
+  use [Semantic Versioning](https://semver.org/) of the form `MAJOR.MINOR.PATCH`, for
+  example `1.0.0`. Definitions in the `test` and `draft` folders must have versions of
+  the form `0.0.z` and the version number should not exist in the filename of the
+  definition. In all other definitions the version number needs to be `>= 0.1.0` and the
+  corresponding short version number needs to be included in the filename. For example
+  the version `0.1.0` of the `Foo/Bar` definition would correspond to the file
+  `src/Foo/Bar_v0.1.py`. For more details about versions and filenames see the
+  [Versioning of definitions](CONTRIBUTING.md#versioning-of-definitions) section in the
+  contribution guidelines.
 
 - `title`
 
@@ -154,6 +169,7 @@ class CurrentWeatherMetricResponse(CamelCaseModel):
 
 
 DEFINITION = DataProductDefinition(
+    version="1.0.0",
     title="Current weather in a given location",
     description="Current weather in a given location with metric units",
     request=CurrentWeatherMetricRequest,
