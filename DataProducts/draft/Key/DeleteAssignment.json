@@ -3,7 +3,7 @@
   "info": {
     "title": "Delete key assignment",
     "description": "Remove a key from having access to a specific lock",
-    "version": "1.0.0"
+    "version": "0.0.1"
   },
   "paths": {
     "/draft/Key/DeleteAssignment": {
