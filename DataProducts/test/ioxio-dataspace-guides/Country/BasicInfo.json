@@ -3,7 +3,7 @@
   "info": {
     "title": "Information about a country",
     "description": "Information about a country",
-    "version": "1.0.0"
+    "version": "0.0.1"
   },
   "paths": {
     "/test/ioxio-dataspace-guides/Country/BasicInfo": {

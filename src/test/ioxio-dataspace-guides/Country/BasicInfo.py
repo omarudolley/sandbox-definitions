@@ -75,6 +75,7 @@ class BasicCountryInfoResponse(CamelCaseModel):
 
 
 DEFINITION = DataProductDefinition(
+    version="0.0.1",
     title="Information about a country",
     description="Information about a country",
     request=BasicCountryInfoRequest,

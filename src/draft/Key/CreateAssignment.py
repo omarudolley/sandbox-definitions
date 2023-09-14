@@ -29,6 +29,7 @@ class CreateAssignmentRequest(CreateAssignmentResponse):
 
 
 DEFINITION = DataProductDefinition(
+    version="0.0.1",
     title="Create key assignment",
     description="Assign a key to have access to a specific lock",
     request=CreateAssignmentRequest,
