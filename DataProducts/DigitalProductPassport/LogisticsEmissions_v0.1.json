@@ -1,0 +1,650 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Logistics Emissions",
+    "description": "Returns the total emission per leg for an end-to-end shipment compliant with the European Union's count emissions reporting regulation",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/DigitalProductPassport/LogisticsEmissions_v0.1": {
+      "post": {
+        "summary": "Logistics Emissions",
+        "description": "Returns the total emission per leg for an end-to-end shipment compliant with the European Union's count emissions reporting regulation",
+        "operationId": "request_DigitalProductPassport_LogisticsEmissions_v0_1",
+        "parameters": [
+          {
+            "description": "Optional consent token",
+            "required": false,
+            "schema": {
+              "title": "X-Consent-Token",
+              "type": "string",
+              "description": "Optional consent token"
+            },
+            "name": "x-consent-token",
+            "in": "header"
+          },
+          {
+            "description": "The login token. Value should be \"Bearer [token]\"",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "description": "The login token. Value should be \"Bearer [token]\""
+            },
+            "name": "authorization",
+            "in": "header"
+          },
+          {
+            "description": "The bare domain of the system that provided the token.",
+            "required": false,
+            "schema": {
+              "title": "X-Authorization-Provider",
+              "type": "string",
+              "description": "The bare domain of the system that provided the token."
+            },
+            "name": "x-authorization-provider",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogisticsEmissionsDataRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogisticsEmissionsDataResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "444": {
+            "description": "Additional Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceError"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGateway"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayTimeout"
+                }
+              }
+            }
+          },
+          "550": {
+            "description": "Additional Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoesNotConformToDefinition"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BadGateway": {
+        "title": "BadGateway",
+        "type": "object",
+        "properties": {},
+        "description": "This response is reserved by Product Gateway."
+      },
+      "ContractType": {
+        "title": "ContractType",
+        "enum": ["Shared transport", "Dedicated contract"],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "DataSourceError": {
+        "title": "DataSourceError",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "DataSourceNotFound": {
+        "title": "DataSourceNotFound",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description",
+            "default": "Data source not found"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "DoesNotConformToDefinition": {
+        "title": "DoesNotConformToDefinition",
+        "required": ["data_source_status_code"],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Response from data source does not conform to definition"
+          },
+          "data_source_status_code": {
+            "title": "Data source status code",
+            "type": "integer",
+            "description": "HTTP status code returned from the data source"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "EmissionsPerTCE": {
+        "title": "EmissionsPerTCE",
+        "type": "object",
+        "properties": {
+          "description": {
+            "title": "Description",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The description of the transport chain element (TCE) related to the leg",
+            "example": "Loading for road transport"
+          },
+          "emissions": {
+            "title": "Emissions",
+            "type": "number",
+            "description": "The green house gas (GHG) emissions of the transport chain element related to the road tranport leg in CO2e tonnes",
+            "example": 1.2
+          },
+          "sourceForTheEmissions": {
+            "title": "Source For The Emissions",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The source that generated the emission in the TCE",
+            "example": "Diesel"
+          }
+        }
+      },
+      "Forbidden": {
+        "title": "Forbidden",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "FreightType": {
+        "title": "FreightType",
+        "enum": [
+          "Palletized",
+          "Dry bulk",
+          "Liquid bulk",
+          "Containerized",
+          "Vehicle transport",
+          "Heavy cargo",
+          "Light cargo"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "GatewayTimeout": {
+        "title": "GatewayTimeout",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "JourneyType": {
+        "title": "JourneyType",
+        "enum": ["Long-haul", "Collection and delivery"],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "LogisticsEmissionsDataRequest": {
+        "title": "LogisticsEmissionsDataRequest",
+        "required": ["product", "id"],
+        "type": "object",
+        "properties": {
+          "product": {
+            "title": "Product identifier",
+            "type": "string",
+            "description": "Technical product identifier used by the manufacturer",
+            "example": "battery-100wh-s"
+          },
+          "id": {
+            "title": "Identifier",
+            "type": "string",
+            "description": "Unique identifier for the product",
+            "example": "177389-09633"
+          }
+        }
+      },
+      "LogisticsEmissionsDataResponse": {
+        "title": "LogisticsEmissionsDataResponse",
+        "required": ["waybillNumber"],
+        "type": "object",
+        "properties": {
+          "roadFreightEmissions": {
+            "title": "Road Freight Emissions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoadLeg"
+            }
+          },
+          "seaFreightEmissions": {
+            "title": "Sea Freight Emissions",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SeaLeg"
+            }
+          },
+          "waybillNumber": {
+            "title": "Waybill Number",
+            "maxLength": 20,
+            "type": "string",
+            "description": "The unique identifier which is used to track a shipment through the entire delivery chain",
+            "example": "5308956234"
+          }
+        }
+      },
+      "NotFound": {
+        "title": "NotFound",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "RoadLeg": {
+        "title": "RoadLeg",
+        "type": "object",
+        "properties": {
+          "legIdentifier": {
+            "title": "Legidentifier",
+            "maxLength": 20,
+            "type": "string",
+            "description": "The leg identifier",
+            "example": "7623456365"
+          },
+          "origin": {
+            "title": "Origin",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The location of the transport origin",
+            "example": "Tampere"
+          },
+          "destination": {
+            "title": "Destination",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The location of the transport destination",
+            "example": "Turku"
+          },
+          "freightType": {
+            "title": "Freight Type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FreightType"
+              }
+            ],
+            "description": "The type of the freight used for the road transport",
+            "example": "Palletized"
+          },
+          "condition": {
+            "title": "Condition",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoadLegFreightCondition"
+              }
+            ],
+            "description": "The conditions that the cargo is being transported with",
+            "example": "Ambient"
+          },
+          "journeyType": {
+            "title": "Journey Type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JourneyType"
+              }
+            ],
+            "description": "The type of the road transport",
+            "example": "Long-haul"
+          },
+          "contractType": {
+            "title": "Contract Type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ContractType"
+              }
+            ],
+            "description": "The type of the transport contract",
+            "example": "Dedicated contract"
+          },
+          "totalEmissionsPerLeg": {
+            "title": "Total Emissions",
+            "type": "number",
+            "description": "The total green house gas (GHG) emissions of the road transport and other related logistics hub operations measured in CO2e tonnes",
+            "example": 5.8
+          },
+          "emissionIntensity": {
+            "title": "Emission Intensity",
+            "type": "number",
+            "description": "The GHG emission intensity of the road transport per transported tonne and kilometer in CO2e grams / tonne / km",
+            "example": 200
+          },
+          "emissionsPerTce": {
+            "title": "Emissions per TCE",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmissionsPerTCE"
+            },
+            "description": "The GHG emissions of the transport chain element related to the road transport leg"
+          }
+        }
+      },
+      "RoadLegFreightCondition": {
+        "title": "RoadLegFreightCondition",
+        "enum": ["Ambient", "Temperature-controlled"],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "SeaLeg": {
+        "title": "SeaLeg",
+        "type": "object",
+        "properties": {
+          "legIdentifier": {
+            "title": "Legidentifier",
+            "maxLength": 20,
+            "type": "string",
+            "description": "The leg identifier",
+            "example": "7623456365"
+          },
+          "origin": {
+            "title": "Origin",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The location of the transport origin",
+            "example": "Turku"
+          },
+          "destination": {
+            "title": "Destination",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The location of the transport destination",
+            "example": "Stockholm"
+          },
+          "vesselType": {
+            "title": "Vessel Type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VesselType"
+              }
+            ],
+            "description": "The type of the vessel used for the sea transport",
+            "example": "Ro-Ro"
+          },
+          "freightCondition": {
+            "title": "Freight Condition",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SeaLegFreightCondition"
+              }
+            ],
+            "description": "The conditions that the cargo is being transported with",
+            "example": "Temperature-controlled"
+          },
+          "serviceType": {
+            "title": "Service Type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServiceType"
+              }
+            ],
+            "description": "The type of the sea transport service",
+            "example": "Scheduled"
+          },
+          "totalEmissions": {
+            "title": "Total Emissions",
+            "type": "number",
+            "description": "The total green house gas (GHG) emissions of the road transport and other related logistics hub operations measured in CO2e tonnes",
+            "example": 7.4
+          },
+          "emissionIntensity": {
+            "title": "Emission Intensity",
+            "type": "number",
+            "description": "The GHG emission intensity of the sea transport per transported tonne and kilometer in CO2e grams / tonne / km",
+            "example": 500
+          },
+          "emissionsPerTce": {
+            "title": "Emissions per TCE",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmissionsPerTCE"
+            },
+            "description": "The GHG emissions of the transport chain element related to the road transport leg"
+          }
+        }
+      },
+      "SeaLegFreightCondition": {
+        "title": "SeaLegFreightCondition",
+        "enum": [
+          "Ambient",
+          "Temperature-controlled",
+          "Mixed ambient and temperature-controlled"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "ServiceType": {
+        "title": "ServiceType",
+        "enum": ["Scheduled", "Tramp"],
+        "type": "string",
+        "description": "An enumeration."
+      },
+      "ServiceUnavailable": {
+        "title": "ServiceUnavailable",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "Unauthorized": {
+        "title": "Unauthorized",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": ["loc", "msg", "type"],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      },
+      "VesselType": {
+        "title": "VesselType",
+        "enum": [
+          "Bulk carrier",
+          "Chemical tanker",
+          "General cargo",
+          "Ro-Ro",
+          "Liquefied gas tanker",
+          "Oil tanker",
+          "Other liquefied tanker",
+          "Container",
+          "Vehicle carrier"
+        ],
+        "type": "string",
+        "description": "An enumeration."
+      }
+    }
+  }
+}

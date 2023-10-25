@@ -1,5 +1,7 @@
+from typing import List, Optional
+
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import Field, List, Optional
+from pydantic import Field
 
 
 class EnStandardCertification(CamelCaseModel):
