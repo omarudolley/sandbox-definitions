@@ -1,0 +1,470 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Data Sheet For Metal Artifacts",
+    "description": "Returns the basic product information of a metal product",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/DigitalProductPassport/MetalArtifact/DataSheet_v0.1": {
+      "post": {
+        "summary": "Data Sheet For Metal Artifacts",
+        "description": "Returns the basic product information of a metal product",
+        "operationId": "request_DigitalProductPassport_MetalArtifact_DataSheet_v0_1",
+        "parameters": [
+          {
+            "description": "Optional consent token",
+            "required": false,
+            "schema": {
+              "title": "X-Consent-Token",
+              "type": "string",
+              "description": "Optional consent token"
+            },
+            "name": "x-consent-token",
+            "in": "header"
+          },
+          {
+            "description": "The login token. Value should be \"Bearer [token]\"",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "description": "The login token. Value should be \"Bearer [token]\""
+            },
+            "name": "authorization",
+            "in": "header"
+          },
+          {
+            "description": "The bare domain of the system that provided the token.",
+            "required": false,
+            "schema": {
+              "title": "X-Authorization-Provider",
+              "type": "string",
+              "description": "The bare domain of the system that provided the token."
+            },
+            "name": "x-authorization-provider",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetalArtifactDataSheetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetalArtifactDataSheetResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "444": {
+            "description": "Additional Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceError"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGateway"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayTimeout"
+                }
+              }
+            }
+          },
+          "550": {
+            "description": "Additional Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoesNotConformToDefinition"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BadGateway": {
+        "title": "BadGateway",
+        "type": "object",
+        "properties": {},
+        "description": "This response is reserved by Product Gateway."
+      },
+      "DataSourceError": {
+        "title": "DataSourceError",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "DataSourceNotFound": {
+        "title": "DataSourceNotFound",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description",
+            "default": "Data source not found"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "DoesNotConformToDefinition": {
+        "title": "DoesNotConformToDefinition",
+        "required": ["data_source_status_code"],
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "default": "Response from data source does not conform to definition"
+          },
+          "data_source_status_code": {
+            "title": "Data source status code",
+            "type": "integer",
+            "description": "HTTP status code returned from the data source"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "EnStandardCertification": {
+        "title": "EnStandardCertification",
+        "type": "object",
+        "properties": {
+          "enStandardCode": {
+            "title": "EN Standard Code",
+            "maxLength": 20,
+            "type": "string",
+            "description": "The identification code of the EN standard that the product complies with",
+            "example": "EN 10002-1, EN 10002-5"
+          }
+        }
+      },
+      "Forbidden": {
+        "title": "Forbidden",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "GatewayTimeout": {
+        "title": "GatewayTimeout",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "Measures": {
+        "title": "Measures",
+        "type": "object",
+        "properties": {
+          "width": {
+            "title": "Width",
+            "type": "integer",
+            "description": "The width of the product measured in centimeters",
+            "example": 1500
+          },
+          "length": {
+            "title": "Length",
+            "type": "integer",
+            "description": "The length of the product measured in centimeters",
+            "example": 4000
+          },
+          "height": {
+            "title": "Height",
+            "type": "integer",
+            "description": "The height of the product measured in centimeters",
+            "example": 0
+          }
+        }
+      },
+      "MetalArtifactDataSheetRequest": {
+        "title": "MetalArtifactDataSheetRequest",
+        "required": ["product", "id"],
+        "type": "object",
+        "properties": {
+          "product": {
+            "title": "Product identifier",
+            "type": "string",
+            "description": "Technical product identifier used by the manufacturer",
+            "example": "battery-100wh-s"
+          },
+          "id": {
+            "title": "Identifier",
+            "type": "string",
+            "description": "Unique identifier for the product",
+            "example": "177389-09633"
+          }
+        }
+      },
+      "MetalArtifactDataSheetResponse": {
+        "title": "MetalArtifactDataSheetResponse",
+        "type": "object",
+        "properties": {
+          "productName": {
+            "title": "Product Name",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The commercial name of the metal product",
+            "example": "HOT-DIP ZINC-COATED STEEL STRIP, HIGH STRENGTH STEEL FOR COLD FORMING"
+          },
+          "productType": {
+            "title": "Product Type",
+            "maxLength": 250,
+            "type": "string",
+            "description": "The type of the metal product",
+            "example": "Steel roll"
+          },
+          "measures": {
+            "title": "Measures",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Measures"
+              }
+            ],
+            "description": "The dimensional measures of the metal product"
+          },
+          "netWeight": {
+            "title": "Net Weight",
+            "maxLength": 10,
+            "type": "string",
+            "description": "Net weight of the steel roll",
+            "example": "11 720kg"
+          },
+          "grossWeight": {
+            "title": "Gross Weight",
+            "maxLength": 10,
+            "type": "string",
+            "description": "Gross weight of the steel roll",
+            "example": "11 745kg"
+          },
+          "euTaricCode": {
+            "title": "EU Taric Code",
+            "maxLength": 20,
+            "type": "string",
+            "description": "EU customs tariff code",
+            "example": "7210 49 00"
+          },
+          "enStandardCertification": {
+            "title": "EN Standard Certification",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EnStandardCertification"
+            },
+            "description": "The list of EN standards"
+          },
+          "treatmentType": {
+            "title": "Treatment Type",
+            "maxLength": 20,
+            "type": "string",
+            "description": "The type of re-treatment for the steel roll",
+            "example": "Prelube oil"
+          }
+        }
+      },
+      "NotFound": {
+        "title": "NotFound",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "ServiceUnavailable": {
+        "title": "ServiceUnavailable",
+        "type": "object",
+        "properties": {
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        },
+        "description": "This response is reserved by Product Gateway."
+      },
+      "Unauthorized": {
+        "title": "Unauthorized",
+        "required": ["type", "message"],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Error type",
+            "type": "string",
+            "description": "Error identifier"
+          },
+          "message": {
+            "title": "Error message",
+            "type": "string",
+            "description": "Error description"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": ["loc", "msg", "type"],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ from definition_tooling.converter import CamelCaseModel, DataProductDefinition
 from pydantic import Field
 
 
-class FatContentType(CamelCaseModel):
+class FatContent(CamelCaseModel):
     fats: float = Field(
         ...,
         title="Fats",
@@ -17,7 +17,7 @@ class FatContentType(CamelCaseModel):
     )
 
 
-class EnergyContentType(CamelCaseModel):
+class EnergyContent(CamelCaseModel):
     energy: int = Field(
         ...,
         title="Energy",
@@ -48,12 +48,12 @@ class FoodArtifactDataSheetRequest(CamelCaseModel):
 
 
 class FoodArtifactDataSheetResponse(CamelCaseModel):
-    energy_content: EnergyContentType = Field(
+    energy_content: EnergyContent = Field(
         ...,
         title="Energy Content",
         description="The details of the energy content of the food artifact",
     )
-    fat_content: FatContentType = Field(
+    fat_content: FatContent = Field(
         ...,
         title="Fat Content",
         description="The details of the fat content of the food artifact",

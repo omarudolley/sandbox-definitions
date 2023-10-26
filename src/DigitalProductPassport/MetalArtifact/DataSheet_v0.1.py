@@ -35,7 +35,7 @@ class Measures(CamelCaseModel):
     )
 
 
-class MetaArtifactDataSheetRequest(CamelCaseModel):
+class MetalArtifactDataSheetRequest(CamelCaseModel):
     product: str = Field(
         ...,
         title="Product identifier",
@@ -50,7 +50,7 @@ class MetaArtifactDataSheetRequest(CamelCaseModel):
     )
 
 
-class MetaArtifactDataSheetResponse(CamelCaseModel):
+class MetalArtifactDataSheetResponse(CamelCaseModel):
     product_name: Optional[str] = Field(
         None,
         title="Product Name",
@@ -65,7 +65,7 @@ class MetaArtifactDataSheetResponse(CamelCaseModel):
         description="The type of the metal product",
         example="Steel roll",
     )
-    measures: Measures = Field(
+    measures: Optional[Measures] = Field(
         None,
         title="Measures",
         description="The dimensional measures of the metal product",
@@ -107,10 +107,10 @@ class MetaArtifactDataSheetResponse(CamelCaseModel):
 
 DEFINITION = DataProductDefinition(
     version="0.1.0",
-    title="Food Artifact Nutritional Values",
-    description="Returns the nutritional values of a food product",
-    request=MetaArtifactDataSheetRequest,
-    response=MetaArtifactDataSheetResponse,
+    title="Data Sheet For Metal Artifacts",
+    description="Returns the basic product information of a metal product",
+    request=MetalArtifactDataSheetRequest,
+    response=MetalArtifactDataSheetResponse,
     requires_authorization=False,
     requires_consent=False,
 )
