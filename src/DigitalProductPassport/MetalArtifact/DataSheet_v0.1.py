@@ -51,15 +51,15 @@ class MetalArtifactDataSheetRequest(CamelCaseModel):
 
 
 class MetalArtifactDataSheetResponse(CamelCaseModel):
-    product_name: Optional[str] = Field(
-        None,
+    product_name: str = Field(
+        ...,
         title="Product Name",
         max_length=250,
         description="The commercial name of the metal product",
         example="HOT-DIP ZINC-COATED STEEL STRIP, HIGH STRENGTH STEEL FOR COLD FORMING",
     )
-    product_type: Optional[str] = Field(
-        None,
+    product_type: str = Field(
+        ...,
         title="Product Type",
         max_length=250,
         description="The type of the metal product",
@@ -70,26 +70,12 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
         title="Measures",
         description="The dimensional measures of the metal product",
     )
-    net_weight: Optional[str] = Field(
-        None,
+    net_weight: str = Field(
+        ...,
         title="Net Weight",
         description="Net weight of the steel roll",
         max_length=10,
         example="11 720kg",
-    )
-    gross_weight: Optional[str] = Field(
-        None,
-        title="Gross Weight",
-        description="Gross weight of the steel roll",
-        max_length=10,
-        example="11 745kg",
-    )
-    eu_taric_code: Optional[str] = Field(
-        None,
-        title="EU Taric Code",
-        max_length=20,
-        description="EU customs tariff code",
-        example="7210 49 00",
     )
     en_standard_certification: List[EnStandardCertification] = Field(
         None,

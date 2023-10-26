@@ -327,6 +327,7 @@
       },
       "MetalArtifactDataSheetResponse": {
         "title": "MetalArtifactDataSheetResponse",
+        "required": ["productName", "productType", "netWeight"],
         "type": "object",
         "properties": {
           "productName": {
@@ -358,20 +359,6 @@
             "type": "string",
             "description": "Net weight of the steel roll",
             "example": "11 720kg"
-          },
-          "grossWeight": {
-            "title": "Gross Weight",
-            "maxLength": 10,
-            "type": "string",
-            "description": "Gross weight of the steel roll",
-            "example": "11 745kg"
-          },
-          "euTaricCode": {
-            "title": "EU Taric Code",
-            "maxLength": 20,
-            "type": "string",
-            "description": "EU customs tariff code",
-            "example": "7210 49 00"
           },
           "enStandardCertification": {
             "title": "EN Standard Certification",
