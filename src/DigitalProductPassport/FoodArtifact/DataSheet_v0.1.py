@@ -27,7 +27,7 @@ class EnergyContentType(CamelCaseModel):
     calories: int = Field(
         ...,
         title="Calories",
-        description="The amount of calories per 100g measured in kilocalories",
+        description="The number of calories per 100g measured in kilocalories",
         example=180,
     )
 
