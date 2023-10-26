@@ -81,6 +81,7 @@ class RoadLeg(CamelCaseModel):
     leg_identifier: Optional[str] = Field(
         None,
         max_length=20,
+        title="Leg Identifier",
         description="The leg identifier",
         example="7623456365",
     )
@@ -146,6 +147,7 @@ class RoadLeg(CamelCaseModel):
 class SeaLeg(CamelCaseModel):
     leg_identifier: Optional[str] = Field(
         None,
+        title="Leg Identifier",
         max_length=20,
         description="The leg identifier",
         example="7623456365",
@@ -203,22 +205,22 @@ class SeaLeg(CamelCaseModel):
     )
 
 
-class LogisticsEmissionsDataRequest(CamelCaseModel):
+class LogisticsEmissionsRequest(CamelCaseModel):
     product: str = Field(
         ...,
-        title="Product identifier",
-        description="Technical product identifier used by the manufacturer",
-        example="battery-100wh-s",
+        title="Product code",
+        description="The product code used for identifying the product type",
+        example="french-fries-500g ",
     )
     id: str = Field(
         ...,
         title="Identifier",
         description="Unique identifier for the product",
-        example="177389-09633",
+        example="550e8400-e29b-41d4-a716-446655440000",
     )
 
 
-class LogisticsEmissionsDataResponse(CamelCaseModel):
+class LogisticsEmissionsResponse(CamelCaseModel):
     road_freight_emissions: List[RoadLeg] = Field(
         ...,
         title="Road Freight Emissions",
@@ -243,8 +245,8 @@ DEFINITION = DataProductDefinition(
     description="Returns the total emission per leg for "
     "an end-to-end shipment compliant with the European "
     "Union's count emissions reporting regulation",
-    request=LogisticsEmissionsDataRequest,
-    response=LogisticsEmissionsDataResponse,
+    request=LogisticsEmissionsRequest,
+    response=LogisticsEmissionsResponse,
     requires_authorization=False,
     requires_consent=False,
 )

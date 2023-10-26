@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LogisticsEmissionsDataRequest"
+                "$ref": "#/components/schemas/LogisticsEmissionsRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LogisticsEmissionsDataResponse"
+                  "$ref": "#/components/schemas/LogisticsEmissionsResponse"
                 }
               }
             }
@@ -321,27 +321,27 @@
         "type": "string",
         "description": "An enumeration."
       },
-      "LogisticsEmissionsDataRequest": {
-        "title": "LogisticsEmissionsDataRequest",
+      "LogisticsEmissionsRequest": {
+        "title": "LogisticsEmissionsRequest",
         "required": ["product", "id"],
         "type": "object",
         "properties": {
           "product": {
-            "title": "Product identifier",
+            "title": "Product code",
             "type": "string",
-            "description": "Technical product identifier used by the manufacturer",
-            "example": "battery-100wh-s"
+            "description": "The product code used for identifying the product type",
+            "example": "french-fries-500g "
           },
           "id": {
             "title": "Identifier",
             "type": "string",
             "description": "Unique identifier for the product",
-            "example": "177389-09633"
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         }
       },
-      "LogisticsEmissionsDataResponse": {
-        "title": "LogisticsEmissionsDataResponse",
+      "LogisticsEmissionsResponse": {
+        "title": "LogisticsEmissionsResponse",
         "required": ["roadFreightEmissions", "seaFreightEmissions", "waybillNumber"],
         "type": "object",
         "properties": {
@@ -391,7 +391,7 @@
         "type": "object",
         "properties": {
           "legIdentifier": {
-            "title": "Legidentifier",
+            "title": "Leg Identifier",
             "maxLength": 20,
             "type": "string",
             "description": "The leg identifier",
@@ -485,7 +485,7 @@
         "type": "object",
         "properties": {
           "legIdentifier": {
-            "title": "Legidentifier",
+            "title": "Leg Identifier",
             "maxLength": 20,
             "type": "string",
             "description": "The leg identifier",
