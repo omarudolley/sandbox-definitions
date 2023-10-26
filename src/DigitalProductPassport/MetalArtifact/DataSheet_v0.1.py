@@ -73,8 +73,8 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
     net_weight: float = Field(
         ...,
         title="Net Weight",
-        description="Net weight of the steel roll",
-        example=11720,
+        description="Net weight of the steel roll in kilograms",
+        example=11720.0,
     )
     en_standard_certification: List[EnStandardCertification] = Field(
         ...,

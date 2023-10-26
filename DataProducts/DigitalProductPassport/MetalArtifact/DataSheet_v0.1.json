@@ -235,7 +235,7 @@
             "title": "EN Standard Code",
             "maxLength": 20,
             "type": "string",
-            "description": "The identification code of the EN standard that the product complies with",
+            "description": "The identification code of the EN standard that the product is compliant with",
             "example": "EN 10002-1, EN 10002-5"
           }
         }
@@ -361,8 +361,8 @@
           "netWeight": {
             "title": "Net Weight",
             "type": "number",
-            "description": "Net weight of the steel roll",
-            "example": 11720
+            "description": "Net weight of the steel roll in kilograms",
+            "example": 11720.0
           },
           "enStandardCertification": {
             "title": "EN Standard Certification",
