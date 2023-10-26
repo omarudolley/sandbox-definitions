@@ -342,7 +342,7 @@
       },
       "LogisticsEmissionsDataResponse": {
         "title": "LogisticsEmissionsDataResponse",
-        "required": ["waybillNumber"],
+        "required": ["roadFreightEmissions", "seaFreightEmissions", "waybillNumber"],
         "type": "object",
         "properties": {
           "roadFreightEmissions": {
@@ -387,6 +387,7 @@
       },
       "RoadLeg": {
         "title": "RoadLeg",
+        "required": ["emissionsPerTce"],
         "type": "object",
         "properties": {
           "legIdentifier": {
@@ -480,6 +481,7 @@
       },
       "SeaLeg": {
         "title": "SeaLeg",
+        "required": ["emissionsPerTce"],
         "type": "object",
         "properties": {
           "legIdentifier": {

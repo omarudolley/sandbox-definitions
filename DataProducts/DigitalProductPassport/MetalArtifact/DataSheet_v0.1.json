@@ -327,7 +327,12 @@
       },
       "MetalArtifactDataSheetResponse": {
         "title": "MetalArtifactDataSheetResponse",
-        "required": ["productName", "productType", "netWeight"],
+        "required": [
+          "productName",
+          "productType",
+          "netWeight",
+          "enStandardCertification"
+        ],
         "type": "object",
         "properties": {
           "productName": {
@@ -355,10 +360,9 @@
           },
           "netWeight": {
             "title": "Net Weight",
-            "maxLength": 10,
-            "type": "string",
+            "type": "number",
             "description": "Net weight of the steel roll",
-            "example": "11 720kg"
+            "example": 11720
           },
           "enStandardCertification": {
             "title": "EN Standard Certification",
