@@ -137,7 +137,7 @@ class RoadLeg(CamelCaseModel):
         example=200,
     )
     emissions_per_tce: List[EmissionsPerTCE] = Field(
-        None,
+        ...,
         title="Emissions per TCE",
         description="The GHG emissions of the transport chain element related to the road transport leg",
     )
@@ -197,7 +197,7 @@ class SeaLeg(CamelCaseModel):
         example=500,
     )
     emissions_per_tce: List[EmissionsPerTCE] = Field(
-        None,
+        ...,
         title="Emissions per TCE",
         description="The GHG emissions of the transport chain element related to the road transport leg",
     )
@@ -220,11 +220,11 @@ class LogisticsEmissionsDataRequest(CamelCaseModel):
 
 class LogisticsEmissionsDataResponse(CamelCaseModel):
     road_freight_emissions: List[RoadLeg] = Field(
-        None,
+        ...,
         title="Road Freight Emissions",
     )
     sea_freight_emissions: List[SeaLeg] = Field(
-        None,
+        ...,
         title="Sea Freight Emissions",
     )
     waybill_number: str = Field(

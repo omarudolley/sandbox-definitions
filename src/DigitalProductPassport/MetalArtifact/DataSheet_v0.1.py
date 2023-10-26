@@ -77,7 +77,7 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
         example=11720,
     )
     en_standard_certification: List[EnStandardCertification] = Field(
-        None,
+        ...,
         title="EN Standard Certification",
         description="The list of EN standards",
     )
