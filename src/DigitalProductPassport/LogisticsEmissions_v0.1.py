@@ -59,16 +59,16 @@ class EmissionsPerTCE(CamelCaseModel):
         max_length=250,
         title="Description",
         description="The description of the transport chain element (TCE) related to the leg",
-        example="Loading for road transport",
+        example="Loading",
     )
     emissions: Optional[float] = Field(
         None,
         title="Emissions",
         description="The green house gas (GHG) emissions of the transport "
-        "chain element related to the road transport leg in CO2e tonnes",
+        "chain element related to the transport leg in CO2e tonnes",
         example=1.2,
     )
-    source_for_the_emissions: Optional[str] = Field(
+    source: Optional[str] = Field(
         None,
         max_length=250,
         title="Source For The Emissions",
@@ -123,7 +123,7 @@ class RoadLeg(CamelCaseModel):
         description="The type of the transport contract",
         example=ContractType.DEDICATED_CONTRACT,
     )
-    total_emissions_per_leg: Optional[float] = Field(
+    total_emissions: Optional[float] = Field(
         None,
         title="Total Emissions",
         description="The total green house gas (GHG) emissions of the road transport "
@@ -201,7 +201,7 @@ class SeaLeg(CamelCaseModel):
     emissions_per_tce: List[EmissionsPerTCE] = Field(
         ...,
         title="Emissions per TCE",
-        description="The GHG emissions of the transport chain element related to the road transport leg",
+        description="The GHG emissions of the transport chain element related to the sea transport leg",
     )
 
 

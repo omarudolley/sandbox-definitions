@@ -236,7 +236,7 @@
             "maxLength": 20,
             "type": "string",
             "description": "The identification code of the EN standard that the product is compliant with",
-            "example": "EN 10002-1, EN 10002-5"
+            "example": "EN 10002-1"
           }
         }
       },
@@ -361,23 +361,16 @@
           "netWeight": {
             "title": "Net Weight",
             "type": "number",
-            "description": "Net weight of the steel roll in kilograms",
+            "description": "Net weight of the metal artifact in kilograms",
             "example": 11720.0
           },
           "enStandardCertification": {
-            "title": "EN Standard Certification",
+            "title": "EN Standard Certifications",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EnStandardCertification"
             },
             "description": "The list of EN standards"
-          },
-          "treatmentType": {
-            "title": "Treatment Type",
-            "maxLength": 20,
-            "type": "string",
-            "description": "The type of re-treatment for the steel roll",
-            "example": "Prelube oil"
           }
         }
       },

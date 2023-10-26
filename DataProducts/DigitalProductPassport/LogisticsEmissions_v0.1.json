@@ -242,15 +242,15 @@
             "maxLength": 250,
             "type": "string",
             "description": "The description of the transport chain element (TCE) related to the leg",
-            "example": "Loading for road transport"
+            "example": "Loading"
           },
           "emissions": {
             "title": "Emissions",
             "type": "number",
-            "description": "The green house gas (GHG) emissions of the transport chain element related to the road transport leg in CO2e tonnes",
+            "description": "The green house gas (GHG) emissions of the transport chain element related to the transport leg in CO2e tonnes",
             "example": 1.2
           },
-          "sourceForTheEmissions": {
+          "source": {
             "title": "Source For The Emissions",
             "maxLength": 250,
             "type": "string",
@@ -451,7 +451,7 @@
             "description": "The type of the transport contract",
             "example": "Dedicated contract"
           },
-          "totalEmissionsPerLeg": {
+          "totalEmissions": {
             "title": "Total Emissions",
             "type": "number",
             "description": "The total green house gas (GHG) emissions of the road transport and other related logistics hub operations measured in CO2e tonnes",
@@ -553,7 +553,7 @@
             "items": {
               "$ref": "#/components/schemas/EmissionsPerTCE"
             },
-            "description": "The GHG emissions of the transport chain element related to the road transport leg"
+            "description": "The GHG emissions of the transport chain element related to the sea transport leg"
           }
         }
       },

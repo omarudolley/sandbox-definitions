@@ -10,7 +10,7 @@ class EnStandardCertification(CamelCaseModel):
         title="EN Standard Code",
         max_length=20,
         description="The identification code of the EN standard that the product is compliant with",
-        example="EN 10002-1, EN 10002-5",
+        example="EN 10002-1",
     )
 
 
@@ -73,20 +73,13 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
     net_weight: float = Field(
         ...,
         title="Net Weight",
-        description="Net weight of the steel roll in kilograms",
+        description="Net weight of the metal artifact in kilograms",
         example=11720.0,
     )
     en_standard_certification: List[EnStandardCertification] = Field(
         ...,
-        title="EN Standard Certification",
+        title="EN Standard Certifications",
         description="The list of EN standards",
-    )
-    treatment_type: Optional[str] = Field(
-        None,
-        title="Treatment Type",
-        max_length=20,
-        description="The type of re-treatment for the steel roll",
-        example="Prelube oil",
     )
 
 
