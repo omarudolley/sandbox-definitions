@@ -32,7 +32,7 @@ class EnergyContent(CamelCaseModel):
     )
 
 
-class FoodArtifactDataSheetRequest(CamelCaseModel):
+class NutritionalValuesRequest(CamelCaseModel):
     product: str = Field(
         ...,
         title="Product code",
@@ -47,7 +47,7 @@ class FoodArtifactDataSheetRequest(CamelCaseModel):
     )
 
 
-class FoodArtifactDataSheetResponse(CamelCaseModel):
+class NutritionalValuesResponse(CamelCaseModel):
     energy_content: EnergyContent = Field(
         ...,
         title="Energy Content",
@@ -88,8 +88,8 @@ DEFINITION = DataProductDefinition(
     version="0.1.0",
     title="Food Artifact Nutritional Values",
     description="Returns the nutritional values of a food product",
-    request=FoodArtifactDataSheetRequest,
-    response=FoodArtifactDataSheetResponse,
+    request=NutritionalValuesRequest,
+    response=NutritionalValuesResponse,
     requires_authorization=False,
     requires_consent=False,
 )

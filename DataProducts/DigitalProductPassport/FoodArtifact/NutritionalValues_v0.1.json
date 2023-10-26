@@ -50,7 +50,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FoodArtifactDataSheetRequest"
+                "$ref": "#/components/schemas/NutritionalValuesRequest"
               }
             }
           },
@@ -62,7 +62,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FoodArtifactDataSheetResponse"
+                  "$ref": "#/components/schemas/NutritionalValuesResponse"
                 }
               }
             }
@@ -265,81 +265,6 @@
           }
         }
       },
-      "FoodArtifactDataSheetRequest": {
-        "title": "FoodArtifactDataSheetRequest",
-        "required": ["product", "id"],
-        "type": "object",
-        "properties": {
-          "product": {
-            "title": "Product code",
-            "type": "string",
-            "description": "The product code used for identifying the product type",
-            "example": "french-fries-500g"
-          },
-          "id": {
-            "title": "Identifier",
-            "type": "string",
-            "description": "Unique identifier of the product",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
-          }
-        }
-      },
-      "FoodArtifactDataSheetResponse": {
-        "title": "FoodArtifactDataSheetResponse",
-        "required": [
-          "energyContent",
-          "fatContent",
-          "carbonHydrates",
-          "sugar",
-          "protein",
-          "salt"
-        ],
-        "type": "object",
-        "properties": {
-          "energyContent": {
-            "title": "Energy Content",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EnergyContent"
-              }
-            ],
-            "description": "The details of the energy content of the food artifact"
-          },
-          "fatContent": {
-            "title": "Fat Content",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FatContent"
-              }
-            ],
-            "description": "The details of the fat content of the food artifact"
-          },
-          "carbonHydrates": {
-            "title": "Carbon Hydrates",
-            "type": "number",
-            "description": "The amount of carbon hydrates per 100g measured in grams",
-            "example": 28
-          },
-          "sugar": {
-            "title": "Sugar",
-            "type": "number",
-            "description": "The amount of sugar per 100g measured in grams",
-            "example": 0.5
-          },
-          "protein": {
-            "title": "Protein",
-            "type": "number",
-            "description": "The amount of protein per 100g measured in grams",
-            "example": 3
-          },
-          "salt": {
-            "title": "Salt",
-            "type": "number",
-            "description": "The amount of salt per 100g measured in grams",
-            "example": 0.01
-          }
-        }
-      },
       "Forbidden": {
         "title": "Forbidden",
         "required": ["type", "message"],
@@ -396,6 +321,81 @@
             "title": "Error message",
             "type": "string",
             "description": "Error description"
+          }
+        }
+      },
+      "NutritionalValuesRequest": {
+        "title": "NutritionalValuesRequest",
+        "required": ["product", "id"],
+        "type": "object",
+        "properties": {
+          "product": {
+            "title": "Product code",
+            "type": "string",
+            "description": "The product code used for identifying the product type",
+            "example": "french-fries-500g"
+          },
+          "id": {
+            "title": "Identifier",
+            "type": "string",
+            "description": "Unique identifier of the product",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          }
+        }
+      },
+      "NutritionalValuesResponse": {
+        "title": "NutritionalValuesResponse",
+        "required": [
+          "energyContent",
+          "fatContent",
+          "carbonHydrates",
+          "sugar",
+          "protein",
+          "salt"
+        ],
+        "type": "object",
+        "properties": {
+          "energyContent": {
+            "title": "Energy Content",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EnergyContent"
+              }
+            ],
+            "description": "The details of the energy content of the food artifact"
+          },
+          "fatContent": {
+            "title": "Fat Content",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FatContent"
+              }
+            ],
+            "description": "The details of the fat content of the food artifact"
+          },
+          "carbonHydrates": {
+            "title": "Carbon Hydrates",
+            "type": "number",
+            "description": "The amount of carbon hydrates per 100g measured in grams",
+            "example": 28
+          },
+          "sugar": {
+            "title": "Sugar",
+            "type": "number",
+            "description": "The amount of sugar per 100g measured in grams",
+            "example": 0.5
+          },
+          "protein": {
+            "title": "Protein",
+            "type": "number",
+            "description": "The amount of protein per 100g measured in grams",
+            "example": 3
+          },
+          "salt": {
+            "title": "Salt",
+            "type": "number",
+            "description": "The amount of salt per 100g measured in grams",
+            "example": 0.01
           }
         }
       },
