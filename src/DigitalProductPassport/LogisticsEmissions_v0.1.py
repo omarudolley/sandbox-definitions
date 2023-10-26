@@ -48,7 +48,7 @@ class VesselType(str, Enum):
     RO_RO = "Ro-Ro"
     LIQUEFIED_GAS_TANKER = "Liquefied gas tanker"
     OIL_TANKER = "Oil tanker"
-    OTHER_LIQUEFIED_TANKER = "Other liquefied tanker"
+    OTHER_LIQUID_TANKER = "Other liquid tanker"
     CONTAINER = "Container"
     VEHICLE_CARRIER = "Vehicle carrier"
 
