@@ -247,7 +247,7 @@
           "emissions": {
             "title": "Emissions",
             "type": "number",
-            "description": "The green house gas (GHG) emissions of the transport chain element related to the road tranport leg in CO2e tonnes",
+            "description": "The green house gas (GHG) emissions of the transport chain element related to the road transport leg in CO2e tonnes",
             "example": 1.2
           },
           "sourceForTheEmissions": {

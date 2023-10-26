@@ -65,7 +65,7 @@ class EmissionsPerTCE(CamelCaseModel):
         None,
         title="Emissions",
         description="The green house gas (GHG) emissions of the transport "
-        "chain element related to the road tranport leg in CO2e tonnes",
+        "chain element related to the road transport leg in CO2e tonnes",
         example=1.2,
     )
     source_for_the_emissions: Optional[str] = Field(
