@@ -76,7 +76,7 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
         description="Net weight of the metal artifact in kilograms",
         example=11720.0,
     )
-    en_standard_certification: List[EnStandardCertification] = Field(
+    en_standard_certifications: List[EnStandardCertification] = Field(
         ...,
         title="EN Standard Certifications",
         description="The list of EN standards",

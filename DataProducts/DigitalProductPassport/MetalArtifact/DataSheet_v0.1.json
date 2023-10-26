@@ -331,7 +331,7 @@
           "productName",
           "productType",
           "netWeight",
-          "enStandardCertification"
+          "enStandardCertifications"
         ],
         "type": "object",
         "properties": {
@@ -364,7 +364,7 @@
             "description": "Net weight of the metal artifact in kilograms",
             "example": 11720.0
           },
-          "enStandardCertification": {
+          "enStandardCertifications": {
             "title": "EN Standard Certifications",
             "type": "array",
             "items": {
