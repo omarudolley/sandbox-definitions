@@ -71,7 +71,7 @@ class EmissionsPerTCE(CamelCaseModel):
     source: Optional[str] = Field(
         None,
         max_length=250,
-        title="Source For The Emissions",
+        title="Source For The Emission",
         description="The source that generated the emission in the TCE",
         example="Diesel",
     )
