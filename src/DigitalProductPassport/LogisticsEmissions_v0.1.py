@@ -202,7 +202,8 @@ class SeaLeg(CamelCaseModel):
     emissions_per_tce: List[EmissionsPerTCE] = Field(
         ...,
         title="Emissions per TCE",
-        description="The GHG emissions of the transport chain element related to the sea transport leg",
+        description="The GHG emissions of the transport chain element related to the "
+        "sea transport leg",
     )
 
 
