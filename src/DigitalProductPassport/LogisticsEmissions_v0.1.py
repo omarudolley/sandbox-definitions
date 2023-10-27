@@ -58,7 +58,8 @@ class EmissionsPerTCE(CamelCaseModel):
         None,
         max_length=250,
         title="Description",
-        description="The description of the transport chain element (TCE) related to the leg",
+        description="The description of the transport chain element (TCE) related to "
+        "the leg",
         example="Loading",
     )
     emissions: Optional[float] = Field(
