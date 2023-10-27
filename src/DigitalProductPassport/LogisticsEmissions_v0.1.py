@@ -210,7 +210,7 @@ class LogisticsEmissionsRequest(CamelCaseModel):
         ...,
         title="Product code",
         description="The product code used for identifying the product type",
-        example="french-fries-500g ",
+        example="french-fries-500g",
     )
     id: str = Field(
         ...,
