@@ -215,7 +215,7 @@ class LogisticsEmissionsRequest(CamelCaseModel):
     id: str = Field(
         ...,
         title="Identifier",
-        description="Unique identifier for the product",
+        description="Unique identifier of the product",
         example="550e8400-e29b-41d4-a716-446655440000",
     )
 
