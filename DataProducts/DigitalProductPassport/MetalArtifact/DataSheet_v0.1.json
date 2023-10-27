@@ -312,16 +312,16 @@
         "type": "object",
         "properties": {
           "product": {
-            "title": "Product identifier",
+            "title": "Product code",
             "type": "string",
-            "description": "Technical product identifier used by the manufacturer",
-            "example": "battery-100wh-s"
+            "description": "The product code used for identifying the product type",
+            "example": "steel-roll-1234x"
           },
           "id": {
             "title": "Identifier",
             "type": "string",
-            "description": "Unique identifier for the product",
-            "example": "177389-09633"
+            "description": "Unique identifier of the product",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         }
       },

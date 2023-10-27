@@ -251,7 +251,7 @@
             "example": 1.2
           },
           "source": {
-            "title": "Source For The Emissions",
+            "title": "Source For The Emission",
             "maxLength": 250,
             "type": "string",
             "description": "The source that generated the emission in the TCE",
@@ -330,12 +330,12 @@
             "title": "Product code",
             "type": "string",
             "description": "The product code used for identifying the product type",
-            "example": "french-fries-500g "
+            "example": "french-fries-500g"
           },
           "id": {
             "title": "Identifier",
             "type": "string",
-            "description": "Unique identifier for the product",
+            "description": "Unique identifier of the product",
             "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         }
