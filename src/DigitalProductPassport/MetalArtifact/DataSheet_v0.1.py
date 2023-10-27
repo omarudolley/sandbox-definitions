@@ -38,15 +38,15 @@ class Measures(CamelCaseModel):
 class MetalArtifactDataSheetRequest(CamelCaseModel):
     product: str = Field(
         ...,
-        title="Product identifier",
-        description="Technical product identifier used by the manufacturer",
-        example="battery-100wh-s",
+        title="Product code",
+        description="The product code used for identifying the product type",
+        example="steel-roll-1234x",
     )
     id: str = Field(
         ...,
         title="Identifier",
-        description="Unique identifier for the product",
-        example="177389-09633",
+        description="Unique identifier of the product",
+        example="550e8400-e29b-41d4-a716-446655440000",
     )
 
 
