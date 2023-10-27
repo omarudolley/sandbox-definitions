@@ -9,7 +9,8 @@ class EnStandardCertification(CamelCaseModel):
         None,
         title="EN Standard Code",
         max_length=20,
-        description="The identification code of the EN standard that the product is compliant with",
+        description="The identification code of the EN standard that the product is "
+        "compliant with",
         example="EN 10002-1",
     )
 
