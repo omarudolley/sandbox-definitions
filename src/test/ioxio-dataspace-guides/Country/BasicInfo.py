@@ -1,7 +1,8 @@
 from typing import List, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import Field, constr
+from pydantic import Field, StringConstraints
+from typing_extensions import Annotated
 
 
 class BasicCountryInfoRequest(CamelCaseModel):
@@ -9,7 +10,7 @@ class BasicCountryInfoRequest(CamelCaseModel):
         ...,
         title="Code",
         description="ISO 3166-1 alpha-2 code for the country",
-        example="FI",
+        examples=["FI"],
         min_length=2,
         max_length=2,
     )
@@ -20,7 +21,7 @@ class Capital(CamelCaseModel):
         ...,
         title="Name",
         description="The name of the capital of the Country",
-        example="Helsinki",
+        examples=["Helsinki"],
     )
     lat: float = Field(
         ...,
@@ -28,7 +29,7 @@ class Capital(CamelCaseModel):
         description="The latitude coordinate of the Capital",
         ge=-90.0,
         le=90.0,
-        example=60.170833,
+        examples=[60.170833],
     )
     lon: float = Field(
         ...,
@@ -36,7 +37,7 @@ class Capital(CamelCaseModel):
         description="The longitude coordinate of the Capital",
         ge=-180.0,
         le=180.0,
-        example=24.9375,
+        examples=[24.9375],
     )
 
 
@@ -45,7 +46,7 @@ class BasicCountryInfoResponse(CamelCaseModel):
         ...,
         title="Code",
         description="ISO 3166-1 alpha-2 code for the country",
-        example="FI",
+        examples=["FI"],
         min_length=2,
         max_length=2,
     )
@@ -53,19 +54,21 @@ class BasicCountryInfoResponse(CamelCaseModel):
         ...,
         title="Name",
         description="The name of the country",
-        example="Finland",
+        examples=["Finland"],
     )
     area: float = Field(
         ...,
         title="Area",
         description="The area of the country in km^2",
-        example=338455,
+        examples=[338455],
     )
-    languages: List[constr(min_length=2, max_length=2)] = Field(
+    languages: List[
+        Annotated[str, StringConstraints(min_length=2, max_length=2)]
+    ] = Field(
         ...,
         title="Official languages",
         description="ISO 639-1 language codes for the official languages",
-        example=["fi", "sv"],
+        examples=[["fi", "sv"]],
     )
     capital: Optional[Capital] = Field(
         None,

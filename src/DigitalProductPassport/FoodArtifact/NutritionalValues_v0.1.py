@@ -7,13 +7,13 @@ class FatContent(CamelCaseModel):
         ...,
         title="Fats",
         description="The amount of fat per 100g measured in grams",
-        example=6,
+        examples=[6],
     )
     saturated_fats: float = Field(
         ...,
         title="Saturated Fats",
         description="The amount of saturated fat per 100g measured in grams",
-        example=0.4,
+        examples=[0.4],
     )
 
 
@@ -22,13 +22,13 @@ class EnergyContent(CamelCaseModel):
         ...,
         title="Energy",
         description="The amount of energy per 100g measured in kilojoules",
-        example=750,
+        examples=[750],
     )
     calories: int = Field(
         ...,
         title="Calories",
         description="The number of calories per 100g measured in kilocalories",
-        example=180,
+        examples=[180],
     )
 
 
@@ -37,13 +37,13 @@ class NutritionalValuesRequest(CamelCaseModel):
         ...,
         title="Product code",
         description="The product code used for identifying the product type",
-        example="french-fries-500g",
+        examples=["french-fries-500g"],
     )
     id: str = Field(
         ...,
         title="Identifier",
         description="Unique identifier of the product",
-        example="550e8400-e29b-41d4-a716-446655440000",
+        examples=["550e8400-e29b-41d4-a716-446655440000"],
     )
 
 
@@ -62,25 +62,25 @@ class NutritionalValuesResponse(CamelCaseModel):
         ...,
         title="Carbon Hydrates",
         description="The amount of carbon hydrates per 100g measured in grams",
-        example=28,
+        examples=[28],
     )
     sugar: float = Field(
         ...,
         title="Sugar",
         description="The amount of sugar per 100g measured in grams",
-        example=0.5,
+        examples=[0.5],
     )
     protein: float = Field(
         ...,
         title="Protein",
         description="The amount of protein per 100g measured in grams",
-        example=3,
+        examples=[3],
     )
     salt: float = Field(
         ...,
         title="Salt",
         description="The amount of salt per 100g measured in grams",
-        example=0.01,
+        examples=[0.01],
     )
 
 
