@@ -11,7 +11,7 @@ class EnStandardCertification(CamelCaseModel):
         max_length=20,
         description="The identification code of the EN standard that the product is "
         "compliant with",
-        example="EN 10002-1",
+        examples=["EN 10002-1"],
     )
 
 
@@ -20,19 +20,19 @@ class Measures(CamelCaseModel):
         None,
         title="Width",
         description="The width of the product measured in centimeters",
-        example=1500,
+        examples=[1500],
     )
     length: Optional[int] = Field(
         None,
         title="Length",
         description="The length of the product measured in centimeters",
-        example=4000,
+        examples=[4000],
     )
     height: Optional[int] = Field(
         None,
         title="Height",
         description="The height of the product measured in centimeters",
-        example=0,
+        examples=[0],
     )
 
 
@@ -41,13 +41,13 @@ class MetalArtifactDataSheetRequest(CamelCaseModel):
         ...,
         title="Product code",
         description="The product code used for identifying the product type",
-        example="steel-roll-1234x",
+        examples=["steel-roll-1234x"],
     )
     id: str = Field(
         ...,
         title="Identifier",
         description="Unique identifier of the product",
-        example="550e8400-e29b-41d4-a716-446655440000",
+        examples=["550e8400-e29b-41d4-a716-446655440000"],
     )
 
 
@@ -57,14 +57,16 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
         title="Product Name",
         max_length=250,
         description="The commercial name of the metal product",
-        example="HOT-DIP ZINC-COATED STEEL STRIP, HIGH STRENGTH STEEL FOR COLD FORMING",
+        examples=[
+            "HOT-DIP ZINC-COATED STEEL STRIP, HIGH STRENGTH STEEL FOR COLD FORMING"
+        ],
     )
     product_type: str = Field(
         ...,
         title="Product Type",
         max_length=250,
         description="The type of the metal product",
-        example="Steel roll",
+        examples=["Steel roll"],
     )
     measures: Optional[Measures] = Field(
         None,
@@ -75,7 +77,7 @@ class MetalArtifactDataSheetResponse(CamelCaseModel):
         ...,
         title="Net Weight",
         description="Net weight of the metal artifact in kilograms",
-        example=11720.0,
+        examples=[11720.0],
     )
     en_standard_certifications: List[EnStandardCertification] = Field(
         ...,

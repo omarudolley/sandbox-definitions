@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.0",
   "info": {
     "title": "Data Sheet For Metal Artifacts",
     "description": "Returns the basic product information of a metal product",
@@ -13,48 +13,57 @@
         "operationId": "request_DigitalProductPassport_MetalArtifact_DataSheet_v0_1",
         "parameters": [
           {
-            "description": "Optional consent token",
-            "required": false,
-            "schema": {
-              "title": "X-Consent-Token",
-              "type": "string",
-              "description": "Optional consent token"
-            },
             "name": "x-consent-token",
-            "in": "header"
-          },
-          {
-            "description": "The login token. Value should be \"Bearer [token]\"",
+            "in": "header",
             "required": false,
             "schema": {
-              "title": "Authorization",
               "type": "string",
-              "description": "The login token. Value should be \"Bearer [token]\""
+              "description": "Optional consent token",
+              "default": "",
+              "title": "X-Consent-Token"
             },
+            "description": "Optional consent token"
+          },
+          {
             "name": "authorization",
-            "in": "header"
-          },
-          {
-            "description": "The bare domain of the system that provided the token.",
+            "in": "header",
             "required": false,
             "schema": {
-              "title": "X-Authorization-Provider",
               "type": "string",
-              "description": "The bare domain of the system that provided the token."
+              "description": "The login token. Value should be \"Bearer [token]\"",
+              "default": "",
+              "title": "Authorization"
             },
+            "description": "The login token. Value should be \"Bearer [token]\""
+          },
+          {
             "name": "x-authorization-provider",
-            "in": "header"
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The bare domain of the system that provided the token.",
+              "title": "X-Authorization-Provider"
+            },
+            "description": "The bare domain of the system that provided the token."
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/MetalArtifactDataSheetRequest"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -68,94 +77,98 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Unauthorized"
                 }
               }
-            }
+            },
+            "description": "Unauthorized"
           },
           "403": {
-            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Forbidden"
                 }
               }
-            }
+            },
+            "description": "Forbidden"
           },
           "404": {
-            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NotFound"
                 }
               }
-            }
+            },
+            "description": "Not Found"
           },
           "444": {
-            "description": "Additional Response",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataSourceNotFound"
                 }
               }
-            }
+            },
+            "description": "Additional Response"
           },
           "500": {
-            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataSourceError"
                 }
               }
-            }
+            },
+            "description": "Internal Server Error"
           },
           "502": {
-            "description": "Bad Gateway",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BadGateway"
                 }
               }
-            }
+            },
+            "description": "Bad Gateway"
           },
           "503": {
-            "description": "Service Unavailable",
             "content": {
+              "text/plain": {},
+              "text/html": {},
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ServiceUnavailable"
                 }
               }
-            }
+            },
+            "description": "Service Unavailable"
           },
           "504": {
-            "description": "Gateway Timeout",
             "content": {
+              "text/plain": {},
+              "text/html": {},
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GatewayTimeout"
                 }
               }
-            }
+            },
+            "description": "Gateway Timeout"
           },
           "550": {
-            "description": "Additional Response",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DoesNotConformToDefinition"
                 }
               }
-            }
+            },
+            "description": "Additional Response"
           },
           "422": {
             "description": "Validation Error",
@@ -174,260 +187,290 @@
   "components": {
     "schemas": {
       "BadGateway": {
-        "title": "BadGateway",
-        "type": "object",
         "properties": {},
+        "type": "object",
+        "title": "BadGateway",
         "description": "This response is reserved by Product Gateway."
       },
       "DataSourceError": {
-        "title": "DataSourceError",
-        "required": ["type", "message"],
-        "type": "object",
         "properties": {
           "type": {
-            "title": "Error type",
             "type": "string",
+            "title": "Error type",
             "description": "Error identifier"
           },
           "message": {
-            "title": "Error message",
             "type": "string",
+            "title": "Error message",
             "description": "Error description"
           }
-        }
+        },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "DataSourceError"
       },
       "DataSourceNotFound": {
-        "title": "DataSourceNotFound",
-        "type": "object",
         "properties": {
           "message": {
-            "title": "Error message",
             "type": "string",
+            "title": "Error message",
             "description": "Error description",
             "default": "Data source not found"
           }
         },
+        "type": "object",
+        "title": "DataSourceNotFound",
         "description": "This response is reserved by Product Gateway."
       },
       "DoesNotConformToDefinition": {
-        "title": "DoesNotConformToDefinition",
-        "required": ["data_source_status_code"],
-        "type": "object",
         "properties": {
           "message": {
-            "title": "Message",
             "type": "string",
+            "title": "Message",
             "default": "Response from data source does not conform to definition"
           },
           "data_source_status_code": {
-            "title": "Data source status code",
             "type": "integer",
+            "title": "Data source status code",
             "description": "HTTP status code returned from the data source"
           }
         },
+        "type": "object",
+        "required": ["data_source_status_code"],
+        "title": "DoesNotConformToDefinition",
         "description": "This response is reserved by Product Gateway."
       },
       "EnStandardCertification": {
-        "title": "EnStandardCertification",
-        "type": "object",
         "properties": {
           "enStandardCode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "EN Standard Code",
-            "maxLength": 20,
-            "type": "string",
             "description": "The identification code of the EN standard that the product is compliant with",
-            "example": "EN 10002-1"
+            "examples": ["EN 10002-1"]
           }
-        }
+        },
+        "type": "object",
+        "title": "EnStandardCertification"
       },
       "Forbidden": {
-        "title": "Forbidden",
-        "required": ["type", "message"],
-        "type": "object",
         "properties": {
           "type": {
-            "title": "Error type",
             "type": "string",
+            "title": "Error type",
             "description": "Error identifier"
           },
           "message": {
-            "title": "Error message",
             "type": "string",
-            "description": "Error description"
-          }
-        }
-      },
-      "GatewayTimeout": {
-        "title": "GatewayTimeout",
-        "type": "object",
-        "properties": {
-          "message": {
             "title": "Error message",
-            "type": "string",
             "description": "Error description"
           }
         },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "Forbidden"
+      },
+      "GatewayTimeout": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "GatewayTimeout",
         "description": "This response is reserved by Product Gateway."
       },
       "HTTPValidationError": {
-        "title": "HTTPValidationError",
-        "type": "object",
         "properties": {
           "detail": {
-            "title": "Detail",
-            "type": "array",
             "items": {
               "$ref": "#/components/schemas/ValidationError"
-            }
+            },
+            "type": "array",
+            "title": "Detail"
           }
-        }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
       },
       "Measures": {
-        "title": "Measures",
-        "type": "object",
         "properties": {
           "width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Width",
-            "type": "integer",
             "description": "The width of the product measured in centimeters",
-            "example": 1500
+            "examples": [1500]
           },
           "length": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Length",
-            "type": "integer",
             "description": "The length of the product measured in centimeters",
-            "example": 4000
+            "examples": [4000]
           },
           "height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Height",
-            "type": "integer",
             "description": "The height of the product measured in centimeters",
-            "example": 0
+            "examples": [0]
           }
-        }
+        },
+        "type": "object",
+        "title": "Measures"
       },
       "MetalArtifactDataSheetRequest": {
-        "title": "MetalArtifactDataSheetRequest",
-        "required": ["product", "id"],
-        "type": "object",
         "properties": {
           "product": {
-            "title": "Product code",
             "type": "string",
+            "title": "Product code",
             "description": "The product code used for identifying the product type",
-            "example": "steel-roll-1234x"
+            "examples": ["steel-roll-1234x"]
           },
           "id": {
-            "title": "Identifier",
             "type": "string",
+            "title": "Identifier",
             "description": "Unique identifier of the product",
-            "example": "550e8400-e29b-41d4-a716-446655440000"
+            "examples": ["550e8400-e29b-41d4-a716-446655440000"]
           }
-        }
+        },
+        "type": "object",
+        "required": ["product", "id"],
+        "title": "MetalArtifactDataSheetRequest"
       },
       "MetalArtifactDataSheetResponse": {
-        "title": "MetalArtifactDataSheetResponse",
+        "properties": {
+          "productName": {
+            "type": "string",
+            "maxLength": 250,
+            "title": "Product Name",
+            "description": "The commercial name of the metal product",
+            "examples": [
+              "HOT-DIP ZINC-COATED STEEL STRIP, HIGH STRENGTH STEEL FOR COLD FORMING"
+            ]
+          },
+          "productType": {
+            "type": "string",
+            "maxLength": 250,
+            "title": "Product Type",
+            "description": "The type of the metal product",
+            "examples": ["Steel roll"]
+          },
+          "measures": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Measures"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Measures",
+            "description": "The dimensional measures of the metal product"
+          },
+          "netWeight": {
+            "type": "number",
+            "title": "Net Weight",
+            "description": "Net weight of the metal artifact in kilograms",
+            "examples": [11720.0]
+          },
+          "enStandardCertifications": {
+            "items": {
+              "$ref": "#/components/schemas/EnStandardCertification"
+            },
+            "type": "array",
+            "title": "EN Standard Certifications",
+            "description": "The list of EN standards"
+          }
+        },
+        "type": "object",
         "required": [
           "productName",
           "productType",
           "netWeight",
           "enStandardCertifications"
         ],
-        "type": "object",
-        "properties": {
-          "productName": {
-            "title": "Product Name",
-            "maxLength": 250,
-            "type": "string",
-            "description": "The commercial name of the metal product",
-            "example": "HOT-DIP ZINC-COATED STEEL STRIP, HIGH STRENGTH STEEL FOR COLD FORMING"
-          },
-          "productType": {
-            "title": "Product Type",
-            "maxLength": 250,
-            "type": "string",
-            "description": "The type of the metal product",
-            "example": "Steel roll"
-          },
-          "measures": {
-            "title": "Measures",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Measures"
-              }
-            ],
-            "description": "The dimensional measures of the metal product"
-          },
-          "netWeight": {
-            "title": "Net Weight",
-            "type": "number",
-            "description": "Net weight of the metal artifact in kilograms",
-            "example": 11720.0
-          },
-          "enStandardCertifications": {
-            "title": "EN Standard Certifications",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EnStandardCertification"
-            },
-            "description": "The list of EN standards"
-          }
-        }
+        "title": "MetalArtifactDataSheetResponse"
       },
       "NotFound": {
-        "title": "NotFound",
-        "required": ["type", "message"],
-        "type": "object",
         "properties": {
           "type": {
-            "title": "Error type",
             "type": "string",
+            "title": "Error type",
             "description": "Error identifier"
           },
           "message": {
-            "title": "Error message",
             "type": "string",
-            "description": "Error description"
-          }
-        }
-      },
-      "ServiceUnavailable": {
-        "title": "ServiceUnavailable",
-        "type": "object",
-        "properties": {
-          "message": {
             "title": "Error message",
-            "type": "string",
             "description": "Error description"
           }
         },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "NotFound"
+      },
+      "ServiceUnavailable": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "ServiceUnavailable",
         "description": "This response is reserved by Product Gateway."
       },
       "Unauthorized": {
-        "title": "Unauthorized",
-        "required": ["type", "message"],
-        "type": "object",
         "properties": {
           "type": {
-            "title": "Error type",
             "type": "string",
+            "title": "Error type",
             "description": "Error identifier"
           },
           "message": {
-            "title": "Error message",
             "type": "string",
+            "title": "Error message",
             "description": "Error description"
           }
-        }
+        },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "Unauthorized"
       },
       "ValidationError": {
-        "title": "ValidationError",
-        "required": ["loc", "msg", "type"],
-        "type": "object",
         "properties": {
           "loc": {
-            "title": "Location",
-            "type": "array",
             "items": {
               "anyOf": [
                 {
@@ -437,17 +480,22 @@
                   "type": "integer"
                 }
               ]
-            }
+            },
+            "type": "array",
+            "title": "Location"
           },
           "msg": {
-            "title": "Message",
-            "type": "string"
+            "type": "string",
+            "title": "Message"
           },
           "type": {
-            "title": "Error Type",
-            "type": "string"
+            "type": "string",
+            "title": "Error Type"
           }
-        }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
       }
     }
   }

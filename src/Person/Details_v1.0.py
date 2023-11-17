@@ -11,13 +11,13 @@ class PersonDetailsResponse(CamelCaseModel):
         ...,
         title="Full name",
         description="Person's name and surname",
-        example="Joshua Gray",
+        examples=["Joshua Gray"],
     )
     address: str = Field(
         ...,
         title="Address",
         description="Person's home address",
-        example="6 Raymond river\nRileybury\nCR3 6XA",
+        examples=["6 Raymond river\nRileybury\nCR3 6XA"],
     )
 
 
