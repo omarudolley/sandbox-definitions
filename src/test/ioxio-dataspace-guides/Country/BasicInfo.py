@@ -68,7 +68,7 @@ class BasicCountryInfoResponse(CamelCaseModel):
         ...,
         title="Official languages",
         description="ISO 639-1 language codes for the official languages",
-        examples=["fi", "sv"],
+        examples=[["fi", "sv"]],
     )
     capital: Optional[Capital] = Field(
         None,

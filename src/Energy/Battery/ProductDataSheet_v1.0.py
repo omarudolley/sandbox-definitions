@@ -104,7 +104,11 @@ class Dimensions(CamelCaseModel):
         title="Width [mm]",
         examples=[380],
     )
-    height: int = Field(..., title="Height [mm]", examples=[160])
+    height: int = Field(
+        ...,
+        title="Height [mm]",
+        examples=[160],
+    )
 
 
 class OperatingTemperature(CamelCaseModel):
@@ -233,13 +237,15 @@ class BatteryDataResponse(CamelCaseModel):
     standards_compliance: Set[str] = Field(
         title="Standards Compliance",
         examples=[
-            ComplianceStandard.ECE_R100,
-            ComplianceStandard.ECE_R10,
-            ComplianceStandard.UN_38_3,
-            ComplianceStandard.ISO_16750,
-            ComplianceStandard.IEC_61508_SIL_2,
-            ComplianceStandard.ISO_13849_PL_C,
-            ComplianceStandard.IEC_62061_SIL_2,
+            {
+                ComplianceStandard.ECE_R100,
+                ComplianceStandard.ECE_R10,
+                ComplianceStandard.UN_38_3,
+                ComplianceStandard.ISO_16750,
+                ComplianceStandard.IEC_61508_SIL_2,
+                ComplianceStandard.ISO_13849_PL_C,
+                ComplianceStandard.IEC_62061_SIL_2,
+            }
         ],
     )
 

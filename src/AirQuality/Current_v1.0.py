@@ -46,8 +46,10 @@ class CurrentAirQualityResponse(CamelCaseModel):
         title="Source Attribution",
         description="List of text to show required credits to data sources",
         examples=[
-            "Eesti välisõhu kvaliteet - Estonian ambient air quality",
-            "World Air Quality Index Project",
+            [
+                "Eesti välisõhu kvaliteet - Estonian ambient air quality",
+                "World Air Quality Index Project",
+            ]
         ],
     )
 
