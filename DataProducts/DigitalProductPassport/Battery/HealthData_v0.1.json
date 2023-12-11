@@ -1,0 +1,592 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Battery Health Data",
+    "description": "The health and status data of a battery as required by Battery Passport spcification of the European Commission's Battery Act (2023/1542)",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/DigitalProductPassport/Battery/HealthData_v0.1": {
+      "post": {
+        "summary": "Battery Health Data",
+        "description": "The health and status data of a battery as required by Battery Passport spcification of the European Commission's Battery Act (2023/1542)",
+        "operationId": "request_DigitalProductPassport_Battery_HealthData_v0_1",
+        "parameters": [
+          {
+            "name": "x-consent-token",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Optional consent token",
+              "default": "",
+              "title": "X-Consent-Token"
+            },
+            "description": "Optional consent token"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The login token. Value should be \"Bearer [token]\"",
+              "default": "",
+              "title": "Authorization"
+            },
+            "description": "The login token. Value should be \"Bearer [token]\""
+          },
+          {
+            "name": "x-authorization-provider",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The bare domain of the system that provided the token.",
+              "title": "X-Authorization-Provider"
+            },
+            "description": "The bare domain of the system that provided the token."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HealthDataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthDataResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "444": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceNotFound"
+                }
+              }
+            },
+            "description": "Additional Response"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataSourceError"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "502": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadGateway"
+                }
+              }
+            },
+            "description": "Bad Gateway"
+          },
+          "503": {
+            "content": {
+              "text/plain": {},
+              "text/html": {},
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceUnavailable"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "504": {
+            "content": {
+              "text/plain": {},
+              "text/html": {},
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GatewayTimeout"
+                }
+              }
+            },
+            "description": "Gateway Timeout"
+          },
+          "550": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoesNotConformToDefinition"
+                }
+              }
+            },
+            "description": "Additional Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BadGateway": {
+        "properties": {},
+        "type": "object",
+        "title": "BadGateway",
+        "description": "This response is reserved by Product Gateway."
+      },
+      "DataSourceError": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Error type",
+            "description": "Error identifier"
+          },
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description"
+          }
+        },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "DataSourceError"
+      },
+      "DataSourceNotFound": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description",
+            "default": "Data source not found"
+          }
+        },
+        "type": "object",
+        "title": "DataSourceNotFound",
+        "description": "This response is reserved by Product Gateway."
+      },
+      "DoesNotConformToDefinition": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "default": "Response from data source does not conform to definition"
+          },
+          "data_source_status_code": {
+            "type": "integer",
+            "title": "Data source status code",
+            "description": "HTTP status code returned from the data source"
+          }
+        },
+        "type": "object",
+        "required": ["data_source_status_code"],
+        "title": "DoesNotConformToDefinition",
+        "description": "This response is reserved by Product Gateway."
+      },
+      "Forbidden": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Error type",
+            "description": "Error identifier"
+          },
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description"
+          }
+        },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "Forbidden"
+      },
+      "GatewayTimeout": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "GatewayTimeout",
+        "description": "This response is reserved by Product Gateway."
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HarmfulEvents": {
+        "properties": {
+          "date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date",
+            "description": "The date when the incident or accident happened",
+            "examples": ["2024-02-10"]
+          },
+          "eventDescription": {
+            "type": "string",
+            "maxLength": 250,
+            "title": "Event Description",
+            "description": "The description of the harmful incident that has happened to the battery"
+          }
+        },
+        "type": "object",
+        "required": ["date", "eventDescription"],
+        "title": "HarmfulEvents"
+      },
+      "HealthDataRequest": {
+        "properties": {
+          "product": {
+            "type": "string",
+            "maxLength": 150,
+            "title": "Product",
+            "description": "The product code used for identifying the product type",
+            "examples": ["sodium-ion-75kWh"]
+          },
+          "id": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Id",
+            "description": "The unique identifier of the product",
+            "examples": ["660e8400-e29b-41d4-a716-446655440000"]
+          }
+        },
+        "type": "object",
+        "required": ["product", "id"],
+        "title": "HealthDataRequest"
+      },
+      "HealthDataResponse": {
+        "properties": {
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Status"
+              }
+            ],
+            "description": "The status of the battery based on its history use",
+            "examples": ["original"]
+          },
+          "manufacturingDate": {
+            "type": "string",
+            "title": "Manufacturing Date",
+            "description": "The date of manufacture using month and year",
+            "examples": ["2023-07"],
+            "patterns": ["^\\d{4}-\\d{2}$"]
+          },
+          "serviceInitiationDate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Service Initiation Date",
+            "description": "The date on which the battery was first commissioned",
+            "examples": ["2023-12"],
+            "patterns": ["^\\d{4}-\\d{2}$"]
+          },
+          "originalPerformance": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OriginalPerformance"
+              }
+            ],
+            "title": "Original Performance",
+            "description": "The details of the original performance of the battery"
+          },
+          "healthState": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HealthState"
+              }
+            ],
+            "title": "Health State",
+            "description": "The state of the health of the battery"
+          },
+          "harmfulEvents": {
+            "items": {
+              "$ref": "#/components/schemas/HarmfulEvents"
+            },
+            "type": "array",
+            "title": "Harmful Events",
+            "description": "The harmful events or incidents that have occurred for the battery"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "manufacturingDate",
+          "originalPerformance",
+          "healthState",
+          "harmfulEvents"
+        ],
+        "title": "HealthDataResponse"
+      },
+      "HealthState": {
+        "properties": {
+          "cumulativeCycleCount": {
+            "type": "integer",
+            "title": "Cumulative Cycle Count",
+            "description": "The number of charging and discharging cycles of the battery",
+            "examples": [3500]
+          },
+          "capacityFade": {
+            "type": "number",
+            "title": "Capacity Fade",
+            "description": "The capacity fade of the battery compared to the original capacity in percentage (%)",
+            "examples": [20.0]
+          },
+          "powerFade": {
+            "type": "number",
+            "title": "Power Fade",
+            "description": "The power fade pf the battery compared to the original power in percentage (%)"
+          },
+          "resistanceIncrease": {
+            "type": "number",
+            "title": "Resistance Increase",
+            "description": "The value of resistance increase since the battery was first commissioned in percentage (%)"
+          },
+          "operationDetails": {
+            "items": {
+              "$ref": "#/components/schemas/OperationDetail"
+            },
+            "type": "array",
+            "title": "Operation Detail",
+            "description": "periodic information of he battery operation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "cumulativeCycleCount",
+          "capacityFade",
+          "powerFade",
+          "resistanceIncrease",
+          "operationDetails"
+        ],
+        "title": "HealthState"
+      },
+      "NotFound": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Error type",
+            "description": "Error identifier"
+          },
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description"
+          }
+        },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "NotFound"
+      },
+      "OperationDetail": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Date",
+            "description": "The date of the data point measurement",
+            "examples": ["2024-05-24"]
+          },
+          "stateOfCharge": {
+            "type": "number",
+            "title": "State Of Charge",
+            "description": "The state of charge measured in ampere-hours (Ah)",
+            "examples": [99.8]
+          },
+          "temperature": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": -100.0,
+            "title": "Temperature",
+            "description": "The temperature of the operating environment measured in celsius degrees",
+            "examples": [8.0]
+          }
+        },
+        "type": "object",
+        "required": ["date", "stateOfCharge", "temperature"],
+        "title": "OperationDetail"
+      },
+      "OriginalPerformance": {
+        "properties": {
+          "capacity": {
+            "type": "number",
+            "title": "Capacity",
+            "description": "The remaining capacity of the battery in ampere-hours (Ah)",
+            "examples": [80.0]
+          },
+          "power": {
+            "type": "number",
+            "title": "Power",
+            "description": "The original power capability of the battery in watts",
+            "examples": [20000.0]
+          },
+          "resistance": {
+            "type": "number",
+            "title": "Internal Resistance",
+            "description": "The internal resistance of the battery pack in ohms (Ω)"
+          },
+          "cycleLife": {
+            "type": "integer",
+            "title": "Cycle Life",
+            "description": "The expected cycle life of the battery that exceed 80% of the capacity under teh reference conditions for which it has been designed",
+            "examples": [5000.0]
+          },
+          "calendarYears": {
+            "type": "integer",
+            "title": "Calendar Years",
+            "description": "The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed"
+          }
+        },
+        "type": "object",
+        "required": ["capacity", "power", "resistance", "cycleLife", "calendarYears"],
+        "title": "OriginalPerformance"
+      },
+      "ServiceUnavailable": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "ServiceUnavailable",
+        "description": "This response is reserved by Product Gateway."
+      },
+      "Status": {
+        "type": "string",
+        "enum": ["original", "repurposed", "re-used", "remanufactured", "waste"],
+        "title": "Status"
+      },
+      "Unauthorized": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Error type",
+            "description": "Error identifier"
+          },
+          "message": {
+            "type": "string",
+            "title": "Error message",
+            "description": "Error description"
+          }
+        },
+        "type": "object",
+        "required": ["type", "message"],
+        "title": "Unauthorized"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
