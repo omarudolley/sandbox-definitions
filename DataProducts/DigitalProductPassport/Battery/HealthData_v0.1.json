@@ -2,14 +2,14 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Battery Health Data",
-    "description": "The health and status data of a battery as required by Battery Passport spcification of the European Commission's Battery Act (2023/1542)",
+    "description": "The health and status data of a battery as required by Battery Passport specification of the European Commission's Battery Act (2023/1542)",
     "version": "0.1.0"
   },
   "paths": {
     "/DigitalProductPassport/Battery/HealthData_v0.1": {
       "post": {
         "summary": "Battery Health Data",
-        "description": "The health and status data of a battery as required by Battery Passport spcification of the European Commission's Battery Act (2023/1542)",
+        "description": "The health and status data of a battery as required by Battery Passport specification of the European Commission's Battery Act (2023/1542)",
         "operationId": "request_DigitalProductPassport_Battery_HealthData_v0_1",
         "parameters": [
           {

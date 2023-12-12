@@ -1,4 +1,3 @@
-from datetime import datetime
 from enum import Enum
 from typing import List, Optional
 
@@ -63,7 +62,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.fzsonick.com/"],
+        examples=["https://www.fzsonick.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
@@ -210,7 +209,7 @@ class ExtinguishingAgent(CamelCaseModel):
         None,
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.extcompany.com/"],
+        examples=["https://www.extcompany.com"],
     )
     email: Optional[EmailStr] = Field(
         None,

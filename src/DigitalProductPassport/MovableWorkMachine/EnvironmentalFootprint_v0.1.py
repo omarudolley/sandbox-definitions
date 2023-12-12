@@ -14,7 +14,7 @@ class CarbonFootprint(CamelCaseModel):
     main_production_footprint: float = Field(
         ...,
         title="Main Production Footprint",
-        description="The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods ",
+        description="The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
     )
     reference_material: Optional[str] = Field(
         None,

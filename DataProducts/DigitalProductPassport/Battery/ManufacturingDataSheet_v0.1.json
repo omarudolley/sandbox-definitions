@@ -301,7 +301,7 @@
             ],
             "title": "Website",
             "description": "The website of the battery manufacturer",
-            "examples": ["https://www.extcompany.com/"]
+            "examples": ["https://www.extcompany.com"]
           },
           "email": {
             "anyOf": [
@@ -445,7 +445,7 @@
             ],
             "title": "Website",
             "description": "The website of the battery manufacturer",
-            "examples": ["https://www.fzsonick.com/"]
+            "examples": ["https://www.fzsonick.com"]
           },
           "email": {
             "anyOf": [

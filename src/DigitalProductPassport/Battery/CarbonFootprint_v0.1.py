@@ -1,6 +1,4 @@
-from datetime import datetime
-from enum import Enum
-from typing import List, Optional
+from typing import Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
 from pydantic import EmailStr, Field
@@ -63,7 +61,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.fzsonick.com/"],
+        examples=["https://www.fzsonick.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
@@ -77,13 +75,13 @@ class CarbonFootprint(CamelCaseModel):
     pre_production_footprint: float = Field(
         ...,
         title="Pre Production Footprint",
-        description="The carbon footprint of the raw material aquisition and pre-processing phase of the battery calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferrably PEF and PEFCR methods",
+        description="The carbon footprint of the raw material acquisition and pre-processing phase of the battery calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
         examples=[2345.7],
     )
     main_production_footprint: float = Field(
         ...,
         title="Main Production Footprint",
-        description="The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferrably PEF and PEFCR methods",
+        description="The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
     )
     reference_material: Optional[str] = Field(
         None,

@@ -197,13 +197,13 @@
           "preProductionFootprint": {
             "type": "number",
             "title": "Pre Production Footprint",
-            "description": "The carbon footprint of the raw material aquisition and pre-processing phase of the battery calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferrably PEF and PEFCR methods",
+            "description": "The carbon footprint of the raw material acquisition and pre-processing phase of the battery calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
             "examples": [2345.7]
           },
           "mainProductionFootprint": {
             "type": "number",
             "title": "Main Production Footprint",
-            "description": "The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferrably PEF and PEFCR methods"
+            "description": "The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods"
           },
           "referenceMaterial": {
             "anyOf": [
@@ -436,7 +436,7 @@
             ],
             "title": "Website",
             "description": "The website of the battery manufacturer",
-            "examples": ["https://www.fzsonick.com/"]
+            "examples": ["https://www.fzsonick.com"]
           },
           "email": {
             "anyOf": [

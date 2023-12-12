@@ -44,7 +44,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.home.sandvik/"],
+        examples=["https://www.home.sandvik"],
     )
     email: Optional[EmailStr] = Field(
         None,

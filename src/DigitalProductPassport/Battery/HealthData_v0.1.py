@@ -171,7 +171,7 @@ class HealthDataRequest(CamelCaseModel):
 DEFINITION = DataProductDefinition(
     version="0.1.0",
     title="Battery Health Data",
-    description="The health and status data of a battery as required by Battery Passport spcification of the European Commission's Battery Act (2023/1542)",
+    description="The health and status data of a battery as required by Battery Passport specification of the European Commission's Battery Act (2023/1542)",
     request=HealthDataRequest,
     response=HealthDataResponse,
 )
