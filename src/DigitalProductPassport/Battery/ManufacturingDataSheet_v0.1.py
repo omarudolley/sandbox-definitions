@@ -2,7 +2,7 @@ from enum import Enum
 from typing import List, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field
+from pydantic import EmailStr, Field, HttpUrl
 
 
 class ManufacturerLocation(CamelCaseModel):
@@ -58,7 +58,7 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["ITA"],
     )
-    website: Optional[str] = Field(
+    website: Optional[HttpUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -197,6 +197,22 @@ class RecycledContent(CamelCaseModel):
     )
 
 
+class RenewableContent(CamelCaseModel):
+    substance_name: Optional[str] = Field(
+        None,
+        title="Substance Name",
+        max_length=40,
+        description="The name of the substance that has renewable content",
+        examples=["Ligning"],
+    )
+    proportion: float = Field(
+        None,
+        title="Proportion",
+        description="The share of the renewable content present in the battery in percentage weight by weight",
+        examples=[2.0],
+    )
+
+
 class ExtinguishingAgent(CamelCaseModel):
     name: str = Field(
         ...,
@@ -205,7 +221,7 @@ class ExtinguishingAgent(CamelCaseModel):
         description="The registered trade name of the extinguishing agent",
         examples=["Extinguishing company"],
     )
-    website: Optional[str] = Field(
+    website: Optional[HttpUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -232,7 +248,7 @@ class LegalConformity(CamelCaseModel):
         description="The compliancy of the battery with other legal and standard requirements",
         examples=[["ROHS", "CE HSE", "IEC62619"]],
     )
-    conformity_declaration: str = Field(
+    conformity_declaration: HttpUrl = Field(
         ...,
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
@@ -268,7 +284,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     manufacturing_location: ManufacturerLocation = Field(
         ...,
         title="Manufacturing Location",
-        description="The details of the location battery manufacturing plant",
+        description="The details of the location of the battery manufacturing plant",
     )
     manufacturing_date: str = Field(
         ...,
@@ -304,7 +320,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     resistance: float = Field(
         ...,
         title="Resistance",
-        description="The internal resistance of teh battery pack",
+        description="The internal resistance of the battery pack",
         examples=[0],
     )
     round_trip_efficiency: RoundTripEfficiency = Field(
@@ -337,7 +353,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         title="Recycled Content",
         description="The recycled content information present in the battery",
     )
-    renewable_content: List[RecycledContent] = Field(
+    renewable_content: List[RenewableContent] = Field(
         ...,
         title="Renewable Content",
         description="The renewable content information present in the battery",

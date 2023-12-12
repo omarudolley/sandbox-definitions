@@ -35,7 +35,7 @@ class OriginalPerformance(CamelCaseModel):
     cycle_life: int = Field(
         ...,
         title="Cycle Life",
-        description="The expected cycle life of the battery that exceed 80% of the capacity under teh reference conditions for which it has been designed",
+        description="The expected cycle life of the battery that exceed 80% of the capacity under the reference conditions for which it has been designed",
         examples=[5000.0],
     )
     calendar_years: int = Field(
@@ -94,7 +94,7 @@ class HealthState(CamelCaseModel):
     operation_details: List[OperationDetail] = Field(
         ...,
         title="Operation Detail",
-        description="periodic information of he battery operation",
+        description="The periodic information of he battery operation",
     )
 
 
@@ -110,6 +110,7 @@ class HarmfulEvents(CamelCaseModel):
         title="Event Description",
         max_length=250,
         description="The description of the harmful incident that has happened to the battery",
+        examples=["30 minutes spent in extreme temperature -50 celsius"],
     )
 
 

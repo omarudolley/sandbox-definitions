@@ -1,7 +1,7 @@
 from typing import Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field
+from pydantic import EmailStr, Field, HttpUrl
 
 
 class CarbonFootprint(CamelCaseModel):
@@ -15,11 +15,12 @@ class CarbonFootprint(CamelCaseModel):
         ...,
         title="Main Production Footprint",
         description="The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
+        examples=[3504.4],
     )
-    reference_material: Optional[str] = Field(
+    reference_material: Optional[HttpUrl] = Field(
         None,
         title="Reference Material",
-        description="The link giving access to a public version of the study supporting the material waste values",
+        description="The link giving access to a public version of the study supporting the carbon footprint values",
         examples=["https://company/carbonFootprintAnalysis/z37-310-76"],
     )
 
@@ -31,7 +32,7 @@ class MaterialWaste(CamelCaseModel):
         description="The amount of material waste in kilograms (kg) generated during the machine production",
         examples=[500.0],
     )
-    reference_material: Optional[str] = Field(
+    reference_material: Optional[HttpUrl] = Field(
         None,
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the material waste values",
@@ -45,8 +46,8 @@ class DataSheetResponse(CamelCaseModel):
         title="Carbon Footprint",
         description="The details of the carbon footprint for the machine production phases",
     )
-    material_waste: MaterialWaste = Field(
-        ...,
+    material_waste: Optional[MaterialWaste] = Field(
+        None,
         title="Material Waste",
         description="The details of the material waste generated during the production",
     )

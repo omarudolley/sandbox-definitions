@@ -293,7 +293,10 @@
           "website": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
               },
               {
                 "type": "null"
@@ -384,6 +387,9 @@
           },
           "conformityDeclaration": {
             "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
             "title": "Conformity Declaration",
             "description": "The link to the EU declaration of conformity documentation",
             "examples": ["https://company/EUdeclaration/z37-310-76"]
@@ -437,7 +443,10 @@
           "website": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
               },
               {
                 "type": "null"
@@ -563,7 +572,7 @@
               }
             ],
             "title": "Manufacturing Location",
-            "description": "The details of the location battery manufacturing plant"
+            "description": "The details of the location of the battery manufacturing plant"
           },
           "manufacturingDate": {
             "type": "string",
@@ -603,7 +612,7 @@
           "resistance": {
             "type": "number",
             "title": "Resistance",
-            "description": "The internal resistance of teh battery pack",
+            "description": "The internal resistance of the battery pack",
             "examples": [0]
           },
           "roundTripEfficiency": {
@@ -661,7 +670,7 @@
           },
           "renewableContent": {
             "items": {
-              "$ref": "#/components/schemas/RecycledContent"
+              "$ref": "#/components/schemas/RenewableContent"
             },
             "type": "array",
             "title": "Renewable Content",
@@ -788,6 +797,32 @@
         "type": "object",
         "required": ["substanceName", "recyclingRate"],
         "title": "RecycledContent"
+      },
+      "RenewableContent": {
+        "properties": {
+          "substanceName": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Substance Name",
+            "description": "The name of the substance that has renewable content",
+            "examples": ["Ligning"]
+          },
+          "proportion": {
+            "type": "number",
+            "title": "Proportion",
+            "description": "The share of the renewable content present in the battery in percentage weight by weight",
+            "examples": [2.0]
+          }
+        },
+        "type": "object",
+        "title": "RenewableContent"
       },
       "RoundTripEfficiency": {
         "properties": {

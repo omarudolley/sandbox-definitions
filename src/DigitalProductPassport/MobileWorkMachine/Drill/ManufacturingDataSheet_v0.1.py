@@ -1,7 +1,7 @@
 from typing import Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field
+from pydantic import EmailStr, Field, HttpUrl
 
 
 class ManufacturerInformation(CamelCaseModel):
@@ -17,7 +17,7 @@ class ManufacturerInformation(CamelCaseModel):
         title="Street Name",
         max_length=40,
         description="The street address of the manufacturer's headquarters",
-        examples=["Kunsbron 1"],
+        examples=["Kungsbron 1"],
     )
     postal_code: str = Field(
         ...,
@@ -40,7 +40,7 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["SWE"],
     )
-    website: Optional[str] = Field(
+    website: Optional[HttpUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -103,13 +103,13 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         description="The maximum drilling power of the machine in kilowatts (kW)",
         examples=[160.0],
     )
-    reference_data_sheet: str = Field(
+    reference_data_sheet: HttpUrl = Field(
         ...,
         title="Reference Material",
         description="The link to the detailed product specifications",
         examples=["https://company/products/dl422ie/productdocument"],
     )
-    safety_data_sheet: str = Field(
+    safety_data_sheet: HttpUrl = Field(
         ...,
         title="Reference Material",
         description="The link to the safety control measures of the product",

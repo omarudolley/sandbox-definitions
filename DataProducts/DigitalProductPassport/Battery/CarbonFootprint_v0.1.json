@@ -208,7 +208,10 @@
           "referenceMaterial": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
               },
               {
                 "type": "null"
@@ -264,6 +267,9 @@
           },
           "conformityDeclaration": {
             "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
             "title": "Conformity Declaration",
             "description": "The link to the EU declaration of conformity documentation",
             "examples": ["https://company/EUdeclaration/z37-310-76"]
@@ -428,7 +434,10 @@
           "website": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
               },
               {
                 "type": "null"
