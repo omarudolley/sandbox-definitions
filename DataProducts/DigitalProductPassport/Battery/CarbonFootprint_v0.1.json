@@ -203,27 +203,25 @@
           "mainProductionFootprint": {
             "type": "number",
             "title": "Main Production Footprint",
-            "description": "The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods"
+            "description": "The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
+            "examples": [3504.4]
           },
           "referenceMaterial": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
             "title": "Reference Material",
             "description": "The web link giving access to a public version of the study supporting the carbon footprint values",
             "examples": ["https://company/carbonFootprintAnalysis/z37-310-76"]
           }
         },
         "type": "object",
-        "required": ["preProductionFootprint", "mainProductionFootprint"],
+        "required": [
+          "preProductionFootprint",
+          "mainProductionFootprint",
+          "referenceMaterial"
+        ],
         "title": "CarbonFootprint"
       },
       "CarbonFootprintRequest": {
@@ -469,29 +467,29 @@
       "ManufacturingLocation": {
         "properties": {
           "country": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 3
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
+            "maxLength": 3,
             "title": "Country",
             "description": "The country code of the battery manufacturing location in Alpha-3 format",
             "examples": ["CHE"]
           },
           "city": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "City",
             "description": "The city of the battery manufacturing location",
             "examples": ["Stabio"]
           }
         },
         "type": "object",
-        "required": ["city"],
+        "required": ["country"],
         "title": "ManufacturingLocation"
       },
       "NotFound": {

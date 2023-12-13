@@ -22,8 +22,8 @@ class CarbonFootprint(CamelCaseModel):
         description="The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
         examples=[3504.4],
     )
-    reference_material: Optional[HttpsUrl] = Field(
-        None,
+    reference_material: HttpsUrl = Field(
+        ...,
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the carbon footprint values",
         examples=["https://company/carbonFootprintAnalysis/z37-310-76"],

@@ -283,7 +283,7 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
-      "HarmfulEvents": {
+      "HarmfulEvent": {
         "properties": {
           "date": {
             "anyOf": [
@@ -309,7 +309,7 @@
         },
         "type": "object",
         "required": ["date", "eventDescription"],
-        "title": "HarmfulEvents"
+        "title": "HarmfulEvent"
       },
       "HealthDataRequest": {
         "properties": {
@@ -340,7 +340,7 @@
                 "$ref": "#/components/schemas/Status"
               }
             ],
-            "description": "The status of the battery based on its history use",
+            "description": "The status of the battery based on its history of use",
             "examples": ["original"]
           },
           "manufacturingDate": {
@@ -384,7 +384,7 @@
           },
           "harmfulEvents": {
             "items": {
-              "$ref": "#/components/schemas/HarmfulEvents"
+              "$ref": "#/components/schemas/HarmfulEvent"
             },
             "type": "array",
             "title": "Harmful Events",
@@ -430,7 +430,7 @@
               "$ref": "#/components/schemas/OperationDetail"
             },
             "type": "array",
-            "title": "Operation Detail",
+            "title": "Operation Details",
             "description": "The periodic information of he battery operation"
           }
         },

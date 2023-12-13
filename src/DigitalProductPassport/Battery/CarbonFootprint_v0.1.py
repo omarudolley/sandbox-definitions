@@ -10,15 +10,15 @@ HttpsUrl = Annotated[
 
 
 class ManufacturingLocation(CamelCaseModel):
-    country: Optional[str] = Field(
-        None,
+    country: str = Field(
+        ...,
         title="Country",
         max_length=3,
         description="The country code of the battery manufacturing location in Alpha-3 format",
         examples=["CHE"],
     )
-    city: str = Field(
-        ...,
+    city: Optional[str] = Field(
+        None,
         title="City",
         max_length=40,
         description="The city of the battery manufacturing location",
@@ -87,9 +87,10 @@ class CarbonFootprint(CamelCaseModel):
         ...,
         title="Main Production Footprint",
         description="The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
+        examples=[3504.4],
     )
-    reference_material: Optional[HttpsUrl] = Field(
-        None,
+    reference_material: HttpsUrl = Field(
+        ...,
         title="Reference Material",
         description="The web link giving access to a public version of the study supporting the carbon footprint values",
         examples=["https://company/carbonFootprintAnalysis/z37-310-76"],

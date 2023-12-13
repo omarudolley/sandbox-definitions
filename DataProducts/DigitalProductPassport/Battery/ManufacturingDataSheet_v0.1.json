@@ -282,7 +282,7 @@
             "type": "string",
             "maxLength": 250,
             "title": "Name",
-            "description": "The registered trade name of the extinguishing agent",
+            "description": "The registered trade name of a usable extinguishing agent",
             "examples": ["Extinguishing company"]
           },
           "website": {
@@ -567,7 +567,7 @@
               }
             ],
             "title": "Manufacturing Location",
-            "description": "The details of the location of the battery manufacturing plant"
+            "description": "The location details of the battery manufacturing plant"
           },
           "manufacturingDate": {
             "type": "string",
@@ -585,7 +585,7 @@
           "capacity": {
             "type": "number",
             "title": "Capacity",
-            "description": "The total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery",
+            "description": "The total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under reference conditions",
             "examples": [100.0]
           },
           "power": {
@@ -608,9 +608,12 @@
             "examples": [0]
           },
           "roundTripEfficiency": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/RoundTripEfficiency"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Round Trip Efficiency",
@@ -706,7 +709,6 @@
           "power",
           "cellType",
           "resistance",
-          "roundTripEfficiency",
           "voltageLevels",
           "temperatureRange",
           "expectedLifetime",
@@ -807,7 +809,14 @@
             "examples": ["Ligning"]
           },
           "proportion": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Proportion",
             "description": "The share of the renewable content present in the battery in percentage weight by weight",
             "examples": [2.0]

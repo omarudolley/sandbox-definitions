@@ -207,24 +207,21 @@
             "examples": [3504.4]
           },
           "referenceMaterial": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the carbon footprint values",
             "examples": ["https://company/carbonFootprintAnalysis/z37-310-76"]
           }
         },
         "type": "object",
-        "required": ["preProductionFootprint", "mainProductionFootprint"],
+        "required": [
+          "preProductionFootprint",
+          "mainProductionFootprint",
+          "referenceMaterial"
+        ],
         "title": "CarbonFootprint"
       },
       "DataSheetRequest": {

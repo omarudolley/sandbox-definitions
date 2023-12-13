@@ -206,7 +206,7 @@ class RenewableContent(CamelCaseModel):
         description="The name of the substance that has renewable content",
         examples=["Ligning"],
     )
-    proportion: float = Field(
+    proportion: Optional[float] = Field(
         None,
         title="Proportion",
         description="The share of the renewable content present in the battery in percentage weight by weight",
@@ -219,7 +219,7 @@ class ExtinguishingAgent(CamelCaseModel):
         ...,
         title="Name",
         max_length=250,
-        description="The registered trade name of the extinguishing agent",
+        description="The registered trade name of a usable extinguishing agent",
         examples=["Extinguishing company"],
     )
     website: Optional[HttpsUrl] = Field(
@@ -285,7 +285,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     manufacturing_location: ManufacturerLocation = Field(
         ...,
         title="Manufacturing Location",
-        description="The details of the location of the battery manufacturing plant",
+        description="The location details of the battery manufacturing plant",
     )
     manufacturing_date: str = Field(
         ...,
@@ -303,7 +303,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     capacity: float = Field(
         ...,
         title="Capacity",
-        description="The total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery",
+        description="The total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under reference conditions",
         examples=[100.0],
     )
     power: float = Field(
@@ -325,8 +325,8 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         description="The internal resistance of the battery pack",
         examples=[0],
     )
-    round_trip_efficiency: RoundTripEfficiency = Field(
-        ...,
+    round_trip_efficiency: Optional[RoundTripEfficiency] = Field(
+        None,
         title="Round Trip Efficiency",
         description="The details of the round trip energy efficiency in energy storages",
     )

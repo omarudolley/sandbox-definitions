@@ -94,12 +94,12 @@ class HealthState(CamelCaseModel):
     )
     operation_details: List[OperationDetail] = Field(
         ...,
-        title="Operation Detail",
+        title="Operation Details",
         description="The periodic information of he battery operation",
     )
 
 
-class HarmfulEvents(CamelCaseModel):
+class HarmfulEvent(CamelCaseModel):
     date: Optional[datetime] = Field(
         ...,
         title="Date",
@@ -119,7 +119,7 @@ class HealthDataResponse(CamelCaseModel):
     status: Status = Field(
         ...,
         title="Status",
-        description="The status of the battery based on its history use",
+        description="The status of the battery based on its history of use",
         examples=[Status.ORIGINAL],
     )
     manufacturing_date: str = Field(
@@ -146,7 +146,7 @@ class HealthDataResponse(CamelCaseModel):
         title="Health State",
         description="The state of the health of the battery",
     )
-    harmful_events: List[HarmfulEvents] = Field(
+    harmful_events: List[HarmfulEvent] = Field(
         ...,
         title="Harmful Events",
         description="The harmful events or incidents that have occurred for the battery",
