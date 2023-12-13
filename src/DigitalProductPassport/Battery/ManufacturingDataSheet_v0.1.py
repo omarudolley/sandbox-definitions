@@ -1,8 +1,13 @@
 from enum import Enum
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl
+from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
+
+HttpsUrl = Annotated[
+    HttpUrl,
+    UrlConstraints(allowed_schemes=["https"]),
+]
 
 
 class ManufacturerLocation(CamelCaseModel):
@@ -58,7 +63,7 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["ITA"],
     )
-    website: Optional[HttpUrl] = Field(
+    website: Optional[HttpsUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -221,7 +226,7 @@ class ExtinguishingAgent(CamelCaseModel):
         description="The registered trade name of the extinguishing agent",
         examples=["Extinguishing company"],
     )
-    website: Optional[HttpUrl] = Field(
+    website: Optional[HttpsUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -248,7 +253,7 @@ class LegalConformity(CamelCaseModel):
         description="The compliancy of the battery with other legal and standard requirements",
         examples=[["ROHS", "CE HSE", "IEC62619"]],
     )
-    conformity_declaration: HttpUrl = Field(
+    conformity_declaration: HttpsUrl = Field(
         ...,
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",

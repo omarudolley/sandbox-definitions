@@ -1,7 +1,12 @@
-from typing import Optional
+from typing import Annotated, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl
+from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
+
+HttpsUrl = Annotated[
+    HttpUrl,
+    UrlConstraints(allowed_schemes=["https"]),
+]
 
 
 class ManufacturingLocation(CamelCaseModel):
@@ -57,7 +62,7 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["ITA"],
     )
-    website: Optional[HttpUrl] = Field(
+    website: Optional[HttpsUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -83,7 +88,7 @@ class CarbonFootprint(CamelCaseModel):
         title="Main Production Footprint",
         description="The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
     )
-    reference_material: Optional[HttpUrl] = Field(
+    reference_material: Optional[HttpsUrl] = Field(
         None,
         title="Reference Material",
         description="The web link giving access to a public version of the study supporting the carbon footprint values",
@@ -104,7 +109,7 @@ class CarbonFootprintResponse(CamelCaseModel):
         description="The model of the battery",
         examples=["Z37-310-76"],
     )
-    conformity_declaration: HttpUrl = Field(
+    conformity_declaration: HttpsUrl = Field(
         ...,
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",

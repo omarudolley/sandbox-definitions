@@ -444,7 +444,7 @@
             "maxLength": 2083,
             "minLength": 1,
             "format": "uri",
-            "title": "Reference Material",
+            "title": "Safety Data Sheet",
             "description": "The link to the safety control measures of the product",
             "examples": ["https://company/products/dl422ie/productdocument"]
           }

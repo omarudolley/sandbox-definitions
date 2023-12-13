@@ -1,7 +1,12 @@
-from typing import Optional
+from typing import Annotated, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl
+from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
+
+HttpsUrl = Annotated[
+    HttpUrl,
+    UrlConstraints(allowed_schemes=["https"]),
+]
 
 
 class ManufacturerInformation(CamelCaseModel):
@@ -40,7 +45,7 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["SWE"],
     )
-    website: Optional[HttpUrl] = Field(
+    website: Optional[HttpsUrl] = Field(
         None,
         title="Website",
         description="The website of the battery manufacturer",
@@ -103,15 +108,15 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         description="The maximum drilling power of the machine in kilowatts (kW)",
         examples=[160.0],
     )
-    reference_data_sheet: HttpUrl = Field(
+    reference_data_sheet: HttpsUrl = Field(
         ...,
         title="Reference Material",
         description="The link to the detailed product specifications",
         examples=["https://company/products/dl422ie/productdocument"],
     )
-    safety_data_sheet: HttpUrl = Field(
+    safety_data_sheet: HttpsUrl = Field(
         ...,
-        title="Reference Material",
+        title="Safety Data Sheet",
         description="The link to the safety control measures of the product",
         examples=["https://company/products/dl422ie/productdocument"],
     )
