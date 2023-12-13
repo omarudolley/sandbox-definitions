@@ -86,7 +86,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     )
     maximum_hole_length: float = Field(
         ...,
-        title="Hole Length",
+        title="Maximum Hole Length",
         description="The maximum length of the drilled hole in meters (m)",
         examples=[54.0],
     )

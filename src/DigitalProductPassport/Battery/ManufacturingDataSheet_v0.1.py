@@ -11,15 +11,15 @@ HttpsUrl = Annotated[
 
 
 class ManufacturerLocation(CamelCaseModel):
-    country: Optional[str] = Field(
-        None,
+    country: str = Field(
+        ...,
         title="Country",
         max_length=3,
         description="The country code of the battery manufacturing location in Alpha-3 format",
         examples=["CHE"],
     )
-    city: str = Field(
-        ...,
+    city: Optional[str] = Field(
+        None,
         title="City",
         max_length=40,
         description="The city of the battery manufacturing location",
@@ -82,10 +82,6 @@ class BatteryCategory(str, Enum):
     INDUSTRIAL_BATTERY = "industrial battery"
     LMT_BATTERY = "lmt battery"
     ELECTRIC_VEHICLE_BATTERY = "electric vehicle battery"
-
-
-class CellType(str, Enum):
-    SODIUM_ION = "sodium-ion"
 
 
 class RoundTripEfficiency(CamelCaseModel):
@@ -229,13 +225,13 @@ class ExtinguishingAgent(CamelCaseModel):
     website: Optional[HttpsUrl] = Field(
         None,
         title="Website",
-        description="The website of the battery manufacturer",
+        description="The website of the extinguishing company",
         examples=["https://www.extcompany.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
         title="Email",
-        description="The email address of the battery manufacturer",
+        description="The email address of the extinguishing company",
         examples=["info@fzsonick.com"],
     )
 
@@ -316,11 +312,12 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         description="The original power capability of the battery in Watts",
         examples=[25000.0],
     )
-    cell_type: CellType = Field(
+    cell_type: str = Field(
         ...,
+        max_length=250,
         title="Cell Type",
         description="The type of cells used in the battery pack",
-        examples=[CellType.SODIUM_ION],
+        examples=["sodium-ion"],
     )
     resistance: float = Field(
         ...,

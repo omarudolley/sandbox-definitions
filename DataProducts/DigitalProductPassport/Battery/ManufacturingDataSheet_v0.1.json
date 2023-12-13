@@ -202,11 +202,6 @@
         ],
         "title": "BatteryCategory"
       },
-      "CellType": {
-        "type": "string",
-        "const": "sodium-ion",
-        "title": "CellType"
-      },
       "DataSourceError": {
         "properties": {
           "type": {
@@ -303,7 +298,7 @@
               }
             ],
             "title": "Website",
-            "description": "The website of the battery manufacturer",
+            "description": "The website of the extinguishing company",
             "examples": ["https://www.extcompany.com"]
           },
           "email": {
@@ -317,7 +312,7 @@
               }
             ],
             "title": "Email",
-            "description": "The email address of the battery manufacturer",
+            "description": "The email address of the extinguishing company",
             "examples": ["info@fzsonick.com"]
           }
         },
@@ -478,29 +473,29 @@
       "ManufacturerLocation": {
         "properties": {
           "country": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 3
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "string",
+            "maxLength": 3,
             "title": "Country",
             "description": "The country code of the battery manufacturing location in Alpha-3 format",
             "examples": ["CHE"]
           },
           "city": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "City",
             "description": "The city of the battery manufacturing location",
             "examples": ["Stabio"]
           }
         },
         "type": "object",
-        "required": ["city"],
+        "required": ["country"],
         "title": "ManufacturerLocation"
       },
       "ManufacturingDataSheetRequest": {
@@ -600,11 +595,8 @@
             "examples": [25000.0]
           },
           "cellType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CellType"
-              }
-            ],
+            "type": "string",
+            "maxLength": 250,
             "title": "Cell Type",
             "description": "The type of cells used in the battery pack",
             "examples": ["sodium-ion"]

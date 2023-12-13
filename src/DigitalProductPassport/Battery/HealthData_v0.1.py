@@ -31,6 +31,7 @@ class OriginalPerformance(CamelCaseModel):
         ...,
         title="Internal Resistance",
         description="The internal resistance of the battery pack in ohms (Ω)",
+        examples=[0.005],
     )
     cycle_life: int = Field(
         ...,

@@ -506,7 +506,8 @@
           "resistance": {
             "type": "number",
             "title": "Internal Resistance",
-            "description": "The internal resistance of the battery pack in ohms (Ω)"
+            "description": "The internal resistance of the battery pack in ohms (Ω)",
+            "examples": [0.005]
           },
           "cycleLife": {
             "type": "integer",
