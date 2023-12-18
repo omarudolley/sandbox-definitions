@@ -208,12 +208,10 @@
           },
           "referenceMaterial": {
             "type": "string",
-            "maxLength": 2083,
-            "minLength": 1,
-            "format": "uri",
+            "pattern": "^https://",
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the carbon footprint values",
-            "examples": ["https://company/carbonFootprintAnalysis/z37-310-76"]
+            "examples": ["https://example.com"]
           }
         },
         "type": "object",
@@ -383,9 +381,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
+                "pattern": "^https://"
               },
               {
                 "type": "null"
@@ -393,7 +389,7 @@
             ],
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the material waste values",
-            "examples": ["https://company/carbonFootprintAnalysis/z37-310-76"]
+            "examples": ["https://example.com"]
           }
         },
         "type": "object",

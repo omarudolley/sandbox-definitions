@@ -1,12 +1,7 @@
-from typing import Annotated, Optional
+from typing import Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
-
-HttpsUrl = Annotated[
-    HttpUrl,
-    UrlConstraints(allowed_schemes=["https"]),
-]
+from pydantic import EmailStr, Field
 
 
 class ManufacturerInformation(CamelCaseModel):
@@ -42,20 +37,22 @@ class ManufacturerInformation(CamelCaseModel):
         ...,
         title="Country",
         max_length=3,
+        min_length=3,
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["SWE"],
     )
-    website: Optional[HttpsUrl] = Field(
+    website: Optional[str] = Field(
         None,
+        pattern=r"^https://",
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.home.sandvik"],
+        examples=["https://example.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["info@sandvik.com"],
+        examples=["example@mail.com"],
     )
 
 
@@ -108,17 +105,19 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         description="The maximum drilling power of the machine in kilowatts (kW)",
         examples=[160.0],
     )
-    reference_data_sheet: HttpsUrl = Field(
+    reference_data_sheet: str = Field(
         ...,
+        pattern=r"^https://",
         title="Reference Material",
         description="The link to the detailed product specifications",
-        examples=["https://company/products/dl422ie/productdocument"],
+        examples=["https://example.com"],
     )
-    safety_data_sheet: HttpsUrl = Field(
+    safety_data_sheet: str = Field(
         ...,
+        pattern=r"^https://",
         title="Safety Data Sheet",
         description="The link to the safety control measures of the product",
-        examples=["https://company/products/dl422ie/productdocument"],
+        examples=["https://example.com"],
     )
 
 

@@ -1,12 +1,7 @@
-from typing import Annotated, Optional
+from typing import Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
-
-HttpsUrl = Annotated[
-    HttpUrl,
-    UrlConstraints(allowed_schemes=["https"]),
-]
+from pydantic import EmailStr, Field
 
 
 class CarbonFootprint(CamelCaseModel):
@@ -22,11 +17,12 @@ class CarbonFootprint(CamelCaseModel):
         description="The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
         examples=[3504.4],
     )
-    reference_material: HttpsUrl = Field(
+    reference_material: str = Field(
         ...,
+        pattern=r"^https://",
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the carbon footprint values",
-        examples=["https://company/carbonFootprintAnalysis/z37-310-76"],
+        examples=["https://example.com"],
     )
 
 
@@ -37,11 +33,12 @@ class MaterialWaste(CamelCaseModel):
         description="The amount of material waste in kilograms (kg) generated during the machine production",
         examples=[500.0],
     )
-    reference_material: Optional[HttpsUrl] = Field(
+    reference_material: Optional[str] = Field(
         None,
+        pattern=r"^https://",
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the material waste values",
-        examples=["https://company/carbonFootprintAnalysis/z37-310-76"],
+        examples=["https://example.com"],
     )
 
 

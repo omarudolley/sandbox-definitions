@@ -1,12 +1,7 @@
-from typing import Annotated, Optional
+from typing import Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
-
-HttpsUrl = Annotated[
-    HttpUrl,
-    UrlConstraints(allowed_schemes=["https"]),
-]
+from pydantic import EmailStr, Field
 
 
 class ManufacturingLocation(CamelCaseModel):
@@ -14,6 +9,7 @@ class ManufacturingLocation(CamelCaseModel):
         ...,
         title="Country",
         max_length=3,
+        min_length=3,
         description="The country code of the battery manufacturing location in Alpha-3 format",
         examples=["CHE"],
     )
@@ -62,17 +58,18 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["ITA"],
     )
-    website: Optional[HttpsUrl] = Field(
+    website: Optional[str] = Field(
         None,
+        pattern=r"^https://",
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.fzsonick.com"],
+        examples=["https://examples.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["info@fzsonick.com"],
+        examples=["example@mail.com"],
     )
 
 
@@ -89,11 +86,12 @@ class CarbonFootprint(CamelCaseModel):
         description="The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
         examples=[3504.4],
     )
-    reference_material: HttpsUrl = Field(
+    reference_material: str = Field(
         ...,
+        pattern=r"^https://",
         title="Reference Material",
         description="The web link giving access to a public version of the study supporting the carbon footprint values",
-        examples=["https://company/carbonFootprintAnalysis/z37-310-76"],
+        examples=["https://example.com"],
     )
 
 
@@ -110,11 +108,12 @@ class CarbonFootprintResponse(CamelCaseModel):
         description="The model of the battery",
         examples=["Z37-310-76"],
     )
-    conformity_declaration: HttpsUrl = Field(
+    conformity_declaration: str = Field(
         ...,
+        pattern=r"^https://",
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
-        examples=["https://company/EUdeclaration/z37-310-76"],
+        examples=["https://example.com"],
     )
     manufacturing_location: ManufacturingLocation = Field(
         ...,

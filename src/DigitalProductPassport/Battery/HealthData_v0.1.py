@@ -51,7 +51,7 @@ class OperationDetail(CamelCaseModel):
         ...,
         title="Date",
         description="The date of the data point measurement",
-        examples=["2024-05-24"],
+        examples=[datetime(2024, 5, 24)],
     )
     state_of_charge: float = Field(
         ...,
@@ -104,7 +104,7 @@ class HarmfulEvent(CamelCaseModel):
         ...,
         title="Date",
         description="The date when the incident or accident happened",
-        examples=["2024-02-10"],
+        examples=[datetime(2024, 2, 10)],
     )
     event_description: str = Field(
         ...,
@@ -126,14 +126,14 @@ class HealthDataResponse(CamelCaseModel):
         ...,
         title="Manufacturing Date",
         description="The date of manufacture using month and year",
-        patterns=[r"^\d{4}-\d{2}$"],
+        pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
         examples=["2023-07"],
     )
     service_initiation_date: Optional[str] = Field(
         None,
         title="Service Initiation Date",
         description="The date on which the battery was first commissioned",
-        patterns=[r"^\d{4}-\d{2}$"],
+        pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
         examples=["2023-12"],
     )
     original_performance: OriginalPerformance = Field(

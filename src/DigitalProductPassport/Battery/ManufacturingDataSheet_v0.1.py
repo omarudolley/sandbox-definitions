@@ -1,20 +1,16 @@
 from enum import Enum
-from typing import Annotated, List, Optional
+from typing import List, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field, HttpUrl, UrlConstraints
-
-HttpsUrl = Annotated[
-    HttpUrl,
-    UrlConstraints(allowed_schemes=["https"]),
-]
+from pydantic import EmailStr, Field
 
 
-class ManufacturerLocation(CamelCaseModel):
+class ManufacturingLocation(CamelCaseModel):
     country: str = Field(
         ...,
         title="Country",
         max_length=3,
+        min_length=3,
         description="The country code of the battery manufacturing location in Alpha-3 format",
         examples=["CHE"],
     )
@@ -63,17 +59,18 @@ class ManufacturerInformation(CamelCaseModel):
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["ITA"],
     )
-    website: Optional[HttpsUrl] = Field(
+    website: Optional[str] = Field(
         None,
+        pattern=r"^https://",
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://www.fzsonick.com"],
+        examples=["https://example.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["info@fzsonick.com"],
+        examples=["example@mail.com"],
     )
 
 
@@ -109,7 +106,7 @@ class VoltageLevels(CamelCaseModel):
     maximum_voltage: float = Field(
         ...,
         title="Maximum Voltage",
-        description="The largest level the battery voltage can reach",
+        description="The highest level the battery voltage can reach",
         examples=[620.0],
     )
     minimum_voltage: float = Field(
@@ -121,16 +118,16 @@ class VoltageLevels(CamelCaseModel):
 
 
 class TemperatureRange(CamelCaseModel):
-    minimum_temperature: float = Field(
-        ...,
+    minimum_temperature: Optional[float] = Field(
+        None,
         title="Minimum Temperature",
         description="The minimum temperature the battery can withstand",
         examples=[-40.0],
         le=100,
         ge=-100,
     )
-    maximum_temperature: float = Field(
-        ...,
+    maximum_temperature: Optional[float] = Field(
+        None,
         title="Maximum Temperature",
         description="The maximum temperature the battery can withstand",
         examples=[50.0],
@@ -143,6 +140,7 @@ class ExpectedLifetime(CamelCaseModel):
     cycle_life: int = Field(
         ...,
         title="Cycle Life",
+        ge=0,
         description="Minimum number of cycles the battery can be recharged to at least 80% of initial capacity",
         examples=[5000],
     )
@@ -214,28 +212,6 @@ class RenewableContent(CamelCaseModel):
     )
 
 
-class ExtinguishingAgent(CamelCaseModel):
-    name: str = Field(
-        ...,
-        title="Name",
-        max_length=250,
-        description="The registered trade name of a usable extinguishing agent",
-        examples=["Extinguishing company"],
-    )
-    website: Optional[HttpsUrl] = Field(
-        None,
-        title="Website",
-        description="The website of the extinguishing company",
-        examples=["https://www.extcompany.com"],
-    )
-    email: Optional[EmailStr] = Field(
-        None,
-        title="Email",
-        description="The email address of the extinguishing company",
-        examples=["info@fzsonick.com"],
-    )
-
-
 class LegalConformity(CamelCaseModel):
     battery_act_compliance: bool = Field(
         ...,
@@ -249,11 +225,12 @@ class LegalConformity(CamelCaseModel):
         description="The compliancy of the battery with other legal and standard requirements",
         examples=[["ROHS", "CE HSE", "IEC62619"]],
     )
-    conformity_declaration: HttpsUrl = Field(
+    conformity_declaration: str = Field(
         ...,
+        pattern=r"^https://",
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
-        examples=["https://company/EUdeclaration/z37-310-76"],
+        examples=["https://example.com"],
     )
 
 
@@ -282,7 +259,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         title="Manufacturer Information",
         description="The details of the battery manufacturer",
     )
-    manufacturing_location: ManufacturerLocation = Field(
+    manufacturing_location: ManufacturingLocation = Field(
         ...,
         title="Manufacturing Location",
         description="The location details of the battery manufacturing plant",
@@ -291,7 +268,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         ...,
         title="Manufacturing Date",
         description="The date of manufacture using month and year",
-        patterns=[r"^\d{4}-\d{2}$"],
+        pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
         examples=["2023-07"],
     )
     weight: float = Field(
@@ -360,11 +337,6 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         title="Renewable Content",
         description="The renewable content information present in the battery",
     )
-    extinguishing_agent: ExtinguishingAgent = Field(
-        ...,
-        title="Extinguishing Agent",
-        description="The details of an agent that can extinguish the battery",
-    )
     legal_conformity: LegalConformity = Field(
         ...,
         title="Legal Conformity",
@@ -374,7 +346,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         ...,
         title="Warranty",
         description="The date when the battery warranty expires",
-        patterns=[r"^\d{4}-\d{2}$"],
+        pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
         examples=["2028-07"],
     )
 

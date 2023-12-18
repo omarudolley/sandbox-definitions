@@ -297,7 +297,7 @@
             ],
             "title": "Date",
             "description": "The date when the incident or accident happened",
-            "examples": ["2024-02-10"]
+            "examples": ["2024-02-10T00:00:00"]
           },
           "eventDescription": {
             "type": "string",
@@ -345,15 +345,16 @@
           },
           "manufacturingDate": {
             "type": "string",
+            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
             "title": "Manufacturing Date",
             "description": "The date of manufacture using month and year",
-            "examples": ["2023-07"],
-            "patterns": ["^\\d{4}-\\d{2}$"]
+            "examples": ["2023-07"]
           },
           "serviceInitiationDate": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
               },
               {
                 "type": "null"
@@ -361,8 +362,7 @@
             ],
             "title": "Service Initiation Date",
             "description": "The date on which the battery was first commissioned",
-            "examples": ["2023-12"],
-            "patterns": ["^\\d{4}-\\d{2}$"]
+            "examples": ["2023-12"]
           },
           "originalPerformance": {
             "allOf": [
@@ -468,7 +468,7 @@
             "format": "date-time",
             "title": "Date",
             "description": "The date of the data point measurement",
-            "examples": ["2024-05-24"]
+            "examples": ["2024-05-24T00:00:00"]
           },
           "stateOfCharge": {
             "type": "number",

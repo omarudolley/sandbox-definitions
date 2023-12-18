@@ -316,6 +316,7 @@
           "country": {
             "type": "string",
             "maxLength": 3,
+            "minLength": 3,
             "title": "Country",
             "description": "The country code of the manufacturer's headquarters location in Alpha-3 format",
             "examples": ["SWE"]
@@ -324,9 +325,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
+                "pattern": "^https://"
               },
               {
                 "type": "null"
@@ -334,7 +333,7 @@
             ],
             "title": "Website",
             "description": "The website of the battery manufacturer",
-            "examples": ["https://www.home.sandvik"]
+            "examples": ["https://example.com"]
           },
           "email": {
             "anyOf": [
@@ -348,7 +347,7 @@
             ],
             "title": "Email",
             "description": "The email address of the battery manufacturer",
-            "examples": ["info@sandvik.com"]
+            "examples": ["example@mail.com"]
           }
         },
         "type": "object",
@@ -432,21 +431,17 @@
           },
           "referenceDataSheet": {
             "type": "string",
-            "maxLength": 2083,
-            "minLength": 1,
-            "format": "uri",
+            "pattern": "^https://",
             "title": "Reference Material",
             "description": "The link to the detailed product specifications",
-            "examples": ["https://company/products/dl422ie/productdocument"]
+            "examples": ["https://example.com"]
           },
           "safetyDataSheet": {
             "type": "string",
-            "maxLength": 2083,
-            "minLength": 1,
-            "format": "uri",
+            "pattern": "^https://",
             "title": "Safety Data Sheet",
             "description": "The link to the safety control measures of the product",
-            "examples": ["https://company/products/dl422ie/productdocument"]
+            "examples": ["https://example.com"]
           }
         },
         "type": "object",

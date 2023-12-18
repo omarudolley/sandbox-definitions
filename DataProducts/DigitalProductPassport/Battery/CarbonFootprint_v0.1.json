@@ -208,12 +208,10 @@
           },
           "referenceMaterial": {
             "type": "string",
-            "maxLength": 2083,
-            "minLength": 1,
-            "format": "uri",
+            "pattern": "^https://",
             "title": "Reference Material",
             "description": "The web link giving access to a public version of the study supporting the carbon footprint values",
-            "examples": ["https://company/carbonFootprintAnalysis/z37-310-76"]
+            "examples": ["https://example.com"]
           }
         },
         "type": "object",
@@ -265,12 +263,10 @@
           },
           "conformityDeclaration": {
             "type": "string",
-            "maxLength": 2083,
-            "minLength": 1,
-            "format": "uri",
+            "pattern": "^https://",
             "title": "Conformity Declaration",
             "description": "The link to the EU declaration of conformity documentation",
-            "examples": ["https://company/EUdeclaration/z37-310-76"]
+            "examples": ["https://example.com"]
           },
           "manufacturingLocation": {
             "allOf": [
@@ -433,9 +429,7 @@
             "anyOf": [
               {
                 "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
+                "pattern": "^https://"
               },
               {
                 "type": "null"
@@ -443,7 +437,7 @@
             ],
             "title": "Website",
             "description": "The website of the battery manufacturer",
-            "examples": ["https://www.fzsonick.com"]
+            "examples": ["https://examples.com"]
           },
           "email": {
             "anyOf": [
@@ -457,7 +451,7 @@
             ],
             "title": "Email",
             "description": "The email address of the battery manufacturer",
-            "examples": ["info@fzsonick.com"]
+            "examples": ["example@mail.com"]
           }
         },
         "type": "object",
@@ -469,6 +463,7 @@
           "country": {
             "type": "string",
             "maxLength": 3,
+            "minLength": 3,
             "title": "Country",
             "description": "The country code of the battery manufacturing location in Alpha-3 format",
             "examples": ["CHE"]
