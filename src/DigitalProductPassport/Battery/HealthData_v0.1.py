@@ -15,52 +15,53 @@ class Status(str, Enum):
 
 
 class OriginalPerformance(CamelCaseModel):
-    capacity: float = Field(
-        ...,
+    capacity: Optional[float] = Field(
+        None,
         title="Capacity",
         description="The remaining capacity of the battery in ampere-hours (Ah)",
         examples=[80.0],
     )
-    power: float = Field(
-        ...,
+    power: Optional[float] = Field(
+        None,
         title="Power",
         description="The original power capability of the battery in watts",
         examples=[20000.0],
     )
-    resistance: float = Field(
-        ...,
+    resistance: Optional[float] = Field(
+        None,
         title="Internal Resistance",
         description="The internal resistance of the battery pack in ohms (Ω)",
         examples=[0.005],
     )
-    cycle_life: int = Field(
-        ...,
+    cycle_life: Optional[int] = Field(
+        None,
         title="Cycle Life",
+        ge=0,
         description="The expected cycle life of the battery that exceed 80% of the capacity under the reference conditions for which it has been designed",
         examples=[5000.0],
     )
-    calendar_years: int = Field(
-        ...,
+    calendar_years: Optional[int] = Field(
+        None,
         title="Calendar Years",
         description="The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed",
     )
 
 
 class OperationDetail(CamelCaseModel):
-    date: datetime = Field(
-        ...,
+    date: Optional[datetime] = Field(
+        None,
         title="Date",
         description="The date of the data point measurement",
         examples=[datetime(2024, 5, 24)],
     )
-    state_of_charge: float = Field(
-        ...,
+    state_of_charge: Optional[float] = Field(
+        None,
         title="State Of Charge",
         description="The state of charge measured in ampere-hours (Ah)",
         examples=[99.8],
     )
-    temperature: float = Field(
-        ...,
+    temperature: Optional[float] = Field(
+        None,
         title="Temperature",
         description="The temperature of the operating environment measured in celsius degrees",
         examples=[8.0],
@@ -70,32 +71,32 @@ class OperationDetail(CamelCaseModel):
 
 
 class HealthState(CamelCaseModel):
-    cumulative_cycle_count: int = Field(
-        ...,
+    cumulative_cycle_count: Optional[int] = Field(
+        None,
         title="Cumulative Cycle Count",
         description="The number of charging and discharging cycles of the battery",
         examples=[3500],
     )
-    capacity_fade: float = Field(
-        ...,
+    capacity_fade: Optional[float] = Field(
+        None,
         title="Capacity Fade",
         description="The capacity fade of the battery compared to the original capacity in percentage (%)",
         examples=[20.0],
     )
-    power_fade: float = Field(
-        ...,
+    power_fade: Optional[float] = Field(
+        None,
         title="Power Fade",
-        description="The power fade pf the battery compared to the original power in percentage (%)",
+        description="The power fade of the battery compared to the original power in percentage (%)",
     )
-    resistance_increase: float = Field(
-        ...,
+    resistance_increase: Optional[float] = Field(
+        None,
         title="Resistance Increase",
         description="The value of resistance increase since the battery was first commissioned in percentage (%)",
     )
     operation_details: List[OperationDetail] = Field(
         ...,
         title="Operation Details",
-        description="The periodic information of he battery operation",
+        description="The periodic information of the battery operation",
     )
 
 
@@ -106,8 +107,8 @@ class HarmfulEvent(CamelCaseModel):
         description="The date when the incident or accident happened",
         examples=[datetime(2024, 2, 10)],
     )
-    event_description: str = Field(
-        ...,
+    event_description: Optional[str] = Field(
+        None,
         title="Event Description",
         max_length=250,
         description="The description of the harmful incident that has happened to the battery",
@@ -116,14 +117,14 @@ class HarmfulEvent(CamelCaseModel):
 
 
 class HealthDataResponse(CamelCaseModel):
-    status: Status = Field(
-        ...,
+    status: Optional[Status] = Field(
+        None,
         title="Status",
         description="The status of the battery based on its history of use",
         examples=[Status.ORIGINAL],
     )
-    manufacturing_date: str = Field(
-        ...,
+    manufacturing_date: Optional[str] = Field(
+        None,
         title="Manufacturing Date",
         description="The date of manufacture using month and year",
         pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
@@ -136,13 +137,13 @@ class HealthDataResponse(CamelCaseModel):
         pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
         examples=["2023-12"],
     )
-    original_performance: OriginalPerformance = Field(
-        ...,
+    original_performance: Optional[OriginalPerformance] = Field(
+        None,
         title="Original Performance",
         description="The details of the original performance of the battery",
     )
-    health_state: HealthState = Field(
-        ...,
+    health_state: Optional[HealthState] = Field(
+        None,
         title="Health State",
         description="The state of the health of the battery",
     )

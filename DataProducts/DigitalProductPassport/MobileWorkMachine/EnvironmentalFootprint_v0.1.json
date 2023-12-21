@@ -6,11 +6,11 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/DigitalProductPassport/MovableWorkMachine/EnvironmentalFootprint_v0.1": {
+    "/DigitalProductPassport/MobileWorkMachine/EnvironmentalFootprint_v0.1": {
       "post": {
         "summary": "Mobile Work Machine Environmental Footprint",
         "description": "Carbon Footprint of a Mobile Work Machine",
-        "operationId": "request_DigitalProductPassport_MovableWorkMachine_EnvironmentalFootprint_v0_1",
+        "operationId": "request_DigitalProductPassport_MobileWorkMachine_EnvironmentalFootprint_v0_1",
         "parameters": [
           {
             "name": "x-consent-token",
@@ -195,31 +195,47 @@
       "CarbonFootprint": {
         "properties": {
           "preProductionFootprint": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Pre Production Footprint",
             "description": "The carbon footprint of the pre-manufacture phase of the machine calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
             "examples": [2345.7]
           },
           "mainProductionFootprint": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Main Production Footprint",
             "description": "The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
             "examples": [3504.4]
           },
           "referenceMaterial": {
-            "type": "string",
-            "pattern": "^https://",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the carbon footprint values",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/CArbonFootprint"]
           }
         },
         "type": "object",
-        "required": [
-          "preProductionFootprint",
-          "mainProductionFootprint",
-          "referenceMaterial"
-        ],
         "title": "CarbonFootprint"
       },
       "DataSheetRequest": {
@@ -389,7 +405,7 @@
             ],
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the material waste values",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/CArbonFootprint"]
           }
         },
         "type": "object",

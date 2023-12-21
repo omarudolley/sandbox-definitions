@@ -5,24 +5,24 @@ from pydantic import EmailStr, Field
 
 
 class CarbonFootprint(CamelCaseModel):
-    pre_production_footprint: float = Field(
-        ...,
+    pre_production_footprint: Optional[float] = Field(
+        None,
         title="Pre Production Footprint",
         description="The carbon footprint of the pre-manufacture phase of the machine calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
         examples=[2345.7],
     )
-    main_production_footprint: float = Field(
-        ...,
+    main_production_footprint: Optional[float] = Field(
+        None,
         title="Main Production Footprint",
         description="The carbon footprint of the machine main production phase calculated as kg of CO2e per one kWh using preferably PEF and PEFCR methods",
         examples=[3504.4],
     )
-    reference_material: str = Field(
-        ...,
+    reference_material: Optional[str] = Field(
+        None,
         pattern=r"^https://",
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the carbon footprint values",
-        examples=["https://example.com"],
+        examples=["https://example.com/CArbonFootprint"],
     )
 
 
@@ -38,7 +38,7 @@ class MaterialWaste(CamelCaseModel):
         pattern=r"^https://",
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the material waste values",
-        examples=["https://example.com"],
+        examples=["https://example.com/CArbonFootprint"],
     )
 
 

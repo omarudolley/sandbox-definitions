@@ -5,58 +5,57 @@ from pydantic import EmailStr, Field
 
 
 class ManufacturingLocation(CamelCaseModel):
-    country: str = Field(
-        ...,
+    country: Optional[str] = Field(
+        None,
         title="Country",
-        max_length=3,
-        min_length=3,
+        pattern=r"^[A-Z]{3}$",
         description="The country code of the battery manufacturing location in Alpha-3 format",
-        examples=["CHE"],
+        examples=["GER"],
     )
     city: Optional[str] = Field(
         None,
         title="City",
         max_length=40,
         description="The city of the battery manufacturing location",
-        examples=["Stabio"],
+        examples=["Hamburg"],
     )
 
 
 class ManufacturerInformation(CamelCaseModel):
-    name: str = Field(
-        ...,
+    name: Optional[str] = Field(
+        None,
         max_length=250,
         title="Name",
         description="The registered trade name of the battery manufacturer company",
-        examples=["FZSonic"],
+        examples=["Battery Manufacturer A"],
     )
-    street_name: str = Field(
-        ...,
+    street_name: Optional[str] = Field(
+        None,
         title="Street Name",
         max_length=40,
         description="The street address of the manufacturer's headquarters",
-        examples=["Viale Europa 81"],
+        examples=["Example Street 100"],
     )
-    postal_code: str = Field(
-        ...,
+    postal_code: Optional[str] = Field(
+        None,
         title="Postal Code",
         max_length=10,
         description="The postal code of the manufacturer's headquarters",
-        examples=["VI 36075"],
+        examples=["75034"],
     )
-    city: str = Field(
-        ...,
+    city: Optional[str] = Field(
+        None,
         title="City",
         max_length=40,
         description="The city of the manufacturer's headquarters",
-        examples=["Montecchio Maggiore"],
+        examples=["Seattle"],
     )
-    country: str = Field(
-        ...,
+    country: Optional[str] = Field(
+        None,
         title="Country",
-        max_length=3,
+        pattern=r"^[A-Z]{3}$",
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
-        examples=["ITA"],
+        examples=["USA"],
     )
     website: Optional[str] = Field(
         None,
@@ -69,59 +68,59 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["example@mail.com"],
+        examples=["info@fzsonick.com"],
     )
 
 
 class CarbonFootprint(CamelCaseModel):
-    pre_production_footprint: float = Field(
-        ...,
+    pre_production_footprint: Optional[float] = Field(
+        None,
         title="Pre Production Footprint",
         description="The carbon footprint of the raw material acquisition and pre-processing phase of the battery calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
         examples=[2345.7],
     )
-    main_production_footprint: float = Field(
-        ...,
+    main_production_footprint: Optional[float] = Field(
+        None,
         title="Main Production Footprint",
         description="The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
         examples=[3504.4],
     )
-    reference_material: str = Field(
-        ...,
+    reference_material: Optional[str] = Field(
+        None,
         pattern=r"^https://",
         title="Reference Material",
         description="The web link giving access to a public version of the study supporting the carbon footprint values",
-        examples=["https://example.com"],
+        examples=["https://example.com/CArbonFootprint"],
     )
 
 
 class CarbonFootprintResponse(CamelCaseModel):
-    manufacturer_information: ManufacturerInformation = Field(
-        ...,
+    manufacturer_information: Optional[ManufacturerInformation] = Field(
+        None,
         title="Manufacturer Information",
         description="The details of the battery manufacturer",
     )
-    battery_model: str = Field(
-        ...,
+    battery_model: Optional[str] = Field(
+        None,
         max_length=40,
         title="Battery Model",
         description="The model of the battery",
         examples=["Z37-310-76"],
     )
-    conformity_declaration: str = Field(
-        ...,
+    conformity_declaration: Optional[str] = Field(
+        None,
         pattern=r"^https://",
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
-        examples=["https://example.com"],
+        examples=["https://example.com/EUdeclaration"],
     )
-    manufacturing_location: ManufacturingLocation = Field(
-        ...,
+    manufacturing_location: Optional[ManufacturingLocation] = Field(
+        None,
         title="Manufacturing Location",
         description="The details of the location of the battery manufacturing plant",
     )
-    carbon_footprint: CarbonFootprint = Field(
-        ...,
+    carbon_footprint: Optional[CarbonFootprint] = Field(
+        None,
         title="Carbon Footprint",
         description="The details of the carbon footprint for the battery production phases",
     )

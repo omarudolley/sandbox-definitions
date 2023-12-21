@@ -286,37 +286,71 @@
       "ManufacturerInformation": {
         "properties": {
           "name": {
-            "type": "string",
-            "maxLength": 250,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 250
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Name",
             "description": "The registered trade name of the battery manufacturer company",
-            "examples": ["Sandvik"]
+            "examples": ["Drilling Company A"]
           },
           "streetName": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Street Name",
             "description": "The street address of the manufacturer's headquarters",
-            "examples": ["Kungsbron 1"]
+            "examples": ["Example Street 100"]
           },
           "postalCode": {
-            "type": "string",
-            "maxLength": 10,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 10
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Postal Code",
             "description": "The postal code of the manufacturer's headquarters",
-            "examples": ["111 22"]
+            "examples": ["112233"]
           },
           "city": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "City",
             "description": "The city of the manufacturer's headquarters",
             "examples": ["Stockholm"]
           },
           "country": {
-            "type": "string",
-            "maxLength": 3,
-            "minLength": 3,
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Country",
             "description": "The country code of the manufacturer's headquarters location in Alpha-3 format",
             "examples": ["SWE"]
@@ -347,11 +381,10 @@
             ],
             "title": "Email",
             "description": "The email address of the battery manufacturer",
-            "examples": ["example@mail.com"]
+            "examples": ["info@example.com"]
           }
         },
         "type": "object",
-        "required": ["name", "streetName", "postalCode", "city", "country"],
         "title": "ManufacturerInformation"
       },
       "ManufacturingDataSheetRequest": {
@@ -378,85 +411,139 @@
       "ManufacturingDataSheetResponse": {
         "properties": {
           "productName": {
-            "type": "string",
-            "maxLength": 150,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 150
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Product Name",
             "description": "The official sales name of the product",
             "examples": ["BEV Longhole Drill"]
           },
           "manufacturerInformation": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/ManufacturerInformation"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Manufacturer Information",
             "description": "The details of the drill manufacturer"
           },
           "boomCoverage": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Boom Coverage",
             "description": "The largest distance to which the drill boom can reach from the machine in meters (m)",
             "examples": [3.0]
           },
           "trammingDistance": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Tramming Distance",
             "description": "The maximum tramming distance of the drill movement in kilometers (km)",
             "examples": [3.0]
           },
           "maximumHoleLength": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Maximum Hole Length",
             "description": "The maximum length of the drilled hole in meters (m)",
             "examples": [54.0]
           },
           "minimumHoleDiameter": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Minimum Hole Diameter",
             "description": "The minimum diameter measure of the drilling hole in millimeters (mm)",
             "examples": [76.0]
           },
           "maximumHoleDiameter": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Maximum Hole Diameter",
             "description": "The maximum diameter measure of the drilling hole in millimeters (mm)",
             "examples": [127.0]
           },
           "drillingPower": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Drilling Power",
             "description": "The maximum drilling power of the machine in kilowatts (kW)",
             "examples": [160.0]
           },
           "referenceDataSheet": {
-            "type": "string",
-            "pattern": "^https://",
-            "title": "Reference Material",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Data Sheet",
             "description": "The link to the detailed product specifications",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/productDocument"]
           },
           "safetyDataSheet": {
-            "type": "string",
-            "pattern": "^https://",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Safety Data Sheet",
             "description": "The link to the safety control measures of the product",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/safetyDocument"]
           }
         },
         "type": "object",
-        "required": [
-          "productName",
-          "manufacturerInformation",
-          "boomCoverage",
-          "trammingDistance",
-          "maximumHoleLength",
-          "minimumHoleDiameter",
-          "maximumHoleDiameter",
-          "drillingPower",
-          "referenceDataSheet",
-          "safetyDataSheet"
-        ],
         "title": "ManufacturingDataSheetResponse"
       },
       "NotFound": {

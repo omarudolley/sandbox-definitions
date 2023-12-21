@@ -5,39 +5,38 @@ from pydantic import EmailStr, Field
 
 
 class ManufacturerInformation(CamelCaseModel):
-    name: str = Field(
-        ...,
+    name: Optional[str] = Field(
+        None,
         max_length=250,
         title="Name",
         description="The registered trade name of the battery manufacturer company",
-        examples=["Sandvik"],
+        examples=["Drilling Company A"],
     )
-    street_name: str = Field(
-        ...,
+    street_name: Optional[str] = Field(
+        None,
         title="Street Name",
         max_length=40,
         description="The street address of the manufacturer's headquarters",
-        examples=["Kungsbron 1"],
+        examples=["Example Street 100"],
     )
-    postal_code: str = Field(
-        ...,
+    postal_code: Optional[str] = Field(
+        None,
         title="Postal Code",
         max_length=10,
         description="The postal code of the manufacturer's headquarters",
-        examples=["111 22"],
+        examples=["112233"],
     )
-    city: str = Field(
-        ...,
+    city: Optional[str] = Field(
+        None,
         title="City",
         max_length=40,
         description="The city of the manufacturer's headquarters",
         examples=["Stockholm"],
     )
-    country: str = Field(
-        ...,
+    country: Optional[str] = Field(
+        None,
         title="Country",
-        max_length=3,
-        min_length=3,
+        pattern=r"^[A-Z]{3}$",
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
         examples=["SWE"],
     )
@@ -52,72 +51,72 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["example@mail.com"],
+        examples=["info@example.com"],
     )
 
 
 class ManufacturingDataSheetResponse(CamelCaseModel):
-    product_name: str = Field(
-        ...,
+    product_name: Optional[str] = Field(
+        None,
         max_length=150,
         title="Product Name",
         description="The official sales name of the product",
         examples=["BEV Longhole Drill"],
     )
-    manufacturer_information: ManufacturerInformation = Field(
-        ...,
+    manufacturer_information: Optional[ManufacturerInformation] = Field(
+        None,
         title="Manufacturer Information",
         description="The details of the drill manufacturer",
     )
-    boom_coverage: float = Field(
-        ...,
+    boom_coverage: Optional[float] = Field(
+        None,
         title="Boom Coverage",
         description="The largest distance to which the drill boom can reach from the machine in meters (m)",
         examples=[3.0],
     )
-    tramming_distance: float = Field(
-        ...,
+    tramming_distance: Optional[float] = Field(
+        None,
         title="Tramming Distance",
         description="The maximum tramming distance of the drill movement in kilometers (km)",
         examples=[3.0],
     )
-    maximum_hole_length: float = Field(
-        ...,
+    maximum_hole_length: Optional[float] = Field(
+        None,
         title="Maximum Hole Length",
         description="The maximum length of the drilled hole in meters (m)",
         examples=[54.0],
     )
-    minimum_hole_diameter: float = Field(
-        ...,
+    minimum_hole_diameter: Optional[float] = Field(
+        None,
         title="Minimum Hole Diameter",
         description="The minimum diameter measure of the drilling hole in millimeters (mm)",
         examples=[76.0],
     )
-    maximum_hole_diameter: float = Field(
-        ...,
+    maximum_hole_diameter: Optional[float] = Field(
+        None,
         title="Maximum Hole Diameter",
         description="The maximum diameter measure of the drilling hole in millimeters (mm)",
         examples=[127.0],
     )
-    drilling_power: float = Field(
-        ...,
+    drilling_power: Optional[float] = Field(
+        None,
         title="Drilling Power",
         description="The maximum drilling power of the machine in kilowatts (kW)",
         examples=[160.0],
     )
-    reference_data_sheet: str = Field(
-        ...,
+    reference_data_sheet: Optional[str] = Field(
+        None,
         pattern=r"^https://",
-        title="Reference Material",
+        title="Reference Data Sheet",
         description="The link to the detailed product specifications",
-        examples=["https://example.com"],
+        examples=["https://example.com/productDocument"],
     )
-    safety_data_sheet: str = Field(
-        ...,
+    safety_data_sheet: Optional[str] = Field(
+        None,
         pattern=r"^https://",
         title="Safety Data Sheet",
         description="The link to the safety control measures of the product",
-        examples=["https://example.com"],
+        examples=["https://example.com/safetyDocument"],
     )
 
 

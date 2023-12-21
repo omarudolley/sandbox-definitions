@@ -300,15 +300,22 @@
             "examples": ["2024-02-10T00:00:00"]
           },
           "eventDescription": {
-            "type": "string",
-            "maxLength": 250,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 250
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Event Description",
             "description": "The description of the harmful incident that has happened to the battery",
             "examples": ["30 minutes spent in extreme temperature -50 celsius"]
           }
         },
         "type": "object",
-        "required": ["date", "eventDescription"],
+        "required": ["date"],
         "title": "HarmfulEvent"
       },
       "HealthDataRequest": {
@@ -335,17 +342,28 @@
       "HealthDataResponse": {
         "properties": {
           "status": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/Status"
+              },
+              {
+                "type": "null"
               }
             ],
+            "title": "Status",
             "description": "The status of the battery based on its history of use",
             "examples": ["original"]
           },
           "manufacturingDate": {
-            "type": "string",
-            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Manufacturing Date",
             "description": "The date of manufacture using month and year",
             "examples": ["2023-07"]
@@ -365,18 +383,24 @@
             "examples": ["2023-12"]
           },
           "originalPerformance": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/OriginalPerformance"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Original Performance",
             "description": "The details of the original performance of the battery"
           },
           "healthState": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/HealthState"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Health State",
@@ -392,36 +416,58 @@
           }
         },
         "type": "object",
-        "required": [
-          "status",
-          "manufacturingDate",
-          "originalPerformance",
-          "healthState",
-          "harmfulEvents"
-        ],
+        "required": ["harmfulEvents"],
         "title": "HealthDataResponse"
       },
       "HealthState": {
         "properties": {
           "cumulativeCycleCount": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Cumulative Cycle Count",
             "description": "The number of charging and discharging cycles of the battery",
             "examples": [3500]
           },
           "capacityFade": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Capacity Fade",
             "description": "The capacity fade of the battery compared to the original capacity in percentage (%)",
             "examples": [20.0]
           },
           "powerFade": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Power Fade",
-            "description": "The power fade pf the battery compared to the original power in percentage (%)"
+            "description": "The power fade of the battery compared to the original power in percentage (%)"
           },
           "resistanceIncrease": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Resistance Increase",
             "description": "The value of resistance increase since the battery was first commissioned in percentage (%)"
           },
@@ -431,17 +477,11 @@
             },
             "type": "array",
             "title": "Operation Details",
-            "description": "The periodic information of he battery operation"
+            "description": "The periodic information of the battery operation"
           }
         },
         "type": "object",
-        "required": [
-          "cumulativeCycleCount",
-          "capacityFade",
-          "powerFade",
-          "resistanceIncrease",
-          "operationDetails"
-        ],
+        "required": ["operationDetails"],
         "title": "HealthState"
       },
       "NotFound": {
@@ -464,65 +504,120 @@
       "OperationDetail": {
         "properties": {
           "date": {
-            "type": "string",
-            "format": "date-time",
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Date",
             "description": "The date of the data point measurement",
             "examples": ["2024-05-24T00:00:00"]
           },
           "stateOfCharge": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "State Of Charge",
             "description": "The state of charge measured in ampere-hours (Ah)",
             "examples": [99.8]
           },
           "temperature": {
-            "type": "number",
-            "maximum": 100.0,
-            "minimum": -100.0,
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": -100.0
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Temperature",
             "description": "The temperature of the operating environment measured in celsius degrees",
             "examples": [8.0]
           }
         },
         "type": "object",
-        "required": ["date", "stateOfCharge", "temperature"],
         "title": "OperationDetail"
       },
       "OriginalPerformance": {
         "properties": {
           "capacity": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Capacity",
             "description": "The remaining capacity of the battery in ampere-hours (Ah)",
             "examples": [80.0]
           },
           "power": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Power",
             "description": "The original power capability of the battery in watts",
             "examples": [20000.0]
           },
           "resistance": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Internal Resistance",
             "description": "The internal resistance of the battery pack in ohms (Ω)",
             "examples": [0.005]
           },
           "cycleLife": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Cycle Life",
             "description": "The expected cycle life of the battery that exceed 80% of the capacity under the reference conditions for which it has been designed",
             "examples": [5000.0]
           },
           "calendarYears": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Calendar Years",
             "description": "The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed"
           }
         },
         "type": "object",
-        "required": ["capacity", "power", "resistance", "cycleLife", "calendarYears"],
         "title": "OriginalPerformance"
       },
       "ServiceUnavailable": {

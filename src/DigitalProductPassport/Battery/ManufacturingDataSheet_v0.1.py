@@ -6,58 +6,57 @@ from pydantic import EmailStr, Field
 
 
 class ManufacturingLocation(CamelCaseModel):
-    country: str = Field(
-        ...,
+    country: Optional[str] = Field(
+        None,
         title="Country",
-        max_length=3,
-        min_length=3,
+        pattern=r"^[A-Z]{3}$",
         description="The country code of the battery manufacturing location in Alpha-3 format",
-        examples=["CHE"],
+        examples=["GER"],
     )
     city: Optional[str] = Field(
         None,
         title="City",
         max_length=40,
         description="The city of the battery manufacturing location",
-        examples=["Stabio"],
+        examples=["Hamburg"],
     )
 
 
 class ManufacturerInformation(CamelCaseModel):
-    name: str = Field(
-        ...,
+    name: Optional[str] = Field(
+        None,
         max_length=250,
         title="Name",
         description="The registered trade name of the battery manufacturer company",
-        examples=["FZSonic"],
+        examples=["Battery Manufacturer A"],
     )
-    street_name: str = Field(
-        ...,
+    street_name: Optional[str] = Field(
+        None,
         title="Street Name",
         max_length=40,
         description="The street address of the manufacturer's headquarters",
-        examples=["Viale Europa 81"],
+        examples=["Example Street 100"],
     )
-    postal_code: str = Field(
-        ...,
+    postal_code: Optional[str] = Field(
+        None,
         title="Postal Code",
         max_length=10,
         description="The postal code of the manufacturer's headquarters",
-        examples=["VI 36075"],
+        examples=["75034"],
     )
-    city: str = Field(
-        ...,
+    city: Optional[str] = Field(
+        None,
         title="City",
         max_length=40,
         description="The city of the manufacturer's headquarters",
-        examples=["Montecchio Maggiore"],
+        examples=["Seattle"],
     )
-    country: str = Field(
-        ...,
+    country: Optional[str] = Field(
+        None,
         title="Country",
-        max_length=3,
+        pattern=r"^[A-Z]{3}$",
         description="The country code of the manufacturer's headquarters location in Alpha-3 format",
-        examples=["ITA"],
+        examples=["USA"],
     )
     website: Optional[str] = Field(
         None,
@@ -70,7 +69,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["example@mail.com"],
+        examples=["info@fzsonick.com"],
     )
 
 
@@ -85,7 +84,7 @@ class RoundTripEfficiency(CamelCaseModel):
     initial_energy_efficiency: Optional[float] = Field(
         None,
         title="Initial Energy Efficiency",
-        description="The initial round trip energy efficiency of an energy storage battery in percentage (%)",
+        description="The initial round trip energy efficiency of a battery in percentage (%)",
         examples=[75.0],
     )
     degraded_energy_efficiency: Optional[float] = Field(
@@ -97,20 +96,20 @@ class RoundTripEfficiency(CamelCaseModel):
 
 
 class VoltageLevels(CamelCaseModel):
-    nominal_voltage: float = Field(
-        ...,
+    nominal_voltage: Optional[float] = Field(
+        None,
         title="Nominal Voltage",
         description="The average voltage the battery output when fully charged",
         examples=[550.0],
     )
-    maximum_voltage: float = Field(
-        ...,
+    maximum_voltage: Optional[float] = Field(
+        None,
         title="Maximum Voltage",
         description="The highest level the battery voltage can reach",
         examples=[620.0],
     )
-    minimum_voltage: float = Field(
-        ...,
+    minimum_voltage: Optional[float] = Field(
+        None,
         title="Minimum Voltage",
         description="The lowest level the battery voltage can reach",
         examples=[180.0],
@@ -137,22 +136,22 @@ class TemperatureRange(CamelCaseModel):
 
 
 class ExpectedLifetime(CamelCaseModel):
-    cycle_life: int = Field(
-        ...,
+    cycle_life: Optional[int] = Field(
+        None,
         title="Cycle Life",
         ge=0,
         description="Minimum number of cycles the battery can be recharged to at least 80% of initial capacity",
         examples=[5000],
     )
-    reference_test: str = Field(
-        ...,
+    reference_test: Optional[str] = Field(
+        None,
         title="Reference Test",
         max_length=250,
         description="The details of the reference test used for defining the expected lifetime",
         examples=["Accelerated cycle life testing"],
     )
-    cycle_rate: str = Field(
-        ...,
+    cycle_rate: Optional[str] = Field(
+        None,
         title="Cycle Rate",
         description="The C-rate used in the cycle life test",
         examples=["1C"],
@@ -181,15 +180,15 @@ class MaterialComposition(CamelCaseModel):
 
 
 class RecycledContent(CamelCaseModel):
-    substance_name: str = Field(
-        ...,
+    substance_name: Optional[str] = Field(
+        None,
         title="Substance Name",
         max_length=40,
         description="The name of the substance that has recycled content",
         examples=["Cobalt"],
     )
-    recycling_rate: float = Field(
-        ...,
+    recycling_rate: Optional[float] = Field(
+        None,
         title="Recycling Rate",
         description="The amount of recycled content in the substance",
         examples=[8.5],
@@ -213,8 +212,8 @@ class RenewableContent(CamelCaseModel):
 
 
 class LegalConformity(CamelCaseModel):
-    battery_act_compliance: bool = Field(
-        ...,
+    battery_act_compliance: Optional[bool] = Field(
+        None,
         title="Battery Act Compliance",
         description="The indicator if the battery complies with the requirements of the battery act or not",
         examples=[True],
@@ -225,8 +224,8 @@ class LegalConformity(CamelCaseModel):
         description="The compliancy of the battery with other legal and standard requirements",
         examples=[["ROHS", "CE HSE", "IEC62619"]],
     )
-    conformity_declaration: str = Field(
-        ...,
+    conformity_declaration: Optional[str] = Field(
+        None,
         pattern=r"^https://",
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
@@ -239,65 +238,65 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         None,
         title="Product Name",
         description="The official sales name of the product",
-        examples=["Salt battery"],
+        examples=["Battery Model A"],
     )
-    battery_model: str = Field(
-        ...,
+    battery_model: Optional[str] = Field(
+        None,
         title="Battery Model",
         max_length=40,
         description="The model of the battery",
         examples=["Z37-310-76"],
     )
-    battery_category: BatteryCategory = Field(
-        ...,
+    battery_category: Optional[BatteryCategory] = Field(
+        None,
         title="Battery Category",
         description="The category of the battery based on its intended use",
         examples=[BatteryCategory.INDUSTRIAL_BATTERY],
     )
-    manufacturer_information: ManufacturerInformation = Field(
-        ...,
+    manufacturer_information: Optional[ManufacturerInformation] = Field(
+        None,
         title="Manufacturer Information",
         description="The details of the battery manufacturer",
     )
-    manufacturing_location: ManufacturingLocation = Field(
-        ...,
+    manufacturing_location: Optional[ManufacturingLocation] = Field(
+        None,
         title="Manufacturing Location",
         description="The location details of the battery manufacturing plant",
     )
-    manufacturing_date: str = Field(
-        ...,
+    manufacturing_date: Optional[str] = Field(
+        None,
         title="Manufacturing Date",
         description="The date of manufacture using month and year",
         pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
         examples=["2023-07"],
     )
-    weight: float = Field(
-        ...,
+    weight: Optional[float] = Field(
+        None,
         title="Weight",
         description="The total net weight of the product in kilograms (kg)",
         examples=[450.0],
     )
-    capacity: float = Field(
-        ...,
+    capacity: Optional[float] = Field(
+        None,
         title="Capacity",
         description="The total number of ampere-hours (Ah) that can be withdrawn from a fully charged battery under reference conditions",
         examples=[100.0],
     )
-    power: float = Field(
-        ...,
+    power: Optional[float] = Field(
+        None,
         title="Power",
         description="The original power capability of the battery in Watts",
         examples=[25000.0],
     )
-    cell_type: str = Field(
-        ...,
+    cell_type: Optional[str] = Field(
+        None,
         max_length=250,
         title="Cell Type",
         description="The type of cells used in the battery pack",
         examples=["sodium-ion"],
     )
-    resistance: float = Field(
-        ...,
+    resistance: Optional[float] = Field(
+        None,
         title="Resistance",
         description="The internal resistance of the battery pack",
         examples=[0],
@@ -307,23 +306,23 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         title="Round Trip Efficiency",
         description="The details of the round trip energy efficiency in energy storages",
     )
-    voltage_levels: VoltageLevels = Field(
-        ...,
+    voltage_levels: Optional[VoltageLevels] = Field(
+        None,
         title="Voltage Levels",
         description="The details of the voltage levels of the battery",
     )
-    temperature_range: TemperatureRange = Field(
-        ...,
+    temperature_range: Optional[TemperatureRange] = Field(
+        None,
         title="Temperature Range",
         description="The details of the acceptable temperature values of the battery",
     )
-    expected_lifetime: ExpectedLifetime = Field(
-        ...,
+    expected_lifetime: Optional[ExpectedLifetime] = Field(
+        None,
         title="Expected Lifetime",
         description="The details of the battery lifetime",
     )
-    material_composition: MaterialComposition = Field(
-        ...,
+    material_composition: Optional[MaterialComposition] = Field(
+        None,
         title="Material Composition",
         description="The details of the material composition of the battery",
     )
@@ -337,13 +336,19 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         title="Renewable Content",
         description="The renewable content information present in the battery",
     )
-    legal_conformity: LegalConformity = Field(
+    extinguishing_agents: List[str] = Field(
         ...,
+        title="Extinguishing Agents",
+        description="The type of the fire extinguishing agent that can be used for the battery",
+        examples=[["foam", "carbon dioxide"]],
+    )
+    legal_conformity: Optional[LegalConformity] = Field(
+        None,
         title="Legal Conformity",
         description="The details of the conformity of the battery with the legal and harmonized standards",
     )
-    warranty: str = Field(
-        ...,
+    warranty: Optional[str] = Field(
+        None,
         title="Warranty",
         description="The date when the battery warranty expires",
         pattern=r"^\d{4}-(0[1-9]|1[0-2])$",
@@ -370,7 +375,7 @@ class ManufacturingDataSheetRequest(CamelCaseModel):
 
 DEFINITION = DataProductDefinition(
     version="0.1.0",
-    title="Manufacturing Data Sheet",
+    title="Battery Manufacturing Data Sheet",
     description="Manufacturing data sheet as required by Battery Passport specification of the European Commission's Battery Act (2023/1542)",
     request=ManufacturingDataSheetRequest,
     response=ManufacturingDataSheetResponse,

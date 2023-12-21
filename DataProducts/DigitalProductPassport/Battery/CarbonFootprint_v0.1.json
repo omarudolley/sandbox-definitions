@@ -195,31 +195,47 @@
       "CarbonFootprint": {
         "properties": {
           "preProductionFootprint": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Pre Production Footprint",
             "description": "The carbon footprint of the raw material acquisition and pre-processing phase of the battery calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
             "examples": [2345.7]
           },
           "mainProductionFootprint": {
-            "type": "number",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Main Production Footprint",
             "description": "The carbon footprint of the battery main production phase calculated as kilograms (kg) of CO2e per one kilowatt-hour (kWh) using preferably PEF and PEFCR methods",
             "examples": [3504.4]
           },
           "referenceMaterial": {
-            "type": "string",
-            "pattern": "^https://",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Reference Material",
             "description": "The web link giving access to a public version of the study supporting the carbon footprint values",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/CArbonFootprint"]
           }
         },
         "type": "object",
-        "required": [
-          "preProductionFootprint",
-          "mainProductionFootprint",
-          "referenceMaterial"
-        ],
         "title": "CarbonFootprint"
       },
       "CarbonFootprintRequest": {
@@ -246,41 +262,64 @@
       "CarbonFootprintResponse": {
         "properties": {
           "manufacturerInformation": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/ManufacturerInformation"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Manufacturer Information",
             "description": "The details of the battery manufacturer"
           },
           "batteryModel": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Battery Model",
             "description": "The model of the battery",
             "examples": ["Z37-310-76"]
           },
           "conformityDeclaration": {
-            "type": "string",
-            "pattern": "^https://",
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Conformity Declaration",
             "description": "The link to the EU declaration of conformity documentation",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/EUdeclaration"]
           },
           "manufacturingLocation": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/ManufacturingLocation"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Manufacturing Location",
             "description": "The details of the location of the battery manufacturing plant"
           },
           "carbonFootprint": {
-            "allOf": [
+            "anyOf": [
               {
                 "$ref": "#/components/schemas/CarbonFootprint"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Carbon Footprint",
@@ -288,13 +327,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "manufacturerInformation",
-          "batteryModel",
-          "conformityDeclaration",
-          "manufacturingLocation",
-          "carbonFootprint"
-        ],
         "title": "CarbonFootprintResponse"
       },
       "DataSourceError": {
@@ -391,39 +423,74 @@
       "ManufacturerInformation": {
         "properties": {
           "name": {
-            "type": "string",
-            "maxLength": 250,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 250
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Name",
             "description": "The registered trade name of the battery manufacturer company",
-            "examples": ["FZSonic"]
+            "examples": ["Battery Manufacturer A"]
           },
           "streetName": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Street Name",
             "description": "The street address of the manufacturer's headquarters",
-            "examples": ["Viale Europa 81"]
+            "examples": ["Example Street 100"]
           },
           "postalCode": {
-            "type": "string",
-            "maxLength": 10,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 10
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Postal Code",
             "description": "The postal code of the manufacturer's headquarters",
-            "examples": ["VI 36075"]
+            "examples": ["75034"]
           },
           "city": {
-            "type": "string",
-            "maxLength": 40,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "City",
             "description": "The city of the manufacturer's headquarters",
-            "examples": ["Montecchio Maggiore"]
+            "examples": ["Seattle"]
           },
           "country": {
-            "type": "string",
-            "maxLength": 3,
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Country",
             "description": "The country code of the manufacturer's headquarters location in Alpha-3 format",
-            "examples": ["ITA"]
+            "examples": ["USA"]
           },
           "website": {
             "anyOf": [
@@ -451,22 +518,27 @@
             ],
             "title": "Email",
             "description": "The email address of the battery manufacturer",
-            "examples": ["example@mail.com"]
+            "examples": ["info@fzsonick.com"]
           }
         },
         "type": "object",
-        "required": ["name", "streetName", "postalCode", "city", "country"],
         "title": "ManufacturerInformation"
       },
       "ManufacturingLocation": {
         "properties": {
           "country": {
-            "type": "string",
-            "maxLength": 3,
-            "minLength": 3,
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Country",
             "description": "The country code of the battery manufacturing location in Alpha-3 format",
-            "examples": ["CHE"]
+            "examples": ["GER"]
           },
           "city": {
             "anyOf": [
@@ -480,11 +552,10 @@
             ],
             "title": "City",
             "description": "The city of the battery manufacturing location",
-            "examples": ["Stabio"]
+            "examples": ["Hamburg"]
           }
         },
         "type": "object",
-        "required": ["country"],
         "title": "ManufacturingLocation"
       },
       "NotFound": {
