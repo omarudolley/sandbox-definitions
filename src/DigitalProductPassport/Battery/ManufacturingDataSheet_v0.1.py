@@ -63,7 +63,7 @@ class ManufacturerInformation(CamelCaseModel):
         pattern=r"^https://",
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://example.com"],
+        examples=["https://example.com/"],
     )
     email: Optional[EmailStr] = Field(
         None,
@@ -229,7 +229,7 @@ class LegalConformity(CamelCaseModel):
         pattern=r"^https://",
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
-        examples=["https://example.com"],
+        examples=["https://example.com/EUdeclaration"],
     )
 
 
