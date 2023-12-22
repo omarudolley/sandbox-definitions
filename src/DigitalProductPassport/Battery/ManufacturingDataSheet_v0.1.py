@@ -69,7 +69,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         title="Email",
         description="The email address of the battery manufacturer",
-        examples=["info@fzsonick.com"],
+        examples=["info@example.com"],
     )
 
 

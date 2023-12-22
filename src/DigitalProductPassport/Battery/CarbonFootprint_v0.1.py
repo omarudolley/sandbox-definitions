@@ -62,7 +62,7 @@ class ManufacturerInformation(CamelCaseModel):
         pattern=r"^https://",
         title="Website",
         description="The website of the battery manufacturer",
-        examples=["https://examples.com"],
+        examples=["https://example.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
@@ -90,7 +90,7 @@ class CarbonFootprint(CamelCaseModel):
         pattern=r"^https://",
         title="Reference Material",
         description="The web link giving access to a public version of the study supporting the carbon footprint values",
-        examples=["https://example.com/CArbonFootprint"],
+        examples=["https://example.com/CarbonFootprint"],
     )
 
 
