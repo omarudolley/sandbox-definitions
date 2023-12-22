@@ -232,7 +232,7 @@
             ],
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the carbon footprint values",
-            "examples": ["https://example.com/CArbonFootprint"]
+            "examples": ["https://example.com/CarbonFootprint"]
           }
         },
         "type": "object",
@@ -405,7 +405,7 @@
             ],
             "title": "Reference Material",
             "description": "The link giving access to a public version of the study supporting the material waste values",
-            "examples": ["https://example.com/CArbonFootprint"]
+            "examples": ["https://example.com/CarbonFootprint"]
           }
         },
         "type": "object",

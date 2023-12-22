@@ -22,7 +22,7 @@ class CarbonFootprint(CamelCaseModel):
         pattern=r"^https://",
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the carbon footprint values",
-        examples=["https://example.com/CArbonFootprint"],
+        examples=["https://example.com/CarbonFootprint"],
     )
 
 
@@ -38,7 +38,7 @@ class MaterialWaste(CamelCaseModel):
         pattern=r"^https://",
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the material waste values",
-        examples=["https://example.com/CArbonFootprint"],
+        examples=["https://example.com/CarbonFootprint"],
     )
 
 
