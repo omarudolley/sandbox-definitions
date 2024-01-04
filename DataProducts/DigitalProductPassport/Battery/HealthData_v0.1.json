@@ -285,19 +285,19 @@
       },
       "HarmfulEvent": {
         "properties": {
-          "date": {
+          "eventDate": {
             "anyOf": [
               {
                 "type": "string",
-                "format": "date-time"
+                "format": "date"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Date",
+            "title": "Event Date",
             "description": "The date when the incident or accident happened",
-            "examples": ["2024-02-10T00:00:00"]
+            "examples": ["2024-02-10"]
           },
           "eventDescription": {
             "anyOf": [
@@ -315,7 +315,7 @@
           }
         },
         "type": "object",
-        "required": ["date"],
+        "required": ["eventDate"],
         "title": "HarmfulEvent"
       },
       "HealthDataRequest": {
@@ -503,19 +503,19 @@
       },
       "OperationDetail": {
         "properties": {
-          "date": {
+          "measurementDate": {
             "anyOf": [
               {
                 "type": "string",
-                "format": "date-time"
+                "format": "date"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Date",
+            "title": "Measurement Date",
             "description": "The date of the data point measurement",
-            "examples": ["2024-05-24T00:00:00"]
+            "examples": ["2024-05-24"]
           },
           "stateOfCharge": {
             "anyOf": [
@@ -635,7 +635,7 @@
       },
       "Status": {
         "type": "string",
-        "enum": ["original", "repurposed", "re-used", "remanufactured", "waste"],
+        "enum": ["original", "repurposed", "reused", "remanufactured", "waste"],
         "title": "Status"
       },
       "Unauthorized": {

@@ -1,15 +1,15 @@
-from datetime import datetime
+import datetime
 from enum import Enum
 from typing import List, Optional
 
 from definition_tooling.converter import CamelCaseModel, DataProductDefinition
-from pydantic import EmailStr, Field
+from pydantic import Field
 
 
 class Status(str, Enum):
     ORIGINAL = "original"
     REPURPOSED = "repurposed"
-    RE_USED = "re-used"
+    REUSED = "reused"
     REMANUFACTURED = "remanufactured"
     WASTE = "waste"
 
@@ -48,11 +48,11 @@ class OriginalPerformance(CamelCaseModel):
 
 
 class OperationDetail(CamelCaseModel):
-    date: Optional[datetime] = Field(
+    measurement_date: Optional[datetime.date] = Field(
         None,
-        title="Date",
+        title="Measurement Date",
         description="The date of the data point measurement",
-        examples=[datetime(2024, 5, 24)],
+        examples=[datetime.date(2024, 5, 24)],
     )
     state_of_charge: Optional[float] = Field(
         None,
@@ -101,11 +101,11 @@ class HealthState(CamelCaseModel):
 
 
 class HarmfulEvent(CamelCaseModel):
-    date: Optional[datetime] = Field(
+    event_date: Optional[datetime.date] = Field(
         ...,
-        title="Date",
+        title="Event Date",
         description="The date when the incident or accident happened",
-        examples=[datetime(2024, 2, 10)],
+        examples=[datetime.date(2024, 2, 10)],
     )
     event_description: Optional[str] = Field(
         None,
