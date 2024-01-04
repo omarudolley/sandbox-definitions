@@ -980,7 +980,7 @@
               }
             ],
             "title": "Minimum Temperature",
-            "description": "The minimum temperature the battery can withstand",
+            "description": "The minimum temperature the battery can withstand in Celsius degrees",
             "examples": [-40.0]
           },
           "maximumTemperature": {
@@ -995,7 +995,7 @@
               }
             ],
             "title": "Maximum Temperature",
-            "description": "The maximum temperature the battery can withstand",
+            "description": "The maximum temperature the battery can withstand in Celsius degrees",
             "examples": [50.0]
           }
         },

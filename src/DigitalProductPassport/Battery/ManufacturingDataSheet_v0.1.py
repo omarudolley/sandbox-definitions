@@ -120,7 +120,7 @@ class TemperatureRange(CamelCaseModel):
     minimum_temperature: Optional[float] = Field(
         None,
         title="Minimum Temperature",
-        description="The minimum temperature the battery can withstand",
+        description="The minimum temperature the battery can withstand in Celsius degrees",
         examples=[-40.0],
         le=100,
         ge=-100,
@@ -128,7 +128,7 @@ class TemperatureRange(CamelCaseModel):
     maximum_temperature: Optional[float] = Field(
         None,
         title="Maximum Temperature",
-        description="The maximum temperature the battery can withstand",
+        description="The maximum temperature the battery can withstand in Celsius degrees",
         examples=[50.0],
         le=100,
         ge=-100,
