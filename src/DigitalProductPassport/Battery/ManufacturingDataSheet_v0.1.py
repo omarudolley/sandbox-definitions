@@ -221,7 +221,7 @@ class LegalConformity(CamelCaseModel):
     requirement_conformity: List[str] = Field(
         ...,
         title="Requirement Conformity",
-        description="The compliancy of the battery with other legal and standard requirements",
+        description="The compliance of the battery with other legal and standard requirements",
         examples=[["ROHS", "CE HSE", "IEC62619"]],
     )
     conformity_declaration: Optional[str] = Field(
