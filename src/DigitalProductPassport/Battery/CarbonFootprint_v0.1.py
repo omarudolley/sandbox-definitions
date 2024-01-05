@@ -26,7 +26,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         max_length=250,
         title="Name",
-        description="The registered trade name of the battery manufacturer company",
+        description="The registered trade name of the manufacturer company",
         examples=["Battery Manufacturer A"],
     )
     street_name: Optional[str] = Field(
@@ -61,13 +61,13 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         pattern=r"^https://",
         title="Website",
-        description="The website of the battery manufacturer",
+        description="The website of the manufacturer",
         examples=["https://example.com"],
     )
     email: Optional[EmailStr] = Field(
         None,
         title="Email",
-        description="The email address of the battery manufacturer",
+        description="The email address of the manufacturer",
         examples=["info@example.com"],
     )
 

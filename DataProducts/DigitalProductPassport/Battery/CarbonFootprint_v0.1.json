@@ -433,7 +433,7 @@
               }
             ],
             "title": "Name",
-            "description": "The registered trade name of the battery manufacturer company",
+            "description": "The registered trade name of the manufacturer company",
             "examples": ["Battery Manufacturer A"]
           },
           "streetName": {
@@ -503,7 +503,7 @@
               }
             ],
             "title": "Website",
-            "description": "The website of the battery manufacturer",
+            "description": "The website of the manufacturer",
             "examples": ["https://example.com"]
           },
           "email": {
@@ -517,7 +517,7 @@
               }
             ],
             "title": "Email",
-            "description": "The email address of the battery manufacturer",
+            "description": "The email address of the manufacturer",
             "examples": ["info@example.com"]
           }
         },
