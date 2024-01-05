@@ -44,6 +44,7 @@ class OriginalPerformance(CamelCaseModel):
         None,
         title="Calendar Years",
         description="The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed",
+        examples=[10],
     )
 
 
@@ -87,11 +88,13 @@ class HealthState(CamelCaseModel):
         None,
         title="Power Fade",
         description="The power fade of the battery compared to the original power in percentage (%)",
+        examples=[15.0],
     )
     resistance_increase: Optional[float] = Field(
         None,
         title="Resistance Increase",
         description="The value of resistance increase since the battery was first commissioned in percentage (%)",
+        examples=[10.0],
     )
     operation_details: List[OperationDetail] = Field(
         ...,

@@ -457,7 +457,8 @@
               }
             ],
             "title": "Power Fade",
-            "description": "The power fade of the battery compared to the original power in percentage (%)"
+            "description": "The power fade of the battery compared to the original power in percentage (%)",
+            "examples": [15.0]
           },
           "resistanceIncrease": {
             "anyOf": [
@@ -469,7 +470,8 @@
               }
             ],
             "title": "Resistance Increase",
-            "description": "The value of resistance increase since the battery was first commissioned in percentage (%)"
+            "description": "The value of resistance increase since the battery was first commissioned in percentage (%)",
+            "examples": [10.0]
           },
           "operationDetails": {
             "items": {
@@ -614,7 +616,8 @@
               }
             ],
             "title": "Calendar Years",
-            "description": "The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed"
+            "description": "The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed",
+            "examples": [10]
           }
         },
         "type": "object",
