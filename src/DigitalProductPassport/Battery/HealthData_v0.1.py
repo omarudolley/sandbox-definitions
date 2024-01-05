@@ -63,7 +63,7 @@ class OperationDetail(CamelCaseModel):
     temperature: Optional[float] = Field(
         None,
         title="Temperature",
-        description="The temperature of the operating environment measured in celsius degrees",
+        description="The temperature of the operating environment measured in Celsius degrees",
         examples=[8.0],
         le=100,
         ge=-100,
