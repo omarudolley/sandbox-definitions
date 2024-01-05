@@ -504,7 +504,7 @@
             ],
             "title": "Website",
             "description": "The website of the manufacturer",
-            "examples": ["https://example.com"]
+            "examples": ["https://example.com/"]
           },
           "email": {
             "anyOf": [
