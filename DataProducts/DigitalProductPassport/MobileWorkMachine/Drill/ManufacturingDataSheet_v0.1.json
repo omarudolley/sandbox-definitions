@@ -296,7 +296,7 @@
               }
             ],
             "title": "Name",
-            "description": "The registered trade name of the battery manufacturer company",
+            "description": "The registered trade name of the manufacturer company",
             "examples": ["Drilling Company A"]
           },
           "streetName": {
@@ -394,7 +394,7 @@
             "maxLength": 150,
             "title": "Product",
             "description": "The product code used for identifying the product type",
-            "examples": ["dl422ie"]
+            "examples": ["bev-drill-1234a"]
           },
           "id": {
             "type": "string",
@@ -422,7 +422,7 @@
             ],
             "title": "Product Name",
             "description": "The official sales name of the product",
-            "examples": ["BEV Longhole Drill"]
+            "examples": ["Undergound drill A"]
           },
           "manufacturerInformation": {
             "anyOf": [

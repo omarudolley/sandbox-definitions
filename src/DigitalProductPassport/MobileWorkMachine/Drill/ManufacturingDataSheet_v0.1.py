@@ -9,7 +9,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         max_length=250,
         title="Name",
-        description="The registered trade name of the battery manufacturer company",
+        description="The registered trade name of the manufacturer company",
         examples=["Drilling Company A"],
     )
     street_name: Optional[str] = Field(
@@ -61,7 +61,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
         max_length=150,
         title="Product Name",
         description="The official sales name of the product",
-        examples=["BEV Longhole Drill"],
+        examples=["Undergound drill A"],
     )
     manufacturer_information: Optional[ManufacturerInformation] = Field(
         None,
@@ -126,7 +126,7 @@ class ManufacturingDataSheetRequest(CamelCaseModel):
         max_length=150,
         title="Product",
         description="The product code used for identifying the product type",
-        examples=["dl422ie"],
+        examples=["bev-drill-1234a"],
     )
     id: str = Field(
         ...,
