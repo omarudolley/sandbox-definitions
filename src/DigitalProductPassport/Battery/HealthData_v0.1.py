@@ -24,7 +24,7 @@ class OriginalPerformance(CamelCaseModel):
     power: Optional[float] = Field(
         None,
         title="Power",
-        description="The original power capability of the battery in watts",
+        description="The original power capability of the battery in watts (W)",
         examples=[20000.0],
     )
     resistance: Optional[float] = Field(
@@ -40,10 +40,10 @@ class OriginalPerformance(CamelCaseModel):
         description="The expected cycle life of the battery that exceed 80% of the capacity under the reference conditions for which it has been designed",
         examples=[5000.0],
     )
-    calendar_years: Optional[int] = Field(
+    years: Optional[int] = Field(
         None,
-        title="Calendar Years",
-        description="The expected lifetime of the battery in calendar years under the reference conditions for which it has been designed",
+        title="Years",
+        description="The expected lifetime of the battery in years under the reference conditions for which it has been designed",
         examples=[10],
     )
 
@@ -64,10 +64,8 @@ class OperationDetail(CamelCaseModel):
     temperature: Optional[float] = Field(
         None,
         title="Temperature",
-        description="The temperature of the operating environment measured in Celsius degrees",
+        description="The temperature of the battery measured in Celsius degrees",
         examples=[8.0],
-        le=100,
-        ge=-100,
     )
 
 
