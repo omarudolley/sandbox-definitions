@@ -61,7 +61,7 @@ class DataSheetRequest(CamelCaseModel):
         max_length=150,
         title="Product",
         description="The product code used for identifying the product type",
-        examples=["dl422ie"],
+        examples=["bev-drill-1234a"],
     )
     id: str = Field(
         ...,
