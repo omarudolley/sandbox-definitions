@@ -20,6 +20,7 @@ class CarbonFootprint(CamelCaseModel):
     reference_material: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the carbon footprint values",
         examples=["https://example.com/CarbonFootprint"],
@@ -36,6 +37,7 @@ class MaterialWaste(CamelCaseModel):
     reference_material: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Reference Material",
         description="The link giving access to a public version of the study supporting the material waste values",
         examples=["https://example.com/CarbonFootprint"],

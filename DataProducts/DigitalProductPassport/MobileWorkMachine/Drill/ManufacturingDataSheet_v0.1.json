@@ -359,6 +359,7 @@
             "anyOf": [
               {
                 "type": "string",
+                "maxLength": 2083,
                 "pattern": "^https://"
               },
               {
@@ -518,6 +519,7 @@
             "anyOf": [
               {
                 "type": "string",
+                "maxLength": 2083,
                 "pattern": "^https://"
               },
               {
@@ -532,6 +534,7 @@
             "anyOf": [
               {
                 "type": "string",
+                "maxLength": 2083,
                 "pattern": "^https://"
               },
               {

@@ -60,6 +60,7 @@ class ManufacturerInformation(CamelCaseModel):
     website: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Website",
         description="The website of the manufacturer",
         examples=["https://example.com/"],
@@ -88,6 +89,7 @@ class CarbonFootprint(CamelCaseModel):
     reference_material: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Reference Material",
         description="The web link giving access to a public version of the study supporting the carbon footprint values",
         examples=["https://example.com/CarbonFootprint"],
@@ -110,6 +112,7 @@ class CarbonFootprintResponse(CamelCaseModel):
     conformity_declaration: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Conformity Declaration",
         description="The link to the EU declaration of conformity documentation",
         examples=["https://example.com/EUdeclaration"],

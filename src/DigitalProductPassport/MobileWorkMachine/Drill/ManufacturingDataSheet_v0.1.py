@@ -43,6 +43,7 @@ class ManufacturerInformation(CamelCaseModel):
     website: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Website",
         description="The website of the battery manufacturer",
         examples=["https://example.com/"],
@@ -107,6 +108,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     reference_data_sheet: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Reference Data Sheet",
         description="The link to the detailed product specifications",
         examples=["https://example.com/productDocument"],
@@ -114,6 +116,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     safety_data_sheet: Optional[str] = Field(
         None,
         pattern=r"^https://",
+        max_length=2083,
         title="Safety Data Sheet",
         description="The link to the safety control measures of the product",
         examples=["https://example.com/safetyDocument"],
