@@ -396,7 +396,7 @@
               }
             ],
             "title": "Name",
-            "description": "The registered trade name of the battery manufacturer company",
+            "description": "The registered trade name of the manufacturer company",
             "examples": ["Battery Manufacturer A"]
           },
           "streetName": {
@@ -466,7 +466,7 @@
               }
             ],
             "title": "Website",
-            "description": "The website of the battery manufacturer",
+            "description": "The website of the manufacturer",
             "examples": ["https://example.com/"]
           },
           "email": {
@@ -480,7 +480,7 @@
               }
             ],
             "title": "Email",
-            "description": "The email address of the battery manufacturer",
+            "description": "The email address of the manufacturer",
             "examples": ["info@example.com"]
           }
         },
@@ -572,7 +572,7 @@
               }
             ],
             "title": "Manufacturing Location",
-            "description": "The location details of the battery manufacturing plant"
+            "description": "The details of the location of the battery manufacturing plant"
           },
           "manufacturingDate": {
             "anyOf": [
@@ -688,7 +688,7 @@
               }
             ],
             "title": "Temperature Range",
-            "description": "The details of the acceptable temperature values of the battery"
+            "description": "The details of the acceptable environment temperature values for the battery"
           },
           "expectedLifetime": {
             "anyOf": [
@@ -736,7 +736,7 @@
             },
             "type": "array",
             "title": "Extinguishing Agents",
-            "description": "The type of the fire extinguishing agent that can be used for the battery",
+            "description": "The type of the fire extinguishing agents that can be used for the battery",
             "examples": [["foam", "carbon dioxide"]]
           },
           "legalConformity": {
@@ -881,7 +881,7 @@
               }
             ],
             "title": "Recycling Rate",
-            "description": "The amount of recycled content in the substance",
+            "description": "The amount of recycled content in the substance in percentage (%) by weight",
             "examples": [8.5]
           }
         },
@@ -914,7 +914,7 @@
               }
             ],
             "title": "Proportion",
-            "description": "The share of the renewable content present in the battery in percentage weight by weight",
+            "description": "The share of the renewable content present in the battery in percentage (%) by weight",
             "examples": [2.0]
           }
         },
@@ -980,7 +980,7 @@
               }
             ],
             "title": "Minimum Temperature",
-            "description": "The minimum temperature the battery can withstand in Celsius degrees",
+            "description": "The minimum environment temperature the battery can withstand in Celsius degrees",
             "examples": [-40.0]
           },
           "maximumTemperature": {
@@ -995,7 +995,7 @@
               }
             ],
             "title": "Maximum Temperature",
-            "description": "The maximum temperature the battery can withstand in Celsius degrees",
+            "description": "The maximum environment temperature the battery can withstand in Celsius degrees",
             "examples": [50.0]
           }
         },

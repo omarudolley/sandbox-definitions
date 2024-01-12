@@ -27,7 +27,7 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         max_length=250,
         title="Name",
-        description="The registered trade name of the battery manufacturer company",
+        description="The registered trade name of the manufacturer company",
         examples=["Battery Manufacturer A"],
     )
     street_name: Optional[str] = Field(
@@ -62,13 +62,13 @@ class ManufacturerInformation(CamelCaseModel):
         None,
         pattern=r"^https://",
         title="Website",
-        description="The website of the battery manufacturer",
+        description="The website of the manufacturer",
         examples=["https://example.com/"],
     )
     email: Optional[EmailStr] = Field(
         None,
         title="Email",
-        description="The email address of the battery manufacturer",
+        description="The email address of the manufacturer",
         examples=["info@example.com"],
     )
 
@@ -120,7 +120,7 @@ class TemperatureRange(CamelCaseModel):
     minimum_temperature: Optional[float] = Field(
         None,
         title="Minimum Temperature",
-        description="The minimum temperature the battery can withstand in Celsius degrees",
+        description="The minimum environment temperature the battery can withstand in Celsius degrees",
         examples=[-40.0],
         le=100,
         ge=-100,
@@ -128,7 +128,7 @@ class TemperatureRange(CamelCaseModel):
     maximum_temperature: Optional[float] = Field(
         None,
         title="Maximum Temperature",
-        description="The maximum temperature the battery can withstand in Celsius degrees",
+        description="The maximum environment temperature the battery can withstand in Celsius degrees",
         examples=[50.0],
         le=100,
         ge=-100,
@@ -190,7 +190,7 @@ class RecycledContent(CamelCaseModel):
     recycling_rate: Optional[float] = Field(
         None,
         title="Recycling Rate",
-        description="The amount of recycled content in the substance",
+        description="The amount of recycled content in the substance in percentage (%) by weight",
         examples=[8.5],
     )
 
@@ -206,7 +206,7 @@ class RenewableContent(CamelCaseModel):
     proportion: Optional[float] = Field(
         None,
         title="Proportion",
-        description="The share of the renewable content present in the battery in percentage weight by weight",
+        description="The share of the renewable content present in the battery in percentage (%) by weight",
         examples=[2.0],
     )
 
@@ -261,7 +261,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     manufacturing_location: Optional[ManufacturingLocation] = Field(
         None,
         title="Manufacturing Location",
-        description="The location details of the battery manufacturing plant",
+        description="The details of the location of the battery manufacturing plant",
     )
     manufacturing_date: Optional[str] = Field(
         None,
@@ -314,7 +314,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     temperature_range: Optional[TemperatureRange] = Field(
         None,
         title="Temperature Range",
-        description="The details of the acceptable temperature values of the battery",
+        description="The details of the acceptable environment temperature values for the battery",
     )
     expected_lifetime: Optional[ExpectedLifetime] = Field(
         None,
@@ -339,7 +339,7 @@ class ManufacturingDataSheetResponse(CamelCaseModel):
     extinguishing_agents: List[str] = Field(
         ...,
         title="Extinguishing Agents",
-        description="The type of the fire extinguishing agent that can be used for the battery",
+        description="The type of the fire extinguishing agents that can be used for the battery",
         examples=[["foam", "carbon dioxide"]],
     )
     legal_conformity: Optional[LegalConformity] = Field(
